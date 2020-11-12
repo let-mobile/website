@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('title')
-<title>Sgin In | Let Mobile </title>
+<title>Sign In | Let Mobile </title>
     <meta name="description" content="Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.">
 @stop
 <style type="text/css">
