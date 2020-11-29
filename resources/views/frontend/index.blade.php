@@ -103,7 +103,7 @@
                         </div>
                         <div class="listing-bottom clearfix">
                             <a href="{{ url('city/'.$row['city']['cityslug'])}}" class="float-left"><i class="lni-map-marker"></i> {{ @ucwords($row['city']['city']) }}</a>
-                            <a class="float-right">{{ date("F j",strtotime($row['created_at'])) }}</a>
+                            <a class="float-right"><?php $dt = Carbon::parse($row['created_at']);echo $dt->diffForHumans(); ?></a>
                         </div>
                     </div>
                 </div>

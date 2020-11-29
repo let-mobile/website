@@ -236,6 +236,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Curl' => Ixudra\Curl\Facades\Curl::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Carbon' => Carbon\Carbon::class,
     ],
 
 ];
