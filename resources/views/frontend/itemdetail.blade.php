@@ -76,16 +76,21 @@
 <?php
 	if(@$item) {
 		$ar = explode(',', $item['adimgs']);
+        $per = '';
+        if($item['cond'] == '2')
+        {
+            $per = '/per Installment';
+        }
 		if(count($ar) > 0){
 			for($i = 0; $i < count($ar); $i++){
 				if($i == 0){
-					$imgs .= '<div class="item"><div class="product-img"><img class="img-fluid" src="'.url('public/images/'.$ar[$i]).'" alt="'.$item["brand"]["brand"].' used phones price in '. ucwords($item["city"]["city"]) .'"/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).'</span></div>';
+					$imgs .= '<div class="item"><div class="product-img"><img class="img-fluid" src="'.url('public/images/'.$ar[$i]).'" alt="'.$item["brand"]["brand"].' used phones price in '. ucwords($item["city"]["city"]) .'"/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).$per.'</span></div>';
 				} else {
-					$imgs .= '<div class="item"><div class="product-img"><img class="img-fluid" src="'.url('public/images/'.$ar[$i]).'" alt=""'.$item["brand"]["brand"].' used phones price in '. ucwords($item["city"]["city"]) .'""/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).'</span></div>';
+					$imgs .= '<div class="item"><div class="product-img"><img class="img-fluid" src="'.url('public/images/'.$ar[$i]).'" alt=""'.$item["brand"]["brand"].' used phones price in '. ucwords($item["city"]["city"]) .'""/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).$per.'</span></div>';
 				}
 			}
 		} else {
-			$imgs = '<div class="item"><div class="product-img"><img src="'.url('images/noimage.png').'" alt=""'.$item["brand"]["brand"].' used phones price in '. ucwords($item["city"]["city"]) .'""/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).'</span></div>';
+			$imgs = '<div class="item"><div class="product-img"><img src="'.url('images/noimage.png').'" alt=""'.$item["brand"]["brand"].' used phones price in '. ucwords($item["city"]["city"]) .$per.'""/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).'</span></div>';
 		}
 	}
 	?>
@@ -232,7 +237,7 @@
                         <div class="row">
                             <div class="col-12 text-center">
                                 <div class="heading">
-                                    <h1 class="section-title">Related Mobiles Ads</h1>
+                                    <h2 class="section-title">Related Mobiles Ads</h2>
                                     <h4 class="sub-title">Discover & connect with top-rated Mobiles ads</h4>
                                 </div>
                             </div>

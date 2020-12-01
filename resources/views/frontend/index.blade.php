@@ -57,7 +57,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <div class="heading">
-                    <h1 class="section-title">Latest Mobiles Ads</h1>
+                    <h2 class="section-title">Latest Mobiles Ads</h2>
                     <h4 class="sub-title">Discover & connect with top-rated Mobiles ads</h4>
                 </div>
             </div>
@@ -118,7 +118,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <div class="heading">
-                    <h1 class="section-title">How It Works?</h1>
+                    <h2 class="section-title">How It Works?</h2>
                     <h4 class="sub-title">Post a free Classified Mobile Ad. Buy and Sale.</h4>
                 </div>
             </div>
@@ -156,7 +156,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <div class="heading">
-                    <h1 class="section-title">Our Blogs</h1>
+                    <h2 class="section-title">Our Blogs</h2>
                     <h4 class="sub-title">Discover & connect with top-rated Technology</h4>
                 </div>
             </div>

@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="post-content">
-                        <h1 class="post-title"><a href="<?php echo url('blogs/'.$blog->blog_slug); ?>"><?php echo @ucwords($blog->blog_title); ?></a></h1>
+                        <h2 class="post-title"><a href="<?php echo url('blogs/'.$blog->blog_slug); ?>"><?php echo @ucwords($blog->blog_title); ?></a></h2>
                         <div class="meta">
                             <span class="meta-part"><a href="#"><i class="lni-user"></i> Published By Let Mobile</a></span>
                             <span class="meta-part"><a href="#"><i class="lni-alarm-clock"></i> <?=date_format(date_create($blog->created_at), 'jS F Y')?></a></span>

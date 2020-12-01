@@ -174,7 +174,7 @@
                         <div class="row justify-content-c--enter">
                             <div class="col-12 text-center">
                                 <div class="heading">
-                                    <h1 class="section-title">Key Features</h1>
+                                    <h2 class="section-title">Key Features</h2>
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-12 col-xs-12">
