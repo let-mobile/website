@@ -19,7 +19,7 @@ class CitiesController extends Controller
         $this->slug = $slug;
         $ads = Post::with('brand' 
             )->whereHas('city', function ($query) { $query->where('cityslug', '=',$this->slug); })->where('vcode','=',0)
-        ->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname')->orderBy('aid', 'DESC')->paginate(24);
+        ->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')->orderBy('aid', 'DESC')->paginate(24);
         return view('frontend.brand',compact('ads',$ads));
     }
 
