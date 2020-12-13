@@ -24,6 +24,14 @@
         width: 65%;
         margin-top: 20%;
     }
+    .ui-widget.ui-widget-content {
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 10px;
+    height: 200px;
+    border-radius: 15px;
+    }
 </style>
 @stop
 @section('content')
