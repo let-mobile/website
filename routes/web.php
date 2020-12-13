@@ -52,7 +52,9 @@ Route::prefix('user')->group(function () {
         Route::get('/{slug}/ads/edit/{id}','Home@edit');
     });
 });
-
+Route::prefix('ads')->group(function () {
+    Route::get('{slug}','Home@show');
+});
 Route::prefix('interested')->group(function () {
     Route::post('store/{to_id}','InetrestedController@store');
 });

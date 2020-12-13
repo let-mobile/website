@@ -21,9 +21,7 @@ class BrandController extends Controller
     public function index($slug)
     {
        $this->slug = $slug;
-        $ads = Post::with('city' 
-            )->whereHas('brand', function ($query) { $query->where('brandslug', '=',$this->slug); })->where('vcode','=',0)
-        ->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')->orderBy('aid', 'DESC')->paginate(24);
+        $ads = Post::with('city','user')->whereHas('brand', function ($query) { $query->where('brandslug', '=',$this->slug); })->where('vcode','=',0)->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')->orderBy('aid', 'DESC')->paginate(24);
         return view('frontend.brand',compact('ads',$ads));
     }
     

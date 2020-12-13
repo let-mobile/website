@@ -31,28 +31,26 @@ class Home extends Controller
      */
     public function index($slug)
     {
-            $data['user'] = User::where('usrslug','=',$slug)->first();
-            $data['published'] = Post::where('postedby','=', Session::get('user_id'))->count();
-            $data['unverified'] = Post::where('postedby','=', Session::get('user_id'))->where('is_verified','=',0)->count();
-            $data['deleted'] = Post::where('postedby','=', Session::get('user_id'))->where('vcode','=',1)->count();
-            $data['sold'] = Post::where('postedby','=', Session::get('user_id'))->where('is_sold','=',1)->count();
-            return view('frontend.user.home',$data); 
+        $data['user'] = User::where('usrslug','=',$slug)->first();
+        $data['published'] = Post::where('postedby','=', Session::get('user_id'))->count();
+        $data['unverified'] = Post::where('postedby','=', Session::get('user_id'))->where('is_verified','=',0)->count();
+        $data['deleted'] = Post::where('postedby','=', Session::get('user_id'))->where('vcode','=',1)->count();
+        $data['sold'] = Post::where('postedby','=', Session::get('user_id'))->where('is_sold','=',1)->count();
+        return view('frontend.user.home',$data); 
 
     }
     public function unverified($slug)
     {
-
         $data['user'] = User::where('usrslug','=',$slug)->first();
         $data['published'] = Post::where('postedby','=', Session::get('user_id'))->count();
         $data['unverified'] = Post::where('postedby','=', Session::get('user_id'))->where('is_verified','=',0)->count();
         $data['sold'] = Post::where('postedby','=', Session::get('user_id'))->where('is_sold','=',1)->count();
-         $data['deleted'] = Post::where('postedby','=', Session::get('user_id'))->where('vcode','=',1)->count();
+        $data['deleted'] = Post::where('postedby','=', Session::get('user_id'))->where('vcode','=',1)->count();
         $data['ads'] = Post::where('postedby','=', Session::get('user_id'))->where('vcode','=',0)->where('is_verified','=',0)->orderBy('aid', 'DESC')->paginate(5);
         return view('frontend.user.ads',$data); 
     }
     public function solded($slug)
     {
-
         $data['user'] = User::where('usrslug','=',$slug)->first();
         $data['published'] = Post::where('postedby','=', Session::get('user_id'))->count();
         $data['unverified'] = Post::where('postedby','=', Session::get('user_id'))->where('is_verified','=',0)->count();
@@ -63,25 +61,22 @@ class Home extends Controller
     }
     public function deleted($slug)
     {
-
         $data['user'] = User::where('usrslug','=',$slug)->first();
         $data['published'] = Post::where('postedby','=', Session::get('user_id'))->count();
         $data['unverified'] = Post::where('postedby','=', Session::get('user_id'))->where('is_verified','=',0)->count();
         $data['sold'] = Post::where('postedby','=', Session::get('user_id'))->where('is_sold','=',1)->count();
-         $data['deleted'] = Post::where('postedby','=', Session::get('user_id'))->where('vcode','=',1)->count();
+        $data['deleted'] = Post::where('postedby','=', Session::get('user_id'))->where('vcode','=',1)->count();
         $data['ads'] = Post::where('postedby','=', Session::get('user_id'))->where('vcode','=',1)->orderBy('aid', 'DESC')->paginate(5);
         return view('frontend.user.ads',$data); 
     }
     public function published($slug)
     {
-
         $data['user'] = User::where('usrslug','=',$slug)->first();
         $data['published'] = Post::where('postedby','=', Session::get('user_id'))->count();
         $data['unverified'] = Post::where('postedby','=', Session::get('user_id'))->where('is_verified','=',0)->count();
         $data['sold'] = Post::where('postedby','=', Session::get('user_id'))->where('is_sold','=',1)->count();
         $data['deleted'] = Post::where('postedby','=', Session::get('user_id'))->where('vcode','=',1)->count();
         $data['ads'] = Post::withCount('postview')->where('postedby','=', Session::get('user_id'))->orderBy('aid', 'DESC')->paginate(5);
-
         return view('frontend.user.ads',$data); 
     }
     /**
@@ -120,9 +115,14 @@ class Home extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $data['user'] = User::where('usrslug','=',$slug)->first();
+        if (is_null($data['user'])) {
+            return abort(404);
+        }
+        $data['ads'] = Post::with('brand','city','user')->where('vcode','=',0)->where(['postedby'=>$data['user']->id])->select('aid','adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname','created_at')->orderBy('aid', 'DESC')->paginate(24);
+        return view('frontend.ads',$data);
     }
 
     /**

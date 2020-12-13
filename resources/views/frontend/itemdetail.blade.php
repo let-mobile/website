@@ -178,8 +178,8 @@
                             <div class="interested" id="mydiv">
                                 <form id="interestedForm">
                                     {{ @csrf_field() }}
-                                    <input type="email" class="form-control" name="email" placeholder="Your Email">
-                                    <input type="text" class="form-control" name="phone" placeholder="Your Phone">
+                                    <input type="email" class="form-control" value="{{ Session::get('email') }}" name="email" placeholder="Your Email">
+                                    <input type="text" class="form-control" value="{{ Session::get('phone') }}" name="phone" placeholder="Your Phone">
                                     <p>I'm interested in this mobile [{{ ucwords($item['adtitle']) }}] and I'd like to know more details.</p>
                                     <button type="submit" value="no" class="btn btn-common fullwidth mt-4">Send Message</button>
                                 </form>
@@ -260,7 +260,7 @@
                                             
                                             <div class="meta-tag">
                                                 <div class="user-name">
-                                                    <a href="javascript:void(0)"><i class="lni-user"></i> {{ @ucwords(substr($row['selname'],0,12)) }}</a>
+                                                    <a href="{{ url('ads') }}/{{ $row['user']['usrslug'] }}"><i class="lni-user"></i> {{ @ucwords(substr($row['selname'],0,12)) }}</a>
                                                 </div>
                                                 <div class="listing-category">
                                                     @if($row['cond'] == '0')
@@ -370,7 +370,7 @@
                 $('#interestedForm')[0].reset();
                 $('.log-btn').prop('disabled', false);
                 $(".success").show();
-                $(".success").append("<li><strong>Sucess!</strong> Your SMS has been sent. Let us know if there’s anything else we can help you with. <br> <b> The Let Mobile Team <b></li>");
+                $(".success").append("<li><strong>Sucess!</strong> Your SMS has been sent. Let us know if there’s anything else we can help you. <br> <b> The Let Mobile Team <b></li>");
             }
         });
     });

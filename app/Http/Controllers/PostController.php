@@ -31,7 +31,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data['ads'] = Post::with('brand','city')->where('vcode','=',0)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(20)->orderBy('aid', 'DESC')->get();
+        $data['ads'] = Post::with('brand','city','user')->where('vcode','=',0)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(20)->orderBy('aid', 'DESC')->get();
         $data['blogs'] = Blog::with('category')->select('blog_title','short_description','blog_slug','blog_image','category_id','created_at')->take(3)->orderBy('blog_id', 'DESC')->get()->shuffle();
         return view('frontend.index',$data);
     }

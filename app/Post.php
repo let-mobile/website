@@ -18,6 +18,6 @@ class Post extends Model
     	return $this->hasMany(Postview::class,'post_id','aid');
     }
    public function user(){
-        return $this->belongsTo(User::class,'postedby','id');
+        return $this->belongsTo(User::class,'postedby','id')->select(array('id', 'fname','lname','usrslug','email'));
     }
 }

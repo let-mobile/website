@@ -46,7 +46,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <div class="heading">
-                    <h1 class="section-title">Searched Mobiles Ads</h1>
+                    <h1 class="section-title">{{ $user->fname. ' ' .$user->lname }} Ads</h1>
                     <h4 class="sub-title">Discover & connect with top-rated Mobiles ads</h4>
                 </div>
             </div>
