@@ -44,14 +44,11 @@
 
       gtag('config', 'UA-144102274-1');
     </script>
-
-    
-
     <style type="text/css">
         .slicknav_brand a img
         {
-            width: 220px;
-            margin: 10px 0px 0px 0px;
+            width: 160px;
+            margin: 13px 0px 0px 0px;
             cursor: pointer;
         }
         .hidden-sharer
@@ -66,6 +63,22 @@
         {
             width: 100%;
         }
+        .login--btn {
+            position: absolute;
+            top: 16px;
+            display: none;
+            right: 90px;
+            color: #03a9f4 !important;    
+            font-weight: bold;
+        }
+        @media (max-width: 767px)
+        {
+        .login--btn
+        {
+            display: block;
+        }
+        }
+         
     </style>
 </head>
 <body>
