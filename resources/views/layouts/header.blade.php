@@ -55,7 +55,7 @@
                         <a href="{{ url('user/signup') }}" class="header-top-button"><i class="lni-emoji-smile"></i> Register</a>
                         @else
                         <a class="header-top-button" href="{{url('user')}}/{{ Session::get('slug') }}">My Ads</a> |
-                        <a class="" href="{{url('user/logout')}}">Logout </a>
+                        <a class="header-top-button" href="{{url('user/logout')}}">Logout </a>
                          @endif
                     </div>
                     <div class="post-btn">
