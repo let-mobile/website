@@ -272,40 +272,6 @@
         </div>
     </div>
     </section>
-    <section id="blog" class="section-padding">
-
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <div class="heading">
-                    <h2 class="section-title">Our Blogs</h2>
-                    <h4 class="sub-title">Discover & connect with top-rated Technology</h4>
-                </div>
-            </div>
-            <?php if(@$blogs){ foreach($blogs as $blog){ ?>
-            <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
-                <div class="blog-item-wrapper">
-                    <div class="blog-item-img">
-                        <a href="<?php echo url('blogs/'.$blog->blog_slug); ?>">
-                            <img src="<?php echo url('public/blogimages/thumbnail/'.$blog->blog_image); ?>" alt="<?php echo @ucwords($blog->blog_title); ?>">
-                        </a>
-                    </div>
-                    <div class="blog-item-text">
-                        <div class="meta-tags">
-                            <span class="user float-left"><a href="#"><i class="lni-user"></i>Let Mobile</a></span>
-                            <span class="date float-right"><i class="lni-calendar"></i> <?=date_format(date_create($blog->created_at), 'jS F Y')?></span>
-                        </div>
-                        <h2><a href="<?php echo url('blogs/'.$blog->blog_slug); ?>">
-                            {{ @ucwords(substr($blog->blog_title,0,30)) }}...</a></h2>
-                            <?php echo substr($blog->short_description,0,150); ?> ...
-                        <a href="<?php echo url('blogs/'.$blog->blog_slug); ?>" class="btn btn-common">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <?php } } ?>
-        </div>
-    </div>
-</section>
 @stop
 @section('page-scripts')
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
