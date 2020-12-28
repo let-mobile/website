@@ -108,7 +108,7 @@
                         <h2>{{ ucwords($item['adtitle']) }}</h2>
                         <div class="details-meta">
                             <span><a href="#"><i class="lni-alarm-clock"></i> {{ date('d M h:i a', $item['adtime']) }}</a></span>
-                            <span><a href="#"><i class="lni-map-marker"></i>{{ ucwords($item['city']['city']) }},{{ ucwords($item['adadress']) }}</a></span>
+                            <span><a href="#"><i class="lni-map-marker"></i>{{ ucwords($item['adadress']) }},{{ ucwords($item['city']['city']) }}</a></span>
                             <span><a href="#"><i class="lni-eye"></i> {{$item['postview_count']}} View</a></span>
                         </div>
                         <p class="mb-4">{{ htmlspecialchars_decode($item['ad_description']) }}</p>
