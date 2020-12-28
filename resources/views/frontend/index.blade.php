@@ -176,7 +176,7 @@
             @endforeach
             @endif
         </div>
-         <div class="row">
+        <div class="row">
             <div class="col-12">
                 <div class="heading text-center">
                     <h2 class="section-title">New Mobiles Ads</h2>
