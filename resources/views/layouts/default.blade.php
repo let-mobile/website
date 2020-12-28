@@ -67,7 +67,7 @@
             position: absolute;
             top: 16px;
             display: none;
-            right: 90px;
+            right: 75px;
             color: #03a9f4 !important;    
             font-weight: bold;
         }
