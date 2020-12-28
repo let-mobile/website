@@ -62,10 +62,10 @@
     </header>
     <section class="featured section-padding">
     <div class="container">
-        <div class="row">
+        <div class="row m-f-1">
             <div class="col-12">
                 <div class="heading text-center">
-                    <h2 class="section-title">Installment Mobiles Ads</h2>
+                    <h2 class="section-title">Installment Mobiles</h2>
                     <h4 class="sub-title">Discover & connect with top-rated in New Mobiles ads</h4>
                 </div>
             </div>
@@ -119,10 +119,10 @@
             @endforeach
             @endif
         </div>
-        <div class="row">
+        <div class="row m-f-1">
             <div class="col-12">
                 <div class="heading text-center">
-                    <h2 class="section-title">Used Mobiles Ads</h2>
+                    <h2 class="section-title">Used Mobiles</h2>
                     <h4 class="sub-title">Discover & connect with top-rated in Used Mobiles ads</h4>
                 </div>
             </div>
@@ -176,10 +176,10 @@
             @endforeach
             @endif
         </div>
-        <div class="row">
+        <div class="row m-f-1">
             <div class="col-12">
                 <div class="heading text-center">
-                    <h2 class="section-title">New Mobiles Ads</h2>
+                    <h2 class="section-title">New Mobiles</h2>
                     <h4 class="sub-title">Discover & connect with top-rated in New Mobiles ads</h4>
                 </div>
             </div>

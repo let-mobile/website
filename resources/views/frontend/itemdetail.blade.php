@@ -234,7 +234,7 @@
             <div class="col-lg-12 col-md-12 col-xs-12">
                 <section class="featured section-padding">
                     <div class="container">
-                        <div class="row">
+                        <div class="row m-f-1">
                             <div class="col-12 text-center">
                                 <div class="heading">
                                     <h2 class="section-title">Related Mobiles Ads</h2>

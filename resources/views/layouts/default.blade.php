@@ -71,12 +71,16 @@
             color: #03a9f4 !important;    
             font-weight: bold;
         }
+        .m-f-1
+        {
+            margin: 0px 0.5rem;
+        }
         @media (max-width: 767px)
         {
-        .login--btn
-        {
-            display: block;
-        }
+            .login--btn
+            {
+                display: block;
+            }
         }
          
     </style>

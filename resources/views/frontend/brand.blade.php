@@ -43,7 +43,7 @@
 
 <section class="featured section-padding">
     <div class="container">
-        <div class="row">
+        <div class="row m-f-1">
             <div class="col-12 text-center">
                 <div class="heading">
                     <h1 class="section-title">Searched Mobiles Ads</h1>
