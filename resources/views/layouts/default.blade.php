@@ -82,6 +82,15 @@
             {
                 margin: 0px 0.5rem;
             }
+            .ads-details-wrapper .price 
+            {
+                padding: 0px 5px;
+                font-size: 11px;
+            }
+            .share
+            {
+                margin: 20px;
+            }
         }
          
     </style>
