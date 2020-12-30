@@ -32,6 +32,7 @@
           opacity: 0.4;
       }
 </style>
+<link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/assets/css/summernote.css">
 @section('content')
 <div class="page-header" style="background: url(<?=url('/')?>/public/assets/img/banner1.webp);">
     <div class="container">
@@ -73,6 +74,12 @@
                                           <input type="text" name="title" id="title" placeholder="Ad Title" class="form-control input-md" value="{{ ucwords($item['adtitle']) }}"> <span class="help-block">A great title needs at least 60 characters</span>
                                       </div>
                                       <div class="form-group mb-3">
+                                          <label for="ades" class="control-label font-weight-bold text-muted">Describe Ad</label>
+                                          <div class="col-md-12">
+                                              <textarea name="ades" cols="40" rows="6" id="ades" class="form-control input-md" placeholder="Describe what makes your ad unique">{{ $item['ad_description'] }}</textarea>
+                                          </div>
+                                      </div>
+                                       <div class="form-group mb-3">
                                           <div class="form-group">
                                               <label class="font-weight-bold text-muted" for="item">Select Brand</label>
                                               <div class="select2">
@@ -89,12 +96,6 @@
                                                       </div>
                                                   </div>
                                               </div>
-                                          </div>
-                                      </div>
-                                      <div class="form-group mb-3">
-                                          <label for="ades" class="control-label font-weight-bold text-muted">Describe Ad</label>
-                                          <div class="col-md-12">
-                                              <textarea name="ades" cols="40" rows="6" id="ades" class="form-control input-md" placeholder="Describe what makes your ad unique">{{ $item['ad_description'] }}</textarea>
                                           </div>
                                       </div>
                                       <div class="form-group mb-3">
@@ -239,6 +240,12 @@
 </div>
 @stop
 @section('page-scripts')
+<script src="{{ url('/') }}/public/assets/js/summernote.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('#ades').summernote({'height': 200});
+});
+</script>
 <script type="text/javascript">
     $("#postForm :input").on("keyup", function() {
         if (!$(this).val()) {

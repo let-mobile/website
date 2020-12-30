@@ -71,7 +71,10 @@
             color: #03a9f4 !important;    
             font-weight: bold;
         }
-        
+        .m-f-1
+            {
+                margin: 2rem 0rem;
+            }
         @media (max-width: 767px)
         {
             .login--btn

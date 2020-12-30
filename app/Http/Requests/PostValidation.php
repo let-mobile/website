@@ -29,7 +29,6 @@ class PostValidation extends FormRequest
             'location' => 'required',
             'ades' => 'required|min:30',
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
-            'neg' => 'required','cond' => 'required',
             'phone' => ['required','numeric','regex:/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/'],
             "image"    => "required|array|min:1",
             "image.*"  => "required|distinct|min:3|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048",

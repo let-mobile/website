@@ -93,7 +93,6 @@ class PostController extends Controller
         $post->loc_id  = $request->location;
         $post->adadress  = $request->adadress;
         $post->cat_id  = $request->category ;
-        $post->nego    = $request->neg;
         $post->adtime  = time();
         $post->postedtill = time()+(365*86400);
         $post->is_anonymus  = 1;

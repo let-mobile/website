@@ -42,8 +42,8 @@
                 <div class="row justify-content-center">
                     <div class="col-md-12 col-lg-9 col-xs-12 text-center">
                         <div class="contents">
-                            <h1 class="head-title">Find Used|New Mobiles in  <span class="year">Pakistan</span></h1>
-                            <p>Buy and sell thousands of Mobiles, we have just the right one for you</p>
+                            <h1 class="head-title">Find <a href="<?=url('category/used')?>">Used</a>, <a href="<?=url('category/new')?>">New </a> and <a href="<?=url('category/installments')?>">Installment</a> Mobiles in  <span class="year">Pakistan</span></h1>
+                            <p>Buy and sell thousands of Mobile Phones, we have just the right one for you</p>
                             <div class="search-bar">
                                 <div class="search-inner">
                                     <form class="search-form" method="get" action="{{ url('search/keyword') }}">
@@ -119,6 +119,9 @@
             @endforeach
             @endif
         </div>
+        <div class="post-btn text-center">
+            <a class="btn btn-common" href="<?php echo url('category/installments'); ?>"> View All</a>
+        </div>
         <div class="row m-f-1">
             <div class="col-12">
                 <div class="heading text-center">
@@ -176,6 +179,9 @@
             @endforeach
             @endif
         </div>
+        <div class="post-btn text-center">
+            <a class="btn btn-common" href="<?php echo url('category/used'); ?>"> View All</a>
+        </div>
         <div class="row m-f-1">
             <div class="col-12">
                 <div class="heading text-center">
@@ -232,6 +238,9 @@
             </div>
             @endforeach
             @endif
+        </div>
+        <div class="post-btn text-center">
+            <a class="btn btn-common" href="<?php echo url('category/new'); ?>"> View All</a>
         </div>
     </div>
     </section>

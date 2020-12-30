@@ -111,7 +111,7 @@
                             <span><a href="#"><i class="lni-map-marker"></i>{{ ucwords($item['adadress']) }},{{ ucwords($item['city']['city']) }}</a></span>
                             <span><a href="#"><i class="lni-eye"></i> {{$item['postview_count']}} View</a></span>
                         </div>
-                        <p class="mb-4">{{ htmlspecialchars_decode($item['ad_description']) }}</p>
+                        <p class="mb-4">{!! htmlspecialchars_decode($item['ad_description']) !!}</p>
                     </div>
                     <div class="tag-bottom">
                         <div class="float-left">
