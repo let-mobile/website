@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('title')
 <title>{{ ucwords($item['adtitle']) }} | Let Mobile </title>
-<meta name="description" content="{{ htmlspecialchars_decode($item['ad_description']) }}">
+<meta name="description" content="{{ ucwords($item['adtitle']) }} | {{ ucwords($item['city']['city']) }} | {{ ucwords($item['brand']['brand']) }}  | Let Mobile | Used Mobile | Installments Mobile | New Mobiles | Sale and Buy">
 @stop
 <?php $imgs = ''; $ar = explode(',', $item['adimgs']);?>
 @section('page-css')
@@ -84,13 +84,13 @@
 		if(count($ar) > 0){
 			for($i = 0; $i < count($ar); $i++){
 				if($i == 0){
-					$imgs .= '<div class="item"><div class="product-img"><img class="img-fluid" src="'.url('public/images/'.$ar[$i]).'" alt="'.$item["brand"]["brand"].' used phones price in '. ucwords($item["city"]["city"]) .'"/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).$per.'</span></div>';
+					$imgs .= '<div class="item"><div class="product-img"><img class="img-fluid" src="'.url('public/images/'.$ar[$i]).'" alt="'.$item["brand"]["brand"].' phones price in '. ucwords($item["city"]["city"]) .'"/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).$per.'</span></div>';
 				} else {
-					$imgs .= '<div class="item"><div class="product-img"><img class="img-fluid" src="'.url('public/images/'.$ar[$i]).'" alt=""'.$item["brand"]["brand"].' used phones price in '. ucwords($item["city"]["city"]) .'""/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).$per.'</span></div>';
+					$imgs .= '<div class="item"><div class="product-img"><img class="img-fluid" src="'.url('public/images/'.$ar[$i]).'" alt=""'.$item["brand"]["brand"].' phones price in '. ucwords($item["city"]["city"]) .'""/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).$per.'</span></div>';
 				}
 			}
 		} else {
-			$imgs = '<div class="item"><div class="product-img"><img src="'.url('images/noimage.png').'" alt=""'.$item["brand"]["brand"].' used phones price in '. ucwords($item["city"]["city"]) .$per.'""/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).'</span></div>';
+			$imgs = '<div class="item"><div class="product-img"><img src="'.url('images/noimage.png').'" alt=""'.$item["brand"]["brand"].' phones price in '. ucwords($item["city"]["city"]) .$per.'""/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).'</span></div>';
 		}
 	}
 	?>

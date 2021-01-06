@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('title')
 <title>Let Mobile | Used Phones  | Classified ads mobile phones  website in Pakistan</title>
-    <meta name="description" content="Let mobile is largest Used Mobile and New Mobiles Sale and buy Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.">
+    <meta name="description" content="Let mobile is largest Used,Installments Mobile and New Mobiles Sale and buy Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.">
 @stop
 @section('page-css')
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
