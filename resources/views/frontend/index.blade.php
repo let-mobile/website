@@ -65,7 +65,7 @@
         <div class="row m-f-1">
             <div class="col-12">
                 <div class="heading text-center">
-                    <h2 class="section-title">Used Mobiles</h2>
+                    <h2 class="section-title">Used or Old Mobiles</h2>
                     <h4 class="sub-title">Discover & connect with top-rated in Used Mobiles ads</h4>
                 </div>
             </div>
