@@ -42,7 +42,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-12 col-lg-9 col-xs-12 text-center">
                         <div class="contents">
-                            <h1 class="head-title">Find <a href="<?=url('category/used')?>">Used</a>, <a href="<?=url('category/new')?>">New </a> and <a href="<?=url('category/installments')?>">Installment</a> Mobiles in  <span class="year">Pakistan</span></h1>
+                            <h1 class="head-title">Find <a href="<?=url('category/used')?>">Used or Old</a>, <a href="<?=url('category/new')?>">New </a> and <a href="<?=url('category/installments')?>">Installment</a> Mobiles in  <span class="year">Pakistan</span></h1>
                             <p>Buy and sell thousands of Mobile Phones, we have just the right one for you</p>
                             <div class="search-bar">
                                 <div class="search-inner">
@@ -62,66 +62,6 @@
     </header>
     <section class="featured section-padding">
     <div class="container">
-        <div class="row m-f-1">
-            <div class="col-12">
-                <div class="heading text-center">
-                    <h2 class="section-title">Installment Mobiles</h2>
-                    <h4 class="sub-title">Discover & connect with top-rated in New Mobiles ads</h4>
-                </div>
-            </div>
-            @if($i_ads) 
-            @foreach($i_ads as $row)
-            <?php $images = explode(',', $row['adimgs']) ?>
-            <?php 
-                if ($row['aid']%2 == 0) {
-                    $alt = 'used phones in '.$row['city']['city'];
-                }
-                else {
-                    $alt = $row['brand']['brand'] . ' used phones';
-                }
-             ?>
-            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                <div class="featured-box">
-                    <figure>
-                        <a href="{{ url('brand') }}/{{ $row['brand']['brand'] }}">
-                            <div class="homes-tag featured">{{ @ucwords($row['brand']['brand']) }} </div>
-                        </a>
-                        <div class="homes-tag rent"><i class="lni-camera"></i> {{ count($images) }}</div>
-                        <span class="price-save">Rs.<?php echo number_format(str_replace(',','',@$row['adprice'])) ?></span>
-                        <a href="{{ url($row['adslug'])}}"><img class="img-fluid img-width-100" src="{{ url('public/images').'/'.$images[0] }}" alt="{{ $alt }}"></a>
-                    </figure>
-                    <div class="content-wrapper">
-                        <div class="feature-content">
-                            <h2><a href="{{ url($row['adslug']) }}">{{ @ucwords(substr($row['adtitle'],0,17)) }}...</a></h2>
-                            
-                            <div class="meta-tag">
-                                <div class="user-name">
-                                    <a href="{{ url('ads') }}/{{ $row['user']['usrslug'] }}"><i class="lni-user"></i> {{ @ucwords(substr($row['selname'],0,12)) }}</a>
-                                </div>
-                                <div class="listing-category">
-                                    @if($row['cond'] == '0')
-                                        <a href="{{ url('category/used') }}"><i class="lni-mobile"></i> Used</a>
-                                    @elseif($row['cond'] == '1')
-                                        <a href="{{ url('category/new') }}"><i class="lni-mobile"></i> New</a>
-                                    @elseif($row['cond'] == '2')
-                                        <a href="{{ url('category/installments') }}"><i class="lni-mobile"></i> Installment</a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        <div class="listing-bottom clearfix">
-                            <a href="{{ url('city/'.$row['city']['cityslug'])}}" class="float-left"><i class="lni-map-marker"></i> {{ @ucwords($row['city']['city']) }}</a>
-                            <a class="float-right"><?php $dt = Carbon::parse($row['created_at']);echo $dt->diffForHumans(); ?></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-            @endif
-        </div>
-        <div class="post-btn text-center">
-            <a class="btn btn-common" href="<?php echo url('category/installments'); ?>"> View All</a>
-        </div>
         <div class="row m-f-1">
             <div class="col-12">
                 <div class="heading text-center">
@@ -181,6 +121,66 @@
         </div>
         <div class="post-btn text-center">
             <a class="btn btn-common" href="<?php echo url('category/used'); ?>"> View All</a>
+        </div>
+        <div class="row m-f-1">
+            <div class="col-12">
+                <div class="heading text-center">
+                    <h2 class="section-title">Installment Mobiles</h2>
+                    <h4 class="sub-title">Discover & connect with top-rated in New Mobiles ads</h4>
+                </div>
+            </div>
+            @if($i_ads) 
+            @foreach($i_ads as $row)
+            <?php $images = explode(',', $row['adimgs']) ?>
+            <?php 
+                if ($row['aid']%2 == 0) {
+                    $alt = 'used phones in '.$row['city']['city'];
+                }
+                else {
+                    $alt = $row['brand']['brand'] . ' used phones';
+                }
+             ?>
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                <div class="featured-box">
+                    <figure>
+                        <a href="{{ url('brand') }}/{{ $row['brand']['brand'] }}">
+                            <div class="homes-tag featured">{{ @ucwords($row['brand']['brand']) }} </div>
+                        </a>
+                        <div class="homes-tag rent"><i class="lni-camera"></i> {{ count($images) }}</div>
+                        <span class="price-save">Rs.<?php echo number_format(str_replace(',','',@$row['adprice'])) ?></span>
+                        <a href="{{ url($row['adslug'])}}"><img class="img-fluid img-width-100" src="{{ url('public/images').'/'.$images[0] }}" alt="{{ $alt }}"></a>
+                    </figure>
+                    <div class="content-wrapper">
+                        <div class="feature-content">
+                            <h2><a href="{{ url($row['adslug']) }}">{{ @ucwords(substr($row['adtitle'],0,17)) }}...</a></h2>
+                            
+                            <div class="meta-tag">
+                                <div class="user-name">
+                                    <a href="{{ url('ads') }}/{{ $row['user']['usrslug'] }}"><i class="lni-user"></i> {{ @ucwords(substr($row['selname'],0,12)) }}</a>
+                                </div>
+                                <div class="listing-category">
+                                    @if($row['cond'] == '0')
+                                        <a href="{{ url('category/used') }}"><i class="lni-mobile"></i> Used</a>
+                                    @elseif($row['cond'] == '1')
+                                        <a href="{{ url('category/new') }}"><i class="lni-mobile"></i> New</a>
+                                    @elseif($row['cond'] == '2')
+                                        <a href="{{ url('category/installments') }}"><i class="lni-mobile"></i> Installment</a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="listing-bottom clearfix">
+                            <a href="{{ url('city/'.$row['city']['cityslug'])}}" class="float-left"><i class="lni-map-marker"></i> {{ @ucwords($row['city']['city']) }}</a>
+                            <a class="float-right"><?php $dt = Carbon::parse($row['created_at']);echo $dt->diffForHumans(); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @endif
+        </div>
+        <div class="post-btn text-center">
+            <a class="btn btn-common" href="<?php echo url('category/installments'); ?>"> View All</a>
         </div>
         <div class="row m-f-1">
             <div class="col-12">

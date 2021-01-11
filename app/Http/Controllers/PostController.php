@@ -31,7 +31,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data['u_ads'] = Post::with('brand','city','user')->where('vcode','=',0)->where('cond','=',0)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(8)->orderBy('aid', 'DESC')->get();
+        $data['u_ads'] = Post::with('brand','city','user')->where('vcode','=',0)->where('cond','=',0)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(12)->orderBy('aid', 'DESC')->get();
         $data['n_ads'] = Post::with('brand','city','user')->where('vcode','=',0)->where('cond','=',1)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(8)->orderBy('aid', 'DESC')->get();
         $data['i_ads'] = Post::with('brand','city','user')->where('vcode','=',0)->where('cond','=',2)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(8)->orderBy('aid', 'DESC')->get();
         return view('frontend.index',$data);
