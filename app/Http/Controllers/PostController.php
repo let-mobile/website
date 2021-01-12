@@ -31,9 +31,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data['u_ads'] = Post::with('brand','city','user')->where('vcode','=',0)->where('cond','=',0)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(12)->orderBy('aid', 'DESC')->get();
-        $data['n_ads'] = Post::with('brand','city','user')->where('vcode','=',0)->where('cond','=',1)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(8)->orderBy('aid', 'DESC')->get();
-        $data['i_ads'] = Post::with('brand','city','user')->where('vcode','=',0)->where('cond','=',2)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(8)->orderBy('aid', 'DESC')->get();
+        $data['u_ads'] = Post::with('brand','city','user')->where('vcode','=',0)->where('cond','=',0)->where('is_sold','=',0)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(12)->orderBy('aid', 'DESC')->get();
+        $data['n_ads'] = Post::with('brand','city','user')->where('is_sold','=',0)->where('vcode','=',0)->where('cond','=',1)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(8)->orderBy('aid', 'DESC')->get();
+        $data['i_ads'] = Post::with('brand','city','user')->where('is_sold','=',0)->where('vcode','=',0)->where('cond','=',2)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(8)->orderBy('aid', 'DESC')->get();
         return view('frontend.index',$data);
     }
 
@@ -115,7 +115,7 @@ class PostController extends Controller
     
     public function show(Request $request, $slug)
     {
-        $data['item'] = Post::with('brand','city','user')->withCount('postview')->where('adslug','=',$slug)->first();
+        $data['item'] = Post::with('brand','city','user')->withCount('postview')->where('is_sold','=',0)->where('adslug','=',$slug)->first();
         if (isset($data['item']->aid)) { 
             $data['l_ads'] = Post::with('brand','city')->where('vcode','=',0)->where('cond','=',$data['item']->cond)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->orWhere('loc_id','=',$data['item']->loc_id)->where('br_id','=',$data['item']->br_id)->take(17)->orderBy('aid', 'DESC')->get();
             $data['ads'] = Post::with('brand','city')->where('vcode','=',0)->where(['postedby'=>$data['item']->postedby])->select('aid','adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname','created_at')->where('adslug','!=',$slug)->take(10)->orderBy('aid', 'DESC')->get();

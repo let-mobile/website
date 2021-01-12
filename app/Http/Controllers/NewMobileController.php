@@ -29,7 +29,7 @@ class NewMobileController extends Controller
         {
             $cond = 2;
         }
-        $data['ads'] = Post::with('brand','city')->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')->where('cond','=',$cond)->orderBy('aid', 'DESC')->paginate(20);
+        $data['ads'] = Post::with('brand','city')->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')->where('is_sold','=',0)->where('cond','=',$cond)->orderBy('aid', 'DESC')->paginate(20);
         $data['params'] = array('loc' =>'','s' =>'','min' =>'','max' =>'');
         return view('frontend.search',$data);
     }

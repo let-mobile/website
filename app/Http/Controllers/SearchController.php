@@ -32,6 +32,7 @@ class SearchController extends Controller
       ->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname','cond','created_at')
       ->orWhere('adtitle', 'LIKE', '%'. $this->search. '%')
       ->where('vcode','=',0)
+      ->where('is_sold','=',0)
       ->where('adprice', '>=', $this->min)
       ->where('adprice', '<=', $this->max)
       ->orderBy('aid', 'DESC')
@@ -46,7 +47,7 @@ class SearchController extends Controller
     public function home(Request $request)
     {
         $search = $request->get('term');
-      	$posts  = Post::select('adtitle as name')->where('vcode','=',0)->where('adtitle', 'LIKE', '%'. $search. '%')->groupBy('adtitle')->orderBy('aid', 'DESC')->get()->toArray();
+      	$posts  = Post::select('adtitle as name')->where('vcode','=',0)->where('is_sold','=',0)->where('adtitle', 'LIKE', '%'. $search. '%')->groupBy('adtitle')->orderBy('aid', 'DESC')->get()->toArray();
       	$brands = Brand::select('brand as name')->where('brand', 'LIKE', '%'. $search. '%')->get()->toArray();
       	$cities = Cities::select('city as name')->where('city', 'LIKE', '%'. $search. '%')->get()->toArray();
        	$result = array_merge($posts,$brands,$cities);
