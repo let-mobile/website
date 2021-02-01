@@ -1,2 +1,12 @@
 [19-Dec-2019 09:52:52 America/New_York] PHP Warning:  require(/home/mothcngw/public_html/public/../vendor/autoload.php): failed to open stream: No such file or directory in /home/mothcngw/public_html/public/index.php on line 24
 [19-Dec-2019 09:52:52 America/New_York] PHP Fatal error:  require(): Failed opening required '/home/mothcngw/public_html/public/../vendor/autoload.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/mothcngw/public_html/public/index.php on line 24
+[29-Nov-2020 07:19:28 America/New_York] PHP Warning:  require(/home/mothcngw/public_html/vendor/composer/../symfony/polyfill-ctype/bootstrap.php): failed to open stream: No such file or directory in /home/mothcngw/public_html/vendor/composer/autoload_real.php on line 66
+[29-Nov-2020 07:19:28 America/New_York] PHP Fatal error:  require(): Failed opening required '/home/mothcngw/public_html/vendor/composer/../symfony/polyfill-ctype/bootstrap.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/mothcngw/public_html/vendor/composer/autoload_real.php on line 66
+[29-Nov-2020 07:19:40 America/New_York] PHP Warning:  require(/home/mothcngw/public_html/vendor/composer/../symfony/polyfill-intl-idn/bootstrap.php): failed to open stream: No such file or directory in /home/mothcngw/public_html/vendor/composer/autoload_real.php on line 66
+[29-Nov-2020 07:19:40 America/New_York] PHP Fatal error:  require(): Failed opening required '/home/mothcngw/public_html/vendor/composer/../symfony/polyfill-intl-idn/bootstrap.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/mothcngw/public_html/vendor/composer/autoload_real.php on line 66
+[29-Nov-2020 12:21:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Symfony\Component\Debug\Exception\get_debug_type() in /home/mothcngw/public_html/vendor/symfony/debug/Exception/FatalThrowableError.php:29
+Stack trace:
+#0 /home/mothcngw/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(86): Symfony\Component\Debug\Exception\FatalThrowableError->__construct(Object(Error))
+#1 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleException(Object(Error))
+#2 {main}
+  thrown in /home/mothcngw/public_html/vendor/symfony/debug/Exception/FatalThrowableError.php on line 29
