@@ -208,12 +208,12 @@
                                                 <input type="text" name="fname" id="fname" value="{{ $user->fname }}" placeholder="First Name" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="input-icon">
-                                                <i class="lni-user"></i>
-                                                <input type="text" name="lname" id="lname" value="{{ $user->lname }}" placeholder="Last Name" class="form-control">
-                                            </div>
-                                        </div>
+                                        <!--<div class="form-group">-->
+                                        <!--    <div class="input-icon">-->
+                                        <!--        <i class="lni-user"></i>-->
+                                        <!--        <input type="text" name="lname" id="lname" value="{{ $user->lname }}" placeholder="Last Name" class="form-control">-->
+                                        <!--    </div>-->
+                                        <!--</div>-->
                                         <div class="form-group">
                                             <div class="input-icon">
                                                 <i class="lni-phone"></i>

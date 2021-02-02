@@ -107,14 +107,14 @@
                             <div class="form-group">
                                 <div class="input-icon">
                                     <i class="lni-user"></i>
-                                    <input type="text" name="fname" id="fname" placeholder="First Name" class="form-control">
+                                    <input type="text" name="fname" id="fname" placeholder="Full Name" class="form-control">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="input-icon">
-                                    <i class="lni-user"></i>
-                                    <input type="text" name="lname" id="lname" placeholder="Last Name" class="form-control"> </div>
-                            </div>
+                            <!--<div class="form-group">-->
+                            <!--    <div class="input-icon">-->
+                            <!--        <i class="lni-user"></i>-->
+                            <!--        <input type="text" name="lname" id="lname" placeholder="Last Name" class="form-control"> </div>-->
+                            <!--</div>-->
                             <div class="form-group">
                                 <div class="input-icon">
                                     <i class="lni-envelope"></i>
