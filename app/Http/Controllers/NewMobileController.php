@@ -46,6 +46,8 @@ class NewMobileController extends Controller
         $data['ads'] = $query->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')
         ->where('is_sold','=',0)
         ->where('cond','=',$cond)
+        ->where('adprice', '>=', $this->min)
+        ->where('adprice', '<=', $this->max)
         ->where('adtitle', 'LIKE', '%'. $this->search. '%')
         ->orderBy('aid', 'DESC')
         ->paginate(20);

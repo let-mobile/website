@@ -33,6 +33,8 @@ class BrandController extends Controller
         }
         $data['ads'] = $query->whereHas('brand', function ($query) { $query->where('brandslug', '=',$this->slug); })
         ->where('is_sold','=',0)
+        ->where('adprice', '>=', $this->min)
+        ->where('adprice', '<=', $this->max)
         ->where('vcode','=',0)
         ->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')
         ->orderBy('aid', 'DESC')->where('adtitle', 'LIKE', '%'. $this->search. '%')->paginate(24);
