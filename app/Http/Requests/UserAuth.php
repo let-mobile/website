@@ -24,7 +24,7 @@ class UserAuth extends FormRequest
     public function rules()
     {
         return [
-            'fname' => 'required|min:3|max:10',
+            'fname' => 'required|min:3',
             'email' => 'required|email|unique:users,email',
             'phone' => ['required','numeric','regex:/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/'],
             'password' => [
