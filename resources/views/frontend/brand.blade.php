@@ -19,17 +19,17 @@
                             <form action="" accept-charset="utf-8" method="get" class="search-form">
                                 <div class="form-group inputwithicon">
                                     <i class="lni-target"></i>
-                                    <input type="text" name="loc" id="loc"  class="form-control" placeholder="Enter Location"> 
+                                    <input type="text" name="loc" id="loc" value="{{ $loc ?? '' }}"  class="form-control" placeholder="Enter Location"> 
                                 </div>
                                 <div class="form-group inputwithicon">
                                     <i class="lni-tag"></i>
-                                    <input type="text" id="search" name="s"  class="form-control" placeholder="Enter keywords"> </div>
+                                    <input type="text" id="search" name="s" value="{{ $search ?? '' }}"  class="form-control" placeholder="Enter keywords"> </div>
                                 <div class="form-group inputwithicon">
                                     <i class="lni-tag"></i>
-                                    <input type="text" name="min"  class="form-control" placeholder="min price"> </div>
+                                    <input type="text" name="min"  value="{{ $min ?? '' }}" class="form-control" placeholder="min price"> </div>
                                 <div class="form-group inputwithicon">
                                     <i class="lni-tag"></i>
-                                    <input type="text" name="max" class="form-control" placeholder="max price"> </div>
+                                    <input type="text" name="max" value="{{ $max ?? '' }}" class="form-control" placeholder="max price"> </div>
                                 <button name="" type="submit" class="btn btn-common"><i class="lni-search"></i> Search Now</button>
                             </form>
                         </div>
@@ -95,7 +95,7 @@
     </div>
     </section>
     <div class="pagination-bar">
-        {{ $ads->onEachSide(1)->links('vendor.pagination.default') }}
+        {{ $ads->onEachSide(1)->appends($params)->links('vendor.pagination.default') }}
     </div>
 @stop
 @section('page-scripts')

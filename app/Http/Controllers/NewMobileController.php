@@ -29,8 +29,29 @@ class NewMobileController extends Controller
         {
             $cond = 2;
         }
-        $data['ads'] = Post::with('brand','city')->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')->where('is_sold','=',0)->where('cond','=',$cond)->orderBy('aid', 'DESC')->paginate(20);
-        $data['params'] = array('loc' =>'','s' =>'','min' =>'','max' =>'');
+        $this->search = $data['search'] = $request->get('s');
+    	$this->loc = $data['loc'] = $request->get('loc')?$request->get('loc'):'';
+    	$this->min = $data['min'] = $request->get('min')?$request->get('min'):0;
+    	$this->max = $data['max'] = $request->get('max')?$request->get('max'):100000000;
+    	$query = Post::query();
+    	$query->with('brand','city');
+    	// Check Properties By City
+        if (!empty($this->search)) {
+            $query->whereIn('br_id',Brand::where('brand','LIKE', '%'. $this->search. '%')->pluck('bid')->toArray());
+        }
+        // Check Properties By Area
+        if (!empty($this->loc)) {
+            $query->whereIn('loc_id',Cities::where('city','LIKE', '%'. $this->loc. '%')->pluck('ctid')->toArray());
+        }
+        $data['ads'] = $query->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')
+        ->where('is_sold','=',0)
+        ->where('cond','=',$cond)
+        ->where('adtitle', 'LIKE', '%'. $this->search. '%')
+        ->orderBy('aid', 'DESC')
+        ->paginate(20);
+        $data['min'] = $request->get('min');
+    	$data['max'] = $request->get('max');
+        $data['params'] = array('loc' =>$data['loc'],'s' =>$data['search'],'min' =>$data['min'],'max' =>$data['max'] );
         return view('frontend.search',$data);
     }
 }

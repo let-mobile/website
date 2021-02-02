@@ -19,30 +19,29 @@ class SearchController extends Controller
     	$this->loc = $data['loc'] = $request->get('loc')?$request->get('loc'):'';
     	$this->min = $data['min'] = $request->get('min')?$request->get('min'):0;
     	$this->max = $data['max'] = $request->get('max')?$request->get('max'):100000000;
-    	$data['ads'] = Post::with(
-        [
-    		  'brand' => function ($query) { 
-              $query->orWhere('brand', 'LIKE', '%'. $this->search. '%');
-            },
-    		  'city' => function ($query) { 
-              $query->orWhere('city', 'LIKE', '%'. $this->search. '%')->where('city', 'LIKE', '%'. $this->loc. '%');
-            }
-        ]
-    	)
-      ->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname','cond','created_at')
-      ->orWhere('adtitle', 'LIKE', '%'. $this->search. '%')
-      ->where('vcode','=',0)
-      ->where('is_sold','=',0)
-      ->where('adprice', '>=', $this->min)
-      ->where('adprice', '<=', $this->max)
-      ->orderBy('aid', 'DESC')
-      ->paginate(20);
-
+    	$query = Post::query();
+    	$query->with('brand','city');
+    	// Check Properties By City
+        if (!empty($this->search)) {
+            $query->whereIn('br_id',Brand::where('brand','LIKE', '%'. $this->search. '%')->pluck('bid')->toArray());
+        }
+        // Check Properties By Area
+        if (!empty($this->loc)) {
+            $query->whereIn('loc_id',Cities::where('city','LIKE', '%'. $this->loc. '%')->pluck('ctid')->toArray());
+        }
+        $query->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname','cond','created_at');
+        $query->where('adtitle', 'LIKE', '%'. $this->search. '%');
+        $query->where('vcode','=',0);
+        $query->where('is_sold','=',0);
+        $query->where('adprice', '>=', $this->min);
+        $query->where('adprice', '<=', $this->max);
+        $query->orderBy('aid', 'DESC');
+        $data['ads'] = $query->paginate(20);
     	$data['min'] = $request->get('min');
     	$data['max'] = $request->get('max');
 
     	$data['params'] = array('loc' =>$data['loc'],'s' =>$data['search'],'min' =>$data['min'],'max' =>$data['max'], );
-      return view('frontend.search',$data);
+        return view('frontend.search',$data);
     }
     public function home(Request $request)
     {

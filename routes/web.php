@@ -76,7 +76,7 @@ Route::prefix('mail')->group(function () {
 Route::prefix('search')->group(function () {
     Route::get('keyword','SearchController@index');
     Route::get('home','SearchController@home');
-    Route::get('location','SearchController@home');
+    Route::get('location','SearchController@location');
 });
 
 // All New Mobile Routes
