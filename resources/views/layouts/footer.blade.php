@@ -27,11 +27,11 @@
                             <li><a href="<?=url('brand/apple')?>"> - iPhone</a></li>
                             <li><a href="<?=url('brand/samsung')?>">-  Samsung</a></li>
                             <li><a href="<?=url('brand/oppo')?>">- OPPO</a></li>
-                            <li><a href="<?=url('brand/qmobile')?>">- Qmobile</a></li>
+                            <li><a href="<?=url('brand/infinix')?>">- Infinix</a></li>
                             <li><a href="<?=url('brand/huawei')?>">- Huawei</a></li>
                             <li><a href="<?=url('brand/oneplus')?>">- Oneplus</a></li>
                             <li><a href="<?=url('brand/vivo')?>">- Vivo</a></li>
-                            <li><a href="<?=url('brand/nokia')?>">- Nokia</a></li>
+                            <li><a href="<?=url('brand/realme')?>">- Realme</a></li>
                         </ul>
                     </div>
                 </div>

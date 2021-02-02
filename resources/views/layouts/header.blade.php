@@ -35,11 +35,11 @@
                                 <li><a class="dropdown-item {{ (request()->segment(2) == 'apple') ? 'active' : '' }}" href="<?=url('brand/apple')?>">iPhone</a></li>
                                 <li><a class="dropdown-item {{ (request()->segment(2) == 'samsung') ? 'active' : '' }}" href="<?=url('brand/samsung')?>">Samsung</a></li>
                                 <li><a class="dropdown-item {{ (request()->segment(2) == 'oppo') ? 'active' : '' }}" href="<?=url('brand/oppo')?>">OPPO</a></li>
-                                <li><a class="dropdown-item {{ (request()->segment(2) == 'qmobile') ? 'active' : '' }}" href="<?=url('brand/qmobile')?>">Qmobile</a></li>
+                                <li><a class="dropdown-item {{ (request()->segment(2) == 'infinix') ? 'active' : '' }}" href="<?=url('brand/infinix')?>">Infinix</a></li>
                                 <li><a class="dropdown-item {{ (request()->segment(2) == 'huawei') ? 'active' : '' }}" href="<?=url('brand/huawei')?>">Huawei</a></li>
                                 <li><a class="dropdown-item {{ (request()->segment(2) == 'oneplus') ? 'active' : '' }}" href="<?=url('brand/oneplus')?>">Oneplus</a></li>
                                 <li><a class="dropdown-item {{ (request()->segment(2) == 'vivo') ? 'active' : '' }}" href="<?=url('brand/vivo')?>">Vivo</a></li>
-                                <li><a class="dropdown-item {{ (request()->segment(2) == 'nokia') ? 'active' : '' }}" href="<?=url('brand/nokia')?>">Nokia</a></li>
+                                <li><a class="dropdown-item {{ (request()->segment(2) == 'realme') ? 'active' : '' }}" href="<?=url('brand/realme')?>">Realme</a></li>
                             </ul>
                         </li>
                         <li class="nav-item {{ (request()->segment(1) == 'blogs') ? 'active' : '' }}">
