@@ -171,6 +171,7 @@ class UserController extends Controller
         try {
                 $user = Socialite::driver('google')->user();
                 $finduser = User::where('google_id', $user->id)->first();
+                //print_r($finduser);die;
                 if($finduser)
                     {
                         $credentials = $request->only('email', 'password');
@@ -208,21 +209,21 @@ class UserController extends Controller
                         $users->save();
 
                         $credentials = $request->only('email', 'password');
-                        $authSuccess = Auth::attempt(['email' => $finduser['email'], 'password' => '123456dummy', 'is_active' => 1]);
+                        $authSuccess = Auth::attempt(['email' => $user->email, 'password' => '123456dummy', 'is_active' => 1]);
                         $request->session()->regenerate();
                         User::where('email',$user->email)->update(['is_login'=> 1]);
                         Session::put([
                                 'user_id'=>$users->id,
                                 'name'=>$name_f.' '.$name_l,
                                 'email'=>$user->email,
-                                'phone'=>$user->phone,
+                                'phone'=>'',
                                 'slug'=>$users->usrslug,
                                 'image'=>$users->image
                             ]);
                         return redirect('/');
                     }
             } catch (Exception $e) {
-                Session::flash('hasEmail',"Your Email is Already Exist. Please Login with Password"); 
+                Session::flash('hasEmail',"Something Went Wrong. Please signup menually."); 
                 return redirect('user/signin');
             }
     }
