@@ -14,13 +14,26 @@ class CitiesController extends Controller
      * @return \Illuminate\Http\Response
      */
     private $slug;
-    public function index($slug)
+    public function index($slug,Request $request)
     {
         $this->slug = $slug;
-        $ads = Post::with('brand' 
-            )->whereHas('city', function ($query) { $query->where('cityslug', '=',$this->slug); })->where('vcode','=',0)->where('is_sold','=',0)
-        ->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')->orderBy('aid', 'DESC')->paginate(24);
-        return view('frontend.brand',compact('ads',$ads));
+        $this->search = $data['search'] = $request->get('s');
+    	$this->loc = $data['loc'] = $request->get('loc')?$request->get('loc'):'';
+    	$this->min = $data['min'] = $request->get('min')?$request->get('min'):0;
+    	$this->max = $data['max'] = $request->get('max')?$request->get('max'):100000000;
+    	$query = Post::query();
+    	$query->with('brand','city');
+        $data['ads'] = $query->whereHas('city', function ($query) { $query->where('cityslug', '=',$this->slug); })
+        ->where('is_sold','=',0)
+        ->where('adprice', '>=', $this->min)
+        ->where('adprice', '<=', $this->max)
+        ->where('vcode','=',0)
+        ->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')
+        ->orderBy('aid', 'DESC')->where('adtitle', 'LIKE', '%'. $this->search. '%')->paginate(24);
+        $data['min'] = $request->get('min');
+    	$data['max'] = $request->get('max');
+        $data['params'] = array('loc' =>$data['loc'],'s' =>$data['search'],'min' =>$data['min'],'max' =>$data['max'] );
+        return view('frontend.brand',$data);
     }
 
     /**
