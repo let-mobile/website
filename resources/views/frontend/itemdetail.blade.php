@@ -210,7 +210,7 @@
                                    <a href="{{ url($row['adslug'])}}"><img src="{{ url('public/images').'/'.$images[0] }}" alt="{{ $alt }}" /></a>
                                </div>
                                <div class="widget-content">
-                                   <h2><a href="{{ url($row['adslug'])}}" class="a-title">{{ @ucwords(substr($row['adtitle'],0,17)) }}...</a></h2>
+                                   <h2 class="h2-class"><a href="{{ url($row['adslug'])}}" class="a-title">{{ @ucwords(substr($row['adtitle'],0,17)) }}...</a></h2>
                                    <div class="meta-tag">
                                        <span>
                                         <a href="{{ url('brand') }}/{{ $row['brand']['brand'] }}"><i class="lni-bookmark-alt"></i> {{ @ucwords($row['brand']['brand']) }}</a>
