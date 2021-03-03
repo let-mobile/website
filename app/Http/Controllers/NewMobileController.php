@@ -35,21 +35,21 @@ class NewMobileController extends Controller
     	$this->max = $data['max'] = $request->get('max')?$request->get('max'):100000000;
     	$query = Post::query();
     	$query->with('brand','city');
-    	// Check Properties By City
-        if (!empty($this->search)) {
-            $query->whereIn('br_id',Brand::where('brand','LIKE', '%'. $this->search. '%')->pluck('bid')->toArray());
-        }
-        // Check Properties By Area
-        if (!empty($this->loc)) {
-            $query->whereIn('loc_id',Cities::where('city','LIKE', '%'. $this->loc. '%')->pluck('ctid')->toArray());
-        }
-        $data['ads'] = $query->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')
+        $query->select('adprice','br_id','loc_id','postedby','adimgs','cond','adtitle','adslug','selname','created_at')
         ->where('is_sold','=',0)
         ->where('cond','=',$cond)
         ->where('adprice', '>=', $this->min)
         ->where('adprice', '<=', $this->max)
-        ->where('adtitle', 'LIKE', '%'. $this->search. '%')
-        ->orderBy('aid', 'DESC')
+        ->where('adtitle', 'LIKE', '%'. $this->search. '%');
+        // Check Properties By City
+        if (!empty($this->search)) {
+            $query->orWhereIn('br_id',Brand::where('brand','LIKE', '%'. $this->search. '%')->pluck('bid')->toArray());
+        }
+        // Check Properties By Area
+        if (!empty($this->loc)) {
+            $query->orWhereIn('loc_id',Cities::where('city','LIKE', '%'. $this->loc. '%')->pluck('ctid')->toArray());
+        }
+        $data['ads'] = $query->orderBy('aid', 'DESC')
         ->paginate(20);
         $data['min'] = $request->get('min');
     	$data['max'] = $request->get('max');

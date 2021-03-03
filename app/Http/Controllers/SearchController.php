@@ -21,16 +21,16 @@ class SearchController extends Controller
     	$this->max = $data['max'] = $request->get('max')?$request->get('max'):100000000;
     	$query = Post::query();
     	$query->with('brand','city');
-    	// Check Properties By City
+        $query->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname','cond','created_at');
+        $query->where('adtitle', 'LIKE', '%'. $this->search. '%');
+        // Check Properties By City
         if (!empty($this->search)) {
-            $query->whereIn('br_id',Brand::where('brand','LIKE', '%'. $this->search. '%')->pluck('bid')->toArray());
+            $query->orWhereIn('br_id',Brand::where('brand','LIKE', '%'. $this->search. '%')->pluck('bid')->toArray());
         }
         // Check Properties By Area
         if (!empty($this->loc)) {
-            $query->whereIn('loc_id',Cities::where('city','LIKE', '%'. $this->loc. '%')->pluck('ctid')->toArray());
+            $query->orWhereIn('loc_id',Cities::where('city','LIKE', '%'. $this->loc. '%')->pluck('ctid')->toArray());
         }
-        $query->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname','cond','created_at');
-        $query->where('adtitle', 'LIKE', '%'. $this->search. '%');
         $query->where('vcode','=',0);
         $query->where('is_sold','=',0);
         $query->where('adprice', '>=', $this->min);
