@@ -14,7 +14,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-    <link rel="canonical" href="https://letmobile.pk/" />
+    <link rel="canonical" href="{{ request()->fullUrl() ?? '' }}" />
     <meta name="p:domain_verify" content="e68e40ef3edb99a95d5bbe9ab22b8dc6"/>
     <meta name="yandex-verification" content="28408926eb06f820" />
     <script data-ad-client="ca-pub-1849536525382174" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
