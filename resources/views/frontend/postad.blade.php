@@ -3,6 +3,7 @@
 <title>Post a free Classified Ad | Let Mobile </title>
     <meta name="description" content="Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.">
 @stop
+@section('page-css')
 <style type="text/css">
     .required {
         border-color: red !important;
@@ -32,11 +33,42 @@
         width: 50%
     }
     .disabled-div {
-          pointer-events: none;
-          opacity: 0.4;
-      }
+        pointer-events: none;
+        opacity: 0.4;
+    }
+    .panel-default .panel-heading {
+        padding: 0 5px !important;
+        border-radius: 0px !important;
+        background: #22232342 !important;
+    }
+    .btn-sm {
+           padding: .25rem .5rem !important;
+    }
+    .panel-default .panel-heading a {
+        font-size: 14px !important;
+        padding: 5px 10px 0px 30px !important;
+        color: #000 !important;
+    }
+    .panel-default .panel-heading a:after {
+    color: #000 !important;
+    padding: 0 10px !important;
+    }
+    blockquote {
+    line-height: 0px !important;
+        padding: 0px !important;
+    }
+    pre {
+    font-size: 100.5% !important;
+    padding: 0px !important;
+    }
+     .panel-heading h1,h2,h3,h4,h5,h6
+     {
+         font-size: 14px !important;
+         font-weight: normal !important;
+     }
 </style>
 <link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/assets/css/summernote.css">
+@stop
 @section('content')
 <div class="page-header" style="background: url(<?=url('/')?>/public/assets/img/banner1.webp);">
     <div class="container">

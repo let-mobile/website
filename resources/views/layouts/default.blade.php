@@ -26,7 +26,6 @@
     <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:alt" content="Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan." />
     @endif
-    @yield('page-css')
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/assets/fonts/line-icons.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/assets/css/slicknav.css">
@@ -95,8 +94,8 @@
                 margin: 20px;
             }
         }
-         
     </style>
+    @yield('page-css')
 </head>
 <body>
     @if(!isset($item['adslug']) && !isset($blog->blog_id))
