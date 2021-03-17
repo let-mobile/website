@@ -51,12 +51,12 @@
                     </ul>
                     <div class="header-top-right float-right">
                         @if ( Auth::guest() )
-                        <a href="{{ url('user/signin') }}" class="header-top-button"><i class="lni-user"></i> Log In</a> |
-                        <a href="{{ url('user/signup') }}" class="header-top-button"><i class="lni-emoji-smile"></i> Register</a>
+                            <a href="{{ url('user/signin') }}" class="header-top-button"><i class="lni-user"></i> Log In</a> |
+                            <a href="{{ url('user/signup') }}" class="header-top-button"><i class="lni-emoji-smile"></i> Register</a>
                         @else
-                        <a class="header-top-button" href="{{url('user')}}/{{ Session::get('slug') }}">My Ads</a> |
-                        <a class="header-top-button" href="{{url('user/logout')}}">Logout </a>
-                         @endif
+                            <a class="header-top-button" href="{{url('user')}}/{{ Session::get('slug') }}">My Ads</a> |
+                            <a class="header-top-button" href="{{url('user/logout')}}">Logout </a>
+                        @endif
                     </div>
                     <div class="post-btn">
                         <a class="btn btn-common" href="<?php echo url('post/postad'); ?>"><i class="lni-pencil-alt"></i> Post an Ad</a>

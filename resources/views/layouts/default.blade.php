@@ -112,10 +112,8 @@
 <!-- Footer  -->
 @include('layouts.footer')
 
-<a href="#" class="back-to-top">
-    <i class="lni-chevron-up"></i>
+<a href="<?php echo url('post/postad'); ?>" class="back-to-top btn btn-common"><i class="lni-pencil-alt"></i> Post an Ad
 </a>
-
     <script src="{{ url('/') }}/public/assets/js/jquery-min.js"></script>
     <script src="{{ url('/') }}/public/assets/js/popper.min.js"></script>
     <script src="{{ url('/') }}/public/assets/js/bootstrap.min.js"></script>

@@ -32,6 +32,15 @@
     height: 200px;
     border-radius: 15px;
     }
+    .mobile-only {
+      display: none;
+    }
+    
+    @media only screen and (max-width: 768px) {
+      .mobile-only {
+        display: block;
+      }
+    }
 </style>
 @stop
 @section('content')
@@ -44,6 +53,10 @@
                         <div class="contents">
                             <h1 class="head-title">Find <a href="<?=url('category/used')?>">Used or Old</a>, <a href="<?=url('category/new')?>">New </a> and <a href="<?=url('category/installments')?>">Installment</a> Mobiles in  <span class="year">Pakistan</span></h1>
                             <p>Buy and sell thousands of Mobile Phones, we have just the right one for you</p>
+                            @if ( Auth::guest() )
+                            @else
+                                <a href="<?php echo url('post/postad'); ?>" class="btn btn-common mt-2 mobile-only"><i class="lni-pencil-alt"></i> Post an Ad</a>
+                            @endif
                             <div class="search-bar">
                                 <div class="search-inner">
                                     <form class="search-form" method="get" action="{{ url('search/keyword') }}">
