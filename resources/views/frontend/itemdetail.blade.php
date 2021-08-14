@@ -294,7 +294,7 @@
 
 @section('page-scripts')
 <script src="{{ url('/') }}/public/assets/js/owl.carousel.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{{ url('/') }}/public/assets/js/jquery-ui.js"></script>
 <script>
  $(document).ready(function() {
     $( "#search-input" ).autocomplete({

@@ -99,7 +99,7 @@
     </div>
 @stop
 @section('page-scripts')
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{{ url('/') }}/public/assets/js/jquery-ui.js"></script>
 <script>
  $(document).ready(function() {
     $( "#search" ).autocomplete({

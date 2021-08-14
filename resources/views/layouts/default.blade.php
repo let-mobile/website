@@ -17,8 +17,6 @@
     <link rel="canonical" href="{{ request()->fullUrl() ?? '' }}" />
     <meta name="p:domain_verify" content="e68e40ef3edb99a95d5bbe9ab22b8dc6"/>
     <meta name="yandex-verification" content="28408926eb06f820" />
-    <script data-ad-client="ca-pub-1849536525382174" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
     @if(!isset($item['adslug']) && !isset($blog->blog_id))
     <meta property="og:type" content="website" />
     <meta property="og:image" content="{{ url('/') }}/public/let-mobile.webp" />
@@ -126,11 +124,11 @@
             $('.slicknav_brand a').attr('href','{{ url("/") }}')
         });
     </script>
-    <script type="text/javascript">
-        var infolinks_pid = 3306601;
-        var infolinks_wsid = 0;
-    </script>
-    <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+    <!--<script type="text/javascript">-->
+    <!--    var infolinks_pid = 3306601;-->
+    <!--    var infolinks_wsid = 0;-->
+    <!--</script>-->
+    <!--<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>-->
    <!--  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/733533b9accab7873869a1f3f/291d002c81890284b417f4504.js");</script> -->
 </body>
 </html>

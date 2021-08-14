@@ -87,10 +87,10 @@
             <?php $images = explode(',', $row['adimgs']) ?>
             <?php 
                 if ($row['aid']%2 == 0) {
-                    $alt = 'used phones in '.$row['city']['city'];
+                    $alt = $row['brand']['brand'].' phones price in '.$row['city']['city'];
                 }
                 else {
-                    $alt = $row['brand']['brand'] . ' used phones';
+                    $alt = $row['brand']['brand'] . ' price in pakistan';
                 }
              ?>
             <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
@@ -139,7 +139,7 @@
             <div class="col-12">
                 <div class="heading text-center">
                     <h2 class="section-title">Installment Mobiles</h2>
-                    <h4 class="sub-title">Discover & connect with top-rated in New Mobiles ads</h4>
+                    <h4 class="sub-title">Discover & connect with top-rated in Installment Mobiles ads</h4>
                 </div>
             </div>
             @if($i_ads) 
@@ -147,10 +147,10 @@
             <?php $images = explode(',', $row['adimgs']) ?>
             <?php 
                 if ($row['aid']%2 == 0) {
-                    $alt = 'used phones in '.$row['city']['city'];
+                    $alt = $row['brand']['brand'].' phones on installment price in '.$row['city']['city'];
                 }
                 else {
-                    $alt = $row['brand']['brand'] . ' used phones';
+                    $alt = $row['brand']['brand'] . ' on installment price in pakistan';
                 }
              ?>
             <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
@@ -207,10 +207,10 @@
             <?php $images = explode(',', $row['adimgs']) ?>
             <?php 
                 if ($row['aid']%2 == 0) {
-                    $alt = 'used phones in '.$row['city']['city'];
+                    $alt = $row['brand']['brand'].' new phones price in '.$row['city']['city'];
                 }
                 else {
-                    $alt = $row['brand']['brand'] . ' used phones';
+                    $alt = $row['brand']['brand'] . ' price in pakistan';
                 }
              ?>
             <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
@@ -296,7 +296,7 @@
     </section>
 @stop
 @section('page-scripts')
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{{ url('/') }}/public/assets/js/jquery-ui.js"></script>
 <script>
  $(document).ready(function() {
     $( "#search" ).autocomplete({
