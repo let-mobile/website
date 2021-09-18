@@ -18,6 +18,7 @@ Route::get('support/about',function() { return view('frontend.about'); });
 Route::get('support/terms-conditions',function() { return view('frontend.terms'); });
 Route::get('support/faqs',function() { return view('frontend.faqs'); });
 Route::post('contact/store','ContactController@store');
+Route::post('comments/store','CommentController@store');
 
 Route::prefix('user')->group(function () {
 	//Sign Up

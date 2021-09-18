@@ -20,4 +20,8 @@ class Post extends Model
    public function user(){
         return $this->belongsTo(User::class,'postedby','id')->select(array('id', 'fname','lname','usrslug','email'));
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
 }

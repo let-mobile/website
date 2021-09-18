@@ -66,93 +66,93 @@
 
                 </div>
 
-                <!--<div id="comments">-->
-                <!--    <div class="comment-box">-->
-                <!--        <h3>Comments</h3>-->
-                <!--        <ol class="comments-list">-->
-                <!--            <li>-->
-                <!--                <div class="media">-->
-                <!--                    <div class="thumb-left">-->
-                <!--                        <a href="#">-->
-                <!--                            <img class="img-fluid" src="assets/img/blog/user1.jpg" alt="">-->
-                <!--                        </a>-->
-                <!--                    </div>-->
-                <!--                    <div class="info-body">-->
-                <!--                        <div class="media-heading">-->
-                <!--                            <h4 class="name">Larsen Mortin</h4>-->
-                <!--                            <span class="comment-date"><i class="lni-alarm-clock"></i> June 21, 2020</span>-->
-                <!--                            <a href="#" class="reply-link"><i class="lni-reply"></i> Reply</a>-->
-                <!--                        </div>-->
-                <!--                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, nemo ipsam eum illo minus voluptatibus ipsa nulla, perferendis aliquid aperiam beatae nihil sapiente eaque atque nesciunt perspiciatis ex saepe, quibusdam..</p>-->
-                <!--                    </div>-->
+                <!-- id="comments">-->
+                <!--<div class="comment-box">-->
+                <!--    <h3>Comments</h3>-->
+                <!--    <ol class="comments-list">-->
+                <!--        <li>-->
+                <!--            <div class="media">-->
+                <!--                <div class="thumb-left">-->
+                <!--                    <a href="#">-->
+                <!--                        <img class="img-fluid" src="assets/img/blog/user1.jpg" alt="">-->
+                <!--                    </a>-->
                 <!--                </div>-->
-                <!--                <ul>-->
-                <!--                    <li>-->
-                <!--                        <div class="media">-->
-                <!--                            <div class="thumb-left">-->
-                <!--                                <a href="#">-->
-                <!--                                    <img class="img-fluid" src="assets/img/blog/user2.jpg" alt="">-->
-                <!--                                </a>-->
+                <!--                <div class="info-body">-->
+                <!--                    <div class="media-heading">-->
+                <!--                        <h4 class="name">Larsen Mortin</h4>-->
+                <!--                        <span class="comment-date"><i class="lni-alarm-clock"></i> June 21, 2020</span>-->
+                <!--                        <a href="#" class="reply-link"><i class="lni-reply"></i> Reply</a>-->
+                <!--                    </div>-->
+                <!--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, nemo ipsam eum illo minus voluptatibus ipsa nulla, perferendis aliquid aperiam beatae nihil sapiente eaque atque nesciunt perspiciatis ex saepe, quibusdam..</p>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--            <ul>-->
+                <!--                <li>-->
+                <!--                    <div class="media">-->
+                <!--                        <div class="thumb-left">-->
+                <!--                            <a href="#">-->
+                <!--                                <img class="img-fluid" src="assets/img/blog/user2.jpg" alt="">-->
+                <!--                            </a>-->
+                <!--                        </div>-->
+                <!--                        <div class="info-body">-->
+                <!--                            <div class="media-heading">-->
+                <!--                                <h4 class="name">Albert Johnes</h4>-->
+                <!--                                <span class="comment-date"><i class="lni-alarm-clock"></i> June 21, 2020</span>-->
+                <!--                                <a href="#" class="reply-link"><i class="lni-reply"></i> Reply</a>-->
                 <!--                            </div>-->
-                <!--                            <div class="info-body">-->
-                <!--                                <div class="media-heading">-->
-                <!--                                    <h4 class="name">Albert Johnes</h4>-->
-                <!--                                    <span class="comment-date"><i class="lni-alarm-clock"></i> June 21, 2020</span>-->
-                <!--                                    <a href="#" class="reply-link"><i class="lni-reply"></i> Reply</a>-->
-                <!--                                </div>-->
-                <!--                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, nemo ipsam eum illo minus voluptatibus ipsa nulla, perferendis aliquid aperiam beatae nihil sapiente eaque atque nesciunt perspiciatis ex saepe, quibusdam..</p>-->
-                <!--                            </div>-->
+                <!--                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, nemo ipsam eum illo minus voluptatibus ipsa nulla, perferendis aliquid aperiam beatae nihil sapiente eaque atque nesciunt perspiciatis ex saepe, quibusdam..</p>-->
                 <!--                        </div>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
-                <!--            </li>-->
-                <!--            <li>-->
-                <!--                <div class="media">-->
-                <!--                    <div class="thumb-left">-->
-                <!--                        <a href="#">-->
-                <!--                            <img class="img-fluid" src="assets/img/blog/user3.jpg" alt="">-->
-                <!--                        </a>-->
                 <!--                    </div>-->
-                <!--                    <div class="info-body">-->
-                <!--                        <div class="media-heading">-->
-                <!--                            <h4 class="name">Steven Hawkins</h4>-->
-                <!--                            <span class="comment-date"><i class="lni-alarm-clock"></i> June 21, 2020</span>-->
-                <!--                            <a href="#" class="reply-link"><i class="lni-reply"></i> Reply</a>-->
-                <!--                        </div>-->
-                <!--                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, nemo ipsam eum illo minus voluptatibus ipsa nulla, perferendis aliquid aperiam beatae nihil sapiente eaque atque nesciunt perspiciatis ex saepe, quibusdam..</p>-->
-                <!--                    </div>-->
+                <!--                </li>-->
+                <!--            </ul>-->
+                <!--        </li>-->
+                <!--        <li>-->
+                <!--            <div class="media">-->
+                <!--                <div class="thumb-left">-->
+                <!--                    <a href="#">-->
+                <!--                        <img class="img-fluid" src="assets/img/blog/user3.jpg" alt="">-->
+                <!--                    </a>-->
                 <!--                </div>-->
-                <!--            </li>-->
-                <!--        </ol>-->
+                <!--                <div class="info-body">-->
+                <!--                    <div class="media-heading">-->
+                <!--                        <h4 class="name">Steven Hawkins</h4>-->
+                <!--                        <span class="comment-date"><i class="lni-alarm-clock"></i> June 21, 2020</span>-->
+                <!--                        <a href="#" class="reply-link"><i class="lni-reply"></i> Reply</a>-->
+                <!--                    </div>-->
+                <!--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, nemo ipsam eum illo minus voluptatibus ipsa nulla, perferendis aliquid aperiam beatae nihil sapiente eaque atque nesciunt perspiciatis ex saepe, quibusdam..</p>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--        </li>-->
+                <!--    </ol>-->
 
-                <!--        <div id="respond">-->
-                <!--            <h2 class="respond-title">Leave A Comment</h2>-->
-                <!--            <form action="#">-->
-                <!--                <div class="row">-->
-                <!--                    <div class="col-lg-6 col-md-6 col-xs-12">-->
-                <!--                        <div class="form-group">-->
-                <!--                            <input id="author" class="form-control" name="author" type="text" value="" size="30" placeholder="Your Name">-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                    <div class="col-lg-6 col-md-6 col-xs-12">-->
-                <!--                        <div class="form-group">-->
-                <!--                            <input id="email" class="form-control" name="author" type="text" value="" size="30" placeholder="Your E-Mail">-->
-                <!--                        </div>-->
+                <!--    <div id="respond">-->
+                <!--        <h2 class="respond-title">Leave A Comment</h2>-->
+                <!--        <form action="#">-->
+                <!--            <div class="row">-->
+                <!--                <div class="col-lg-6 col-md-6 col-xs-12">-->
+                <!--                    <div class="form-group">-->
+                <!--                        <input id="author" class="form-control" name="author" type="text" value="" size="30" placeholder="Your Name">-->
                 <!--                    </div>-->
                 <!--                </div>-->
-                <!--                <div class="row">-->
-                <!--                    <div class="col-lg-12 col-md-12col-xs-12">-->
-                <!--                        <div class="form-group">-->
-                <!--                            <textarea id="comment" class="form-control" name="comment" cols="45" rows="8" placeholder="Massage..."></textarea>-->
-                <!--                        </div>-->
-                <!--                        <button type="submit" id="submit" class="btn btn-common">Post Comment</button>-->
+                <!--                <div class="col-lg-6 col-md-6 col-xs-12">-->
+                <!--                    <div class="form-group">-->
+                <!--                        <input id="email" class="form-control" name="author" type="text" value="" size="30" placeholder="Your E-Mail">-->
                 <!--                    </div>-->
                 <!--                </div>-->
-                <!--            </form>-->
-                <!--        </div>-->
-
+                <!--            </div>-->
+                <!--            <div class="row">-->
+                <!--                <div class="col-lg-12 col-md-12col-xs-12">-->
+                <!--                    <div class="form-group">-->
+                <!--                        <textarea id="comment" class="form-control" name="comment" cols="45" rows="8" placeholder="Massage..."></textarea>-->
+                <!--                    </div>-->
+                <!--                    <button type="submit" id="submit" class="btn btn-common">Post Comment</button>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--        </form>-->
                 <!--    </div>-->
+
                 <!--</div>-->
+                <!--v>-->
 
             </div>
 

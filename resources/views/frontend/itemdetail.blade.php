@@ -147,6 +147,34 @@
                         </div>
                     </div>
                 </div>
+                <div id="comments">
+                    <div class="comment-box">
+                        <h3>Comments</h3>
+                        @include('frontend.show_comment', ['comments' => $item['comments'], 'post_id' => $item['aid']])
+                        @if ( !Auth::guest())
+                            <div id="respond">
+                            <h2 class="respond-title">Leave A Comment</h2>
+                            <form method="post" action="{{ url('comments/store') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12col-xs-12">
+                                        <div class="form-group">
+                                            <input type="hidden" name="post_aid" value="{{ $item['aid'] ?? '' }}" />
+                                            <textarea id="comment" class="form-control" name="body" cols="45" rows="4" placeholder="Massage..."></textarea>
+                                        </div>
+                                        <button type="submit" id="submit" class="btn btn-common">Post Comment</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        @else
+                        <div class="text-center margin-10">
+                            <span >If you want to add comments?</span>
+                            <a href="{{ url('user/signin') }}">Please Login First</a>
+                        </div>
+                        @endif
+                    </div>
+                </div>
             </div>
             <div class="col-lg-4 col-md-6 col-xs-12">
                 <aside class="details-sidebar">
@@ -162,7 +190,6 @@
                                 <object style="border:0; height: 230px; width: 100%;" data="https://www.google.com/maps/embed/v1/place?q={{ urlencode($item['adadress']) }},{{ $item['city']['city'] }}&key=AIzaSyAy_OvtbZn9ktU5njKItgbAHBozJ8vRbNg"></object>
                             </div>
                         <div class="agent-inner">
-                            
                             <div class="agent-title">
                                 <div class="agent-photo">
                                     <a href="#"><img src="{{ asset('public/profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('site/user-icon.png') }}'" alt="user-icon"></a>

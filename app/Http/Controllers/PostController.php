@@ -115,7 +115,7 @@ class PostController extends Controller
     
     public function show(Request $request, $slug)
     {
-        $data['item'] = Post::with('brand','city','user')->withCount('postview')->where('is_sold','=',0)->where('adslug','=',$slug)->first();
+        $data['item'] = Post::with('brand','city','user','comments')->withCount('postview')->where('is_sold','=',0)->where('adslug','=',$slug)->first();
         if (isset($data['item']->aid)) { 
             $data['l_ads'] = Post::with('brand','city')->where('vcode','=',0)->where('cond','=',$data['item']->cond)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->orWhere('loc_id','=',$data['item']->loc_id)->where('br_id','=',$data['item']->br_id)->take(17)->orderBy('aid', 'DESC')->get();
             $data['ads'] = Post::with('brand','city')->where('vcode','=',0)->where(['postedby'=>$data['item']->postedby])->select('aid','adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname','created_at')->where('adslug','!=',$slug)->take(10)->orderBy('aid', 'DESC')->get();
