@@ -192,7 +192,7 @@
                         <div class="agent-inner">
                             <div class="agent-title">
                                 <div class="agent-photo">
-                                    <a href="#"><img src="{{ asset('public/profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('site/user-icon.png') }}'" alt="user-icon"></a>
+                                    <a href="#"><img src="{{ asset('public/profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('public/site/user-icon.png') }}'" alt="user-icon"></a>
                                 </div>
                                 <div class="agent-details">
                                     <h3>{{ ucwords($item['selname']) }}</h3>

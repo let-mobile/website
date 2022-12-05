@@ -155,7 +155,7 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePost $request, $id)
+    public function update(Request $request, $id)
     {
         $post= Post::find($id);
         $images = $post->adimgs;

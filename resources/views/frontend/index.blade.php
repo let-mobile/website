@@ -109,7 +109,7 @@
                             
                             <div class="meta-tag">
                                 <div class="user-name">
-                                    <a href="{{ url('ads') }}/{{ $row['user']['usrslug'] }}"><i class="lni-user"></i> {{ @ucwords(substr($row['selname'],0,12)) }}</a>
+                                    <a href="{{ url('ads') }}/{{ $row['user']['usrslug'] ?? ''}}"><i class="lni-user"></i> {{ ucwords(substr($row['selname'],0,12)) }}</a>
                                 </div>
                                 <div class="listing-category">
                                     @if($row['cond'] == '0')

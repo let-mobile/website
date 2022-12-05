@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('title')
 <title>Post a free Classified Ad | Let Mobile </title>
-    <meta name="description" content="Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.">
+<meta name="description" content="Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.">
 @stop
 @section('page-css')
 <style type="text/css">
@@ -112,7 +112,7 @@
                                       <div class="form-group mb-3">
                                           <label for="ades" class="control-label font-weight-bold text-muted">Describe Ad</label>
                                           <div class="col-md-12">
-                                              <textarea name="ades" cols="40" rows="6" id="ades" class="form-control input-md" placeholder="Describe what makes your ad unique"></textarea>
+                                              <textarea cols="40" rows="6" id="ades" name="ades" class="form-control input-md" placeholder="Describe what makes your ad unique"></textarea>
                                           </div>
                                       </div>
                                       <div class="form-group mb-3">
@@ -124,11 +124,11 @@
                                                   <div class="select2-list bg-light w-100 rounded-bottom">
                                                       <div class="container my-2">
                                                           <input class="select2-search form-control form-control-sm" type="text" placeholder="search...">
-                                                      @if($brands)
-                                                        @foreach($brands as $row)
-                                                          <div class="select2-item px-3 py-2 border-bottom text-primary text-capitalize" data-value="{{ $row['bid'] }}">{{ $row['brand'] }}</div>
-                                                        @endforeach
-                                                      @endif
+                                                            @if($brands)
+                                                                @foreach($brands as $row)
+                                                                    <div class="select2-item px-3 py-2 border-bottom text-primary text-capitalize" data-value="{{ $row['bid'] }}">{{ $row['brand'] }}</div>
+                                                                @endforeach
+                                                            @endif
                                                       </div>
                                                   </div>
                                               </div>

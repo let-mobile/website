@@ -31,7 +31,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/assets/css/main.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/assets/css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    
+    
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144102274-1"></script>
     <script>
@@ -96,6 +97,7 @@
     @yield('page-css')
 </head>
 <body>
+    
     @if(!isset($item['adslug']) && !isset($blog->blog_id))
         <div class="hidden-sharer">
             <img src="{{ url('/') }}/public/let-mobile.webp" alt="Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan." />
@@ -123,12 +125,7 @@
         $(document).ready( function () {
             $('.slicknav_brand a').attr('href','{{ url("/") }}')
         });
+        
     </script>
-    <script type="text/javascript">
-        var infolinks_pid = 3306601;
-        var infolinks_wsid = 0;
-    </script>
-    <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
-     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/733533b9accab7873869a1f3f/291d002c81890284b417f4504.js");</script> 
 </body>
 </html>

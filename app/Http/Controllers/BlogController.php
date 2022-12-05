@@ -85,14 +85,14 @@ class BlogController extends Controller
     public function list(Blog $blog)
     {
         $data['blogs'] = Blog::with('category')->select('blog_title','short_description','blog_slug','blog_image','category_id','created_at')->orderBy('blog_id', 'DESC')->take(5)->paginate();
-        $data['ads'] = Post::with('brand','city')->where('is_sold','=',0)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname')->take(20)->orderBy('aid', 'DESC')->get();
+        // $data['ads'] = Post::with('brand','city')->where('is_sold','=',0)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname')->take(20)->orderBy('aid', 'DESC')->get();
         return view('frontend.blogs',$data);
     }
     public function show(Blog $blog,$slug)
     {
         $data['blogs'] = Blog::with('category')->select('blog_title','short_description','blog_slug','blog_image','category_id','created_at')->where('blog_slug','!=',$slug)->orderBy('blog_id', 'DESC')->take(5)->get();
        $data['blog'] = Blog::with('category')->select('blog_title','blog_description','short_description','blog_slug','blog_image','category_id','created_at')->where('blog_slug','=',$slug)->first();
-       $data['ads'] = Post::with('brand','city')->where('is_sold','=',0)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname')->take(20)->orderBy('aid', 'DESC')->get();
+    //   $data['ads'] = Post::with('brand','city')->where('is_sold','=',0)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname')->take(20)->orderBy('aid', 'DESC')->get();
         return view('frontend.show',$data); 
     }
 

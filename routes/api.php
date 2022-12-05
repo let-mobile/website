@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('ads', 'AdsController@index');
+Route::get('ads/{slug}', 'AdsController@show');
+Route::get('ads/brand/{slug}', 'AdsController@brand');
+Route::get('ads/city/{slug}', 'AdsController@city');
+Route::get('ads/category/{slug}', 'AdsController@category');

@@ -12,6 +12,7 @@
                         <div class="post-btn">
                             <a class="btn btn-common" href="<?php echo url('post/postad'); ?>"><i class="lni-pencil-alt"></i> Post an Ad</a>
                         </div>
+                        <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
                         <ul class="mt-3 footer-social">
                             <li><a class="facebook" target="_blank" href="https://www.facebook.com/letmobilepkofficial"><i class="lni-facebook-filled"></i></a></li>
                             <li><a class="twitter" target="_blank" href="https://twitter.com/LetMobile1"><i class="lni-twitter-filled"></i></a></li>
