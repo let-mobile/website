@@ -135,7 +135,7 @@
                                     </div>
                                     <div class="p-2 position-relative">
                                         <div class="div">
-                                            <h5 class="fs-6  d-inline"><a class="text-decoration-none text-black" href="{{ url($row['adslug']) }}"> dffdfd{{ @ucwords(substr($row['adtitle'],0,20)) }}...</a> </h5>
+                                            <h5 class="fs-6  d-inline"><a class="text-decoration-none text-black" href="{{ url($row['adslug']) }}"> {{ @ucwords(substr($row['adtitle'],0,20)) }}...</a> </h5>
                                             <a href="#" class="d-inline"><img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end"></a>
                                         </div>
                                         <p class="mt-1">
