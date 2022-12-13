@@ -11,7 +11,7 @@
             @method('POST')
             <div class="row">
                 <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 p-5 d-none d-sm-block d-xs-block">
-                    <img src="{{ asset('public/assets/images/logo/let-mobile-logo.svg') }}" alt="google +">
+                    <img src="{{ asset('assets/images/logo/let-mobile-logo.svg') }}" alt="google +">
                     <p class="text-black m-0">Already have account?</p>
                     <a href="{{ url('login') }}" class="fw-bold">Login</a>
                 </div>
@@ -19,8 +19,8 @@
                     <h3 class="text-center mb-2">Create an account</h3>
                     <p class="text-center mt-2">Using Social Networks</p>
                     <ul class="text-center mt-1">
-                        <li><a href="{{ url('auth/google') }}"><img src="{{ asset('public/assets/images/google+-icon.png') }}" alt="google +"></a></li>
-                        <li><a href="{{ url('auth/redirect/facebook') }}"><img src="{{ asset('public/assets/images/facebook-icon.png') }}" alt=""></a></li>
+                        <li><a href="{{ url('auth/google') }}"><img src="{{ asset('assets/images/google+-icon.png') }}" alt="google +"></a></li>
+                        <li><a href="{{ url('auth/redirect/facebook') }}"><img src="{{ asset('assets/images/facebook-icon.png') }}" alt=""></a></li>
                     </ul>
                     <p class="or text-center position-relative mt-4"><span>or</span></p>
                     <div class="mb-2">

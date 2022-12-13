@@ -6,13 +6,13 @@
     <meta property="og:url" content="{{ url('/') }}/{{ $item['adslug'] }}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ ucwords($item['adtitle']) }}" />
-    <meta property="og:image" content="{{ url('public/images/'.$ar[0]) }}" />
+    <meta property="og:image" content="{{ url('images/'.$ar[0]) }}" />
     <meta property="og:image:alt" content="{{ ucwords($item['adtitle']) }}" />
 @stop
 
 @section('content')
 <div class="hidden-sharer">
-    <img src="{{ url('public/images/'.$ar[0]) }}" alt="{{ ucwords($item['adtitle']) }}" />
+    <img src="{{ asset('images/'.$ar[0]) }}" alt="{{ ucwords($item['adtitle']) }}" />
 </div>
 <?php
     $imgs = '';
@@ -25,10 +25,10 @@
         }
 		if(count($ar) > 0){
 			for($i = 0; $i < count($ar); $i++){
-				$imgs .= '<li><a href="'.url('public/images/'.$ar[$i]).'" target="_blank"><img src="'.url('public/images/'.$ar[$i]).'" alt="'.$item["brand"]["brand"].' phones price in '. ucwords($item["city"]["city"]) .'" class="w-100"></a></li>';
+				$imgs .= '<li><a href="'.asset('images/'.$ar[$i]).'" target="_blank"><img src="'.asset('images/'.$ar[$i]).'" alt="'.$item["brand"]["brand"].' phones price in '. ucwords($item["city"]["city"]) .'" class="w-100"></a></li>';
 			}
 		} else {
-			$imgs = '<div class="item"><div class="product-img"><img src="'.url('images/noimage.png').'" alt=""'.$item["brand"]["brand"].' phones price in '. ucwords($item["city"]["city"]) .$per.'""/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).'</span></div>';
+			$imgs = '<div class="item"><div class="product-img"><img src="'.asset('images/noimage.png').'" alt=""'.$item["brand"]["brand"].' phones price in '. ucwords($item["city"]["city"]) .$per.'""/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).'</span></div>';
 		}
 	}
 	?>
@@ -79,32 +79,32 @@
                     <div class="position-relative">
                         <h5 class="fs-4">{{ ucwords($item['adtitle']) }}</h5>
                         <div class="d-inline">
-                            <img src="{{ asset('public/assets/images/like.png') }}" alt="Like" class="float-end">
+                            <img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end">
                         </div>
-                        @php 
+                        @php
                         $per = ''; if($item['cond'] == '2') { $per = '/per Installment'; }
                         @endphp
                         <button class="btn-rupees uppercase mb-2">Rs. {{number_format(str_replace(',','',@$item["adprice"])).$per}}</button>
                         <p class="locationInfo border-top pt-2 m-0">
-                            <img src="{{ asset('public/assets/images/location-icon.png') }}" alt="location"> 
+                            <img src="{{ asset('assets/images/location-icon.png') }}" alt="location">
                             <b style="color: #000;">
                                 <a href="{{ url('/') }}?loc[]={{ $item['loc_id'] ?? '' }}" class="text-dark text-decoration-none"> {{ ucwords($item['adadress']) }}, {{ ucwords($item["city"]["city"]) }}</a>
-                            </b> 
+                            </b>
                             <span class="float-end">{{ date('d M h:i a', $item['adtime']) }}</span>
                         </p>
                     </div>
                     <div class="ProfileDetail position-relative mt-3">
-                        <img src="{{ asset('public/profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('public/assets/images/profile-icon.png') }}'" alt="" class="profile-icon d-none d-sm-inline d-xs-inline">
+                        <img src="{{ asset('profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('assets/images/profile-icon.png') }}'" alt="" class="profile-icon d-none d-sm-inline d-xs-inline">
                         <h5 class="fs-4">{{ ucwords($item['selname']) }}</h5>
                         <ul>
-                            <li class="pb-2"><img src="{{ asset('public/assets/images/phone-icon.png') }}" alt=""><b>{{ $item['adphone'] ?? '' }}</b></li>
+                            <li class="pb-2"><img src="{{ asset('assets/images/phone-icon.png') }}" alt=""><b>{{ $item['adphone'] ?? '' }}</b></li>
                         </ul>
                         <!-- <p class="locationInfo pt-4 m-0"><img src="./images/location-icon.png" alt=""> Location: <b style="color: #000;">Karachi</b></p> -->
                     </div>
                 </div>
                 <div class="MapSec mt-3">
                     <object style="border:0; height: 300px; width: 100%;" data="https://www.google.com/maps/embed/v1/place?q={{ urlencode($item['adadress']) }},{{ $item['city']['city'] }}&key=AIzaSyAy_OvtbZn9ktU5njKItgbAHBozJ8vRbNg"></object>
-                    <a target="_blank" href="https://www.google.com/maps?q={{ urlencode($item['adadress']) }},{{ $item['city']['city'] }}" class="GetDirectionbtn float-end mt-2 bg-white text-decoration-none"><img src="{{ asset('public/assets/images/dircetion.png') }}" alt=""> Get Direction</a>
+                    <a target="_blank" href="https://www.google.com/maps?q={{ urlencode($item['adadress']) }},{{ $item['city']['city'] }}" class="GetDirectionbtn float-end mt-2 bg-white text-decoration-none"><img src="{{ asset('assets/images/dircetion.png') }}" alt=""> Get Direction</a>
                 </div>
             </div>
         </div>
@@ -115,9 +115,9 @@
                     <h2 class="fs-5">Related Mobiles Ads</h2>
                 </div>
                 <div class="row mb-3">
-                    @if($ads->isNotEmpty()) 
+                    @if($ads->isNotEmpty())
                         @foreach($ads as $row)
-                            <?php 
+                            <?php
                                 $images = explode(',', $row['adimgs']);
                                 if ($row['aid']%2 == 0) {
                                     $alt = $row['brand']['brand'].' phones price in '.$row['city']['city'];
@@ -129,14 +129,14 @@
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="featured-box mt-2">
                                     <div class="f-image">
-                                        <a class="text-decoration-none text-black" href="{{ url($row['adslug'])}}"> 
-                                            <img src="{{ url('public/images').'/'.$images[0] }}" alt="{{ $alt ?? '' }}" width="100%">
+                                        <a class="text-decoration-none text-black" href="{{ url($row['adslug'])}}">
+                                            <img src="{{ asset('images').'/'.$images[0] }}" alt="{{ $alt ?? '' }}" width="100%">
                                         </a>
                                     </div>
                                     <div class="p-2 position-relative">
                                         <div class="div">
                                             <h5 class="fs-6  d-inline"><a class="text-decoration-none text-black" href="{{ url($row['adslug']) }}"> dffdfd{{ @ucwords(substr($row['adtitle'],0,20)) }}...</a> </h5>
-                                            <a href="#" class="d-inline"><img src="{{ asset('public/assets/images/like.png') }}" alt="Like" class="float-end"></a>
+                                            <a href="#" class="d-inline"><img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end"></a>
                                         </div>
                                         <p class="mt-1">
                                             <button class="btn-rupees uppercase">Rs.<?php echo number_format(str_replace(',','',@$row['adprice'])) ?></button>
@@ -151,7 +151,7 @@
                                             </span>
                                         </p>
                                         <div class="locationInfo pt-2 mt-2">
-                                            <img src="{{ asset('public/assets/images/location-icon.png') }}" alt=""> 
+                                            <img src="{{ asset('assets/images/location-icon.png') }}" alt="">
                                             <a href="{{ url('city/'.$row['city']['cityslug'])}}" class="text-decoration-none"> <b style="color: #000;"> {{ @ucwords($row['city']['city']) }}</b> </a>
                                             <span class="float-end"><?php $dt = Carbon::parse($row['created_at']);echo $dt->diffForHumans(); ?></span>
                                         </div>
@@ -160,7 +160,7 @@
                             </div>
                         @endforeach
                     @endif
-                </div>                    
+                </div>
             </div>
         </div>
     </div>

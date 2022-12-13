@@ -12,7 +12,7 @@
             @method('POST')
             <div class="row">
                 <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 p-5 d-none d-sm-block d-xs-block">
-                    <img src="{{ asset('public/assets/images/logo/let-mobile-logo.svg') }}" alt="google +">
+                    <img src="{{ asset('assets/images/logo/let-mobile-logo.svg') }}" alt="google +">
                     <p class="text-black m-0">New to Let Mobile?</p>
                     <a href="{{ url('signup') }}" class="fw-bold">Register</a>
                 </div>
@@ -47,8 +47,8 @@
                     <p class="or text-center position-relative"><span>or</span></p>
                     <p class="text-center mt-3">Using Social Networks</p>
                     <ul class="text-center mt-3">
-                        <li><a href="{{ url('auth/google') }}"><img src="{{ asset('public/assets/images/google+-icon.png') }}" alt="google +"></a></li>
-                        <li><a href="{{ url('auth/redirect/facebook') }}"><img src="{{ asset('public/assets/images/facebook-icon.png') }}" alt=""></a></li>
+                        <li><a href="{{ url('auth/google') }}"><img src="{{ asset('assets/images/google+-icon.png') }}" alt="google +"></a></li>
+                        <li><a href="{{ url('auth/redirect/facebook') }}"><img src="{{ asset('assets/images/facebook-icon.png') }}" alt=""></a></li>
                     </ul>
                     <div class="mt-2 text-center d-sm-none d-md-none d-xl-none d-lg-none d-xl-none">
                         <p class="text-black m-0">New to Let Mobile?</p>
@@ -61,28 +61,28 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="count-up">
-                        <img src="{{ asset('public/assets/images/brands-icon.png') }}" alt="" />
+                        <img src="{{ asset('assets/images/brands-icon.png') }}" alt="" />
                         <h3 class="counter-count">116</h3>
                         <p>Brands</p>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="count-up">
-                        <img src="{{ asset('public/assets/images/seller-icon.png') }}" alt="" />
+                        <img src="{{ asset('assets/images/seller-icon.png') }}" alt="" />
                         <h3 class="counter-count">5484</h3>
                         <p>Trusted Seller</p>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="count-up">
-                        <img src="{{ asset('public/assets/images/facebookCount-icon.png') }}" alt="" />
+                        <img src="{{ asset('assets/images/facebookCount-icon.png') }}" alt="" />
                         <h3 class="counter-count">400</h3>
                         <p>Facebook Fans</p>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="count-up">
-                        <img src="{{ asset('public/assets/images/map-icon.png') }}" alt="" />
+                        <img src="{{ asset('assets/images/map-icon.png') }}" alt="" />
                         <h3 class="counter-count">649</h3>
                         <p>Locations</p>
                     </div>
@@ -93,21 +93,21 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="boxe-style">
-                        <p class="Innertop_img"><img src="{{ asset('public/assets/images/bkgrndBtm-icon.png') }}" alt=""/></p>
+                        <p class="Innertop_img"><img src="{{ asset('assets/images/bkgrndBtm-icon.png') }}" alt=""/></p>
                         <h4>BACKGROUND</h4>
                         <p>We are observing that no one provides the best portal for selling online in Pakistan.So we started to provide a best and easyto use portal for our clients across Pakistan.</p>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="boxe-style">
-                        <p class="Innertop_img"><img src="{{ asset('public/assets/images/bkgrndBtm-icon.png') }}" alt=""/></p>
+                        <p class="Innertop_img"><img src="{{ asset('assets/images/bkgrndBtm-icon.png') }}" alt=""/></p>
                         <h4>Seller Satisfation</h4>
                         <p>We are observing that no one provides the best portal for selling online in Pakistan.So we started to provide a best and easyto use portal for our clients across Pakistan.</p>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="boxe-style">
-                        <p class="Innertop_img"><img src="{{ asset('public/assets/images/bkgrndBtm-icon.png') }}" alt=""/></p>
+                        <p class="Innertop_img"><img src="{{ asset('assets/images/bkgrndBtm-icon.png') }}" alt=""/></p>
                         <h4>METHODOLOGY</h4>
                         <p>We are observing that no one provides the best portal for selling online in Pakistan.So we started to provide a best and easyto use portal for our clients across Pakistan.</p>
                     </div>
