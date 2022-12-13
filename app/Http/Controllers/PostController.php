@@ -29,11 +29,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['u_ads'] = Post::with('brand','city','user')->where('vcode','=',0)->where('cond','=',0)->where('is_sold','=',0)->select('aid','adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(12)->orderBy('aid', 'DESC')->get();
-        $data['n_ads'] = Post::with('brand','city','user')->where('is_sold','=',0)->where('vcode','=',0)->where('cond','=',1)->select('aid','adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(8)->orderBy('aid', 'DESC')->get();
-        $data['i_ads'] = Post::with('brand','city','user')->where('is_sold','=',0)->where('vcode','=',0)->where('cond','=',2)->select('aid','adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(8)->orderBy('aid', 'DESC')->get();
+        $data['ads'] = Post::with('city')->filters($request)->where('is_sold','=',0)->select('aid','adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->take(15)->orderBy('aid', 'DESC')->get();
         return view('frontend.index',$data);
     }
 
@@ -117,8 +115,9 @@ class PostController extends Controller
     {
         $data['item'] = Post::with('brand','city','user','comments')->withCount('postview')->where('is_sold','=',0)->where('adslug','=',$slug)->first();
         if (isset($data['item']->aid)) { 
-            $data['l_ads'] = Post::with('brand','city')->where('vcode','=',0)->where('cond','=',$data['item']->cond)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->orWhere('loc_id','=',$data['item']->loc_id)->where('br_id','=',$data['item']->br_id)->take(17)->orderBy('aid', 'DESC')->get();
-            $data['ads'] = Post::with('brand','city')->where('vcode','=',0)->where(['postedby'=>$data['item']->postedby])->select('aid','adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname','created_at')->where('adslug','!=',$slug)->take(10)->orderBy('aid', 'DESC')->get();
+            $data['ads'] = Post::with('brand','city')->where('vcode','=',0)->where('cond','=',$data['item']->cond)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->orWhere('loc_id','=',$data['item']->loc_id)->where('br_id','=',$data['item']->br_id)->take(17)->orderBy('aid', 'DESC')->get();
+            // $data['ads'] = Post::with('brand','city')->where('vcode','=',0)->where(['postedby'=>$data['item']->postedby])->select('aid','adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname','created_at')->where('adslug','!=',$slug)->take(12)->orderBy('aid', 'DESC')->get();
+            // dd($data['ads']);
             $view = Postview::where(['post_id'=>$data['item']->aid,'user_ip'=>$request->ip()])->get();
             if ($view->count() < 1) {          
                 $view = new Postview();
@@ -155,7 +154,7 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePost $request, $id)
     {
         $post= Post::find($id);
         $images = $post->adimgs;

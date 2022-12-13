@@ -34,7 +34,7 @@ class forgetUserPassword implements ShouldQueue
     public function handle()
     {
         $hash = Crypt::encrypt($this->email);
-        $url   = url('/')."/user/change-passowrd/".$hash;
+        $url   = url('/')."/change-passowrd/".$hash;
         Mail::to($this->email)->send(new forgetPassword($url));
     }
 }

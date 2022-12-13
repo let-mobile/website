@@ -125,7 +125,7 @@
 <div class="intro-inner">
 	<div class="contact-intro">
 		<div class="w100 map">
-		    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108884.43569309461!2d74.22479560566717!3d31.479125885222363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391901e49ab95b35%3A0xadd1b852462f8744!2sLetMobile.pk%20is%20a%20website%20where%20you%20can%20buy%20or%20sell%20Used%20Mobile%20Phone%20and%20New%20Mobile%20Phone%20on%20Instalments.!5e0!3m2!1sen!2s!4v1669973329517!5m2!1sen!2s" width="100%" height="450" frameborder="0" style="border:0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			<iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJNcZXAaoDGTkRa0tdIWIdzqk&key=AIzaSyAy_OvtbZn9ktU5njKItgbAHBozJ8vRbNg" allowfullscreen></iframe>
 		</div>
 	</div>
 </div>

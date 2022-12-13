@@ -1,0 +1,17 @@
+color code
+
+top nav color code              03a9fa
+all button color                03a9fa
+footer color background         282828
+blck text color code            282828
+search text color code          8c8c8c
+grey background color code      f7f7f7
+search stroke code              acabab
+refine stroke                   03a9fa 
+
+
+
+
+fonts
+
+poppins     bold & regular

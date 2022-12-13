@@ -1,322 +1,81 @@
 @extends('layouts.default')
 @section('title')
-<title>Let Mobile | Used Phones  | Classified ads mobile phones  website in Pakistan</title>
-    <meta name="description" content="Let mobile is largest Used,Installments Mobile and New Mobiles Sale and buy Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.">
+<title>Let Mobile | Buy or Sell Used Mobile Phone and New Mobile Phone on Instalments</title>
+<meta name="description" content="LetMobile.pk is a website where you can buy or sell Used Mobile Phone and New Mobile Phone on Instalments. Now you can Sell, Buy or get at one place.">
 @stop
 @section('page-css')
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <style type="text/css">
-    .width-100 {
-        width: 100% !important;
-    }
-    .search-bar .search-form {
-        float: unset !important;
-    }
-    .width-75-1 {
-        width: 60%;
-        margin-top: 10%;
-    }
-    .width-75-2 {
-        width: 100%;
-        margin-top: 20%;
-    }
-    .width-75-3 {
-        width: 65%;
-        margin-top: 20%;
-    }
-    .ui-widget.ui-widget-content {
-    height: 200px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 10px 10px;
-    height: 200px;
-    border-radius: 15px;
-    }
-    .mobile-only {
-      display: none;
-    }
-    
-    @media only screen and (max-width: 768px) {
-      .mobile-only {
-        display: block;
-      }
-    }
-</style>
+
 @stop
 @section('content')
-    <header id="header-wrap">
-        <div id="hero-area">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-12 col-lg-9 col-xs-12 text-center">
-                        <div class="contents">
-                            <h1 class="head-title">Find <a href="<?=url('category/used')?>">Used or Old</a>, <a href="<?=url('category/new')?>">New </a> and <a href="<?=url('category/installments')?>">Installment</a> Mobiles in  <span class="year">Pakistan</span></h1>
-                            <p>Buy and sell thousands of Mobile Phones, we have just the right one for you</p>
-                            @if ( Auth::guest() )
-                            @else
-                                <a href="<?php echo url('post/postad'); ?>" class="btn btn-common mt-2 mobile-only"><i class="lni-pencil-alt"></i> Post an Ad</a>
-                            @endif
-                            <div class="search-bar">
-                                <div class="search-inner">
-                                    <form class="search-form" method="get" action="{{ url('search/keyword') }}">
-                                        <div class="form-group width-100">
-                                            <input type="text" name="s" id="search" class="form-control" placeholder="What are you looking for....?">
+<div class="container">
+    <div class="Main">
+        <div class="MainInnserDiv">
+            <div class="InnerCategoriesSec mt-4 mb-5">
+                <div class="container">
+                    <div class="row">
+                        @include('frontend.partials.filters')
+                        <div class="col-md-9 DetailBox">
+                            <div class="AdsText d-none d-sm-block d-xs-block">
+                                <h4 class="">Find Used or Old, New and Installment Mobiles in Pakistan</h4>
+                                <p class="">Buy and sell thousands of Mobile Phones, we have just the right one for you</p>
+                                <a href="./post-ad.php" class="btn-Ads p-2 text-decoration-none"><img src="{{ asset('public/assets/images/post-icon.png') }}" alt=""> Post an ad</a>
+                            </div>
+                            <div class="row ">
+                                @if($ads->isNotEmpty()) 
+                                    @foreach($ads as $row)
+                                        <?php 
+                                            $images = explode(',', $row['adimgs']);
+                                            if ($row['aid']%2 == 0) {
+                                                $alt = $row['brand']['brand'].' phones price in '.$row['city']['city'];
+                                            }
+                                            else {
+                                                $alt = $row['brand']['brand'] . ' price in pakistan';
+                                            }
+                                        ?>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div class="featured-box mt-2">
+                                                <div class="f-image">
+                                                    <a class="text-decoration-none text-black" href="{{ url($row['adslug'])}}"> 
+                                                        <img src="{{ url('public/images').'/'.$images[0] }}" alt="{{ $alt ?? '' }}" width="100%">
+                                                    </a>
+                                                </div>
+                                                <div class="p-2 position-relative">
+                                                    <div class="div">
+                                                        <h5 class="fs-6  d-inline"><a class="text-decoration-none text-black" href="{{ url($row['adslug']) }}">{{ @ucwords(substr($row['adtitle'],0,20)) }}...</a> </h5>
+                                                        <a href="#" class="d-inline"><img src="{{ asset('public/assets/images/like.png') }}" alt="Like" class="float-end"></a>
+                                                    </div>
+                                                    <p class="mt-1">
+                                                        <button class="btn-rupees uppercase">Rs.<?php echo number_format(str_replace(',','',@$row['adprice'])) ?></button>
+                                                        <span class="float-end fw-bold pt-1">
+                                                            @if($row['cond'] == '0')
+                                                                <a class="text-decoration-none" href="{{ url('category/used') }}"> Used</a>
+                                                            @elseif($row['cond'] == '1')
+                                                                <a class="text-decoration-none" href="{{ url('category/new') }}"> New</a>
+                                                            @elseif($row['cond'] == '2')
+                                                                <a class="text-decoration-none" href="{{ url('category/installments') }}"> Installment</a>
+                                                            @endif
+                                                        </span>
+                                                    </p>
+                                                    <div class="locationInfo pt-2 mt-2">
+                                                        <img src="{{ asset('public/assets/images/location-icon.png') }}" alt=""> 
+                                                        <a href="{{ url('city/'.$row['city']['cityslug'])}}" class="text-decoration-none"> <b style="color: #000;"> {{ @ucwords($row['city']['city']) }}</b> </a>
+                                                        <span class="float-end"><?php $dt = Carbon::parse($row['created_at']);echo $dt->diffForHumans(); ?></span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <button class="btn btn-common" type="submit"><i class="lni-search"></i> Search Now</button>
-                                    </form>
-                                </div>
+                                    @endforeach
+                                @endif
                             </div>
+                            <button class="btn-ad btn-rupees p-3 w-25 fs-5 mt-5 mb-5 d-block" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="margin: 0 auto;">Load more</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <section class="featured section-padding">
-    <div class="container">
-        <div class="row m-f-1">
-            <div class="col-12">
-                <div class="heading text-center">
-                    <h2 class="section-title">Used or Old Mobiles</h2>
-                    <h4 class="sub-title">Discover & connect with top-rated in Used Mobiles ads</h4>
-                </div>
-            </div>
-            @if($u_ads) 
-            @foreach($u_ads as $row)
-            <?php $images = explode(',', $row['adimgs']) ?>
-            <?php 
-                if ($row['aid']%2 == 0) {
-                    $alt = $row['brand']['brand'].' phones price in '.$row['city']['city'];
-                }
-                else {
-                    $alt = $row['brand']['brand'] . ' price in pakistan';
-                }
-             ?>
-            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                <div class="featured-box">
-                    <figure>
-                        <a href="{{ url('brand') }}/{{ $row['brand']['brand'] }}">
-                            <div class="homes-tag featured">{{ @ucwords($row['brand']['brand']) }} </div>
-                        </a>
-                        <div class="homes-tag rent"><i class="lni-camera"></i> {{ count($images) }}</div>
-                        <span class="price-save">Rs.<?php echo number_format(str_replace(',','',@$row['adprice'])) ?></span>
-                        <a href="{{ url($row['adslug'])}}"><img class="img-fluid img-width-100" src="{{ url('public/images').'/'.$images[0] }}" alt="{{ $alt }}"></a>
-                    </figure>
-                    <div class="content-wrapper">
-                        <div class="feature-content">
-                            <h2><a href="{{ url($row['adslug']) }}">{{ @ucwords(substr($row['adtitle'],0,17)) }}...</a></h2>
-                            
-                            <div class="meta-tag">
-                                <div class="user-name">
-                                    <a href="{{ url('ads') }}/{{ $row['user']['usrslug'] ?? ''}}"><i class="lni-user"></i> {{ ucwords(substr($row['selname'],0,12)) }}</a>
-                                </div>
-                                <div class="listing-category">
-                                    @if($row['cond'] == '0')
-                                        <a href="{{ url('category/used') }}"><i class="lni-mobile"></i> Used</a>
-                                    @elseif($row['cond'] == '1')
-                                        <a href="{{ url('category/new') }}"><i class="lni-mobile"></i> New</a>
-                                    @elseif($row['cond'] == '2')
-                                        <a href="{{ url('category/installments') }}"><i class="lni-mobile"></i> Installment</a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        <div class="listing-bottom clearfix">
-                            <a href="{{ url('city/'.$row['city']['cityslug'])}}" class="float-left"><i class="lni-map-marker"></i> {{ @ucwords($row['city']['city']) }}</a>
-                            <a class="float-right"><?php $dt = Carbon::parse($row['created_at']);echo $dt->diffForHumans(); ?></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-            @endif
-        </div>
-        <div class="post-btn text-center">
-            <a class="btn btn-common" href="<?php echo url('category/used'); ?>"> View All</a>
-        </div>
-        <div class="row m-f-1">
-            <div class="col-12">
-                <div class="heading text-center">
-                    <h2 class="section-title">Installment Mobiles</h2>
-                    <h4 class="sub-title">Discover & connect with top-rated in Installment Mobiles ads</h4>
-                </div>
-            </div>
-            @if($i_ads) 
-            @foreach($i_ads as $row)
-            <?php $images = explode(',', $row['adimgs']) ?>
-            <?php 
-                if ($row['aid']%2 == 0) {
-                    $alt = $row['brand']['brand'].' phones on installment price in '.$row['city']['city'];
-                }
-                else {
-                    $alt = $row['brand']['brand'] . ' on installment price in pakistan';
-                }
-             ?>
-            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                <div class="featured-box">
-                    <figure>
-                        <a href="{{ url('brand') }}/{{ $row['brand']['brand'] }}">
-                            <div class="homes-tag featured">{{ @ucwords($row['brand']['brand']) }} </div>
-                        </a>
-                        <div class="homes-tag rent"><i class="lni-camera"></i> {{ count($images) }}</div>
-                        <span class="price-save">Rs.<?php echo number_format(str_replace(',','',@$row['adprice'])) ?></span>
-                        <a href="{{ url($row['adslug'])}}"><img class="img-fluid img-width-100" src="{{ url('public/images').'/'.$images[0] }}" alt="{{ $alt }}"></a>
-                    </figure>
-                    <div class="content-wrapper">
-                        <div class="feature-content">
-                            <h2><a href="{{ url($row['adslug']) }}">{{ @ucwords(substr($row['adtitle'],0,17)) }}...</a></h2>
-                            
-                            <div class="meta-tag">
-                                <div class="user-name">
-                                    <a href="{{ url('ads') }}/{{ $row['user']['usrslug'] }}"><i class="lni-user"></i> {{ @ucwords(substr($row['selname'],0,12)) }}</a>
-                                </div>
-                                <div class="listing-category">
-                                    @if($row['cond'] == '0')
-                                        <a href="{{ url('category/used') }}"><i class="lni-mobile"></i> Used</a>
-                                    @elseif($row['cond'] == '1')
-                                        <a href="{{ url('category/new') }}"><i class="lni-mobile"></i> New</a>
-                                    @elseif($row['cond'] == '2')
-                                        <a href="{{ url('category/installments') }}"><i class="lni-mobile"></i> Installment</a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        <div class="listing-bottom clearfix">
-                            <a href="{{ url('city/'.$row['city']['cityslug'])}}" class="float-left"><i class="lni-map-marker"></i> {{ @ucwords($row['city']['city']) }}</a>
-                            <a class="float-right"><?php $dt = Carbon::parse($row['created_at']);echo $dt->diffForHumans(); ?></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-            @endif
-        </div>
-        <div class="post-btn text-center">
-            <a class="btn btn-common" href="<?php echo url('category/installments'); ?>"> View All</a>
-        </div>
-        <div class="row m-f-1">
-            <div class="col-12">
-                <div class="heading text-center">
-                    <h2 class="section-title">New Mobiles</h2>
-                    <h4 class="sub-title">Discover & connect with top-rated in New Mobiles ads</h4>
-                </div>
-            </div>
-            @if($n_ads) 
-            @foreach($n_ads as $row)
-            <?php $images = explode(',', $row['adimgs']) ?>
-            <?php 
-                if ($row['aid']%2 == 0) {
-                    $alt = $row['brand']['brand'].' new phones price in '.$row['city']['city'];
-                }
-                else {
-                    $alt = $row['brand']['brand'] . ' price in pakistan';
-                }
-             ?>
-            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                <div class="featured-box">
-                    <figure>
-                        <a href="{{ url('brand') }}/{{ $row['brand']['brand'] }}">
-                            <div class="homes-tag featured">{{ @ucwords($row['brand']['brand']) }} </div>
-                        </a>
-                        <div class="homes-tag rent"><i class="lni-camera"></i> {{ count($images) }}</div>
-                        <span class="price-save">Rs.<?php echo number_format(str_replace(',','',@$row['adprice'])) ?></span>
-                        <a href="{{ url($row['adslug'])}}"><img class="img-fluid img-width-100" src="{{ url('public/images').'/'.$images[0] }}" alt="{{ $alt }}"></a>
-                    </figure>
-                    <div class="content-wrapper">
-                        <div class="feature-content">
-                            <h2><a href="{{ url($row['adslug']) }}">{{ @ucwords(substr($row['adtitle'],0,17)) }}...</a></h2>
-                            
-                            <div class="meta-tag">
-                                <div class="user-name">
-                                    <a href="{{ url('ads') }}/{{ $row['user']['usrslug'] }}"><i class="lni-user"></i> {{ @ucwords(substr($row['selname'],0,12)) }}</a>
-                                </div>
-                                <div class="listing-category">
-                                    @if($row['cond'] == '0')
-                                        <a href="{{ url('category/used') }}"><i class="lni-mobile"></i> Used</a>
-                                    @elseif($row['cond'] == '1')
-                                        <a href="{{ url('category/new') }}"><i class="lni-mobile"></i> New</a>
-                                    @elseif($row['cond'] == '2')
-                                        <a href="{{ url('category/installments') }}"><i class="lni-mobile"></i> Installment</a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        <div class="listing-bottom clearfix">
-                            <a href="{{ url('city/'.$row['city']['cityslug'])}}" class="float-left"><i class="lni-map-marker"></i> {{ @ucwords($row['city']['city']) }}</a>
-                            <a class="float-right"><?php $dt = Carbon::parse($row['created_at']);echo $dt->diffForHumans(); ?></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-            @endif
-        </div>
-        <div class="post-btn text-center">
-            <a class="btn btn-common" href="<?php echo url('category/new'); ?>"> View All</a>
         </div>
     </div>
-    </section>
-    <section class="works section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <div class="heading">
-                    <h2 class="section-title">How It Works?</h2>
-                    <h4 class="sub-title">Post a free Classified Mobile Ad. Buy and Sale.</h4>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="works-item">
-                    <div class="icon-box">
-                        <img class="img-fluid width-75-1" src="{{ url('public/assets/img/info.webp') }}" alt="Create an Account with Let Mobile Website">
-                    </div>
-                    <p>Create an Account</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="works-item">
-                    <div class="icon-box">
-                        <img class="img-fluid width-75-2" src="{{ url('public/assets/img/2.webp') }}" alt="Post a free Classified Ad">
-                    </div>
-                    <p>Post Free Ad</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="works-item">
-                    <div class="icon-box">
-                        <img class="img-fluid width-75-3" src="{{ url('public/assets/img/4.webp') }}" alt="Deal Done">
-                    </div>
-                    <p>Deal Done</p>
-                </div>
-            </div>
-            <hr class="works-line">
-        </div>
-    </div>
-    </section>
+</div>
 @stop
 @section('page-scripts')
-<script src="{{ url('/') }}/public/assets/js/jquery-ui.js"></script>
-<script>
- $(document).ready(function() {
-    $( "#search" ).autocomplete({
-        source: function(request, response) {
-            $.ajax({
-            url: "{{url('search/home')}}",
-            data: {
-                term : request.term
-             },
-            dataType: "json",
-            success: function(data){
-               var resp = $.map(data,function(obj){
-                    return obj.name;
-               }); 
-               response(resp);
-            }
-        });
-    },
-    minLength: 1
- });
-});
-</script> 
+
 @stop

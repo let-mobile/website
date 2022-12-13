@@ -26,25 +26,27 @@ class UserController extends Controller
     public function signup() { return view('frontend/signup'); }
     public function signin() { return view('frontend/login'); }
     public function forgetpassword() { return view('frontend/forgetpassword'); }
-    public function changepassowrd($hash) 
-        { 
+    public function changepassowrd($hash)
+        {
             $email = Crypt::decrypt($hash);
             $reset = DB::table('password_resets')->where('email','=',$email)->first();
-            if($reset) 
+            if($reset)
                 {
                     return view('frontend/changepassword')->with('hash',$hash);
                 }
             else
                 {
-                    Session::flash('message',"This link has been expired. Please send again."); 
-                    return redirect('user/forget-password');
+                    Session::flash('warning',"This link has been expired. Please send again.");
+                    return redirect('forget-password');
                 }
         }
     public function authentication(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
         $authSuccess = Auth::attempt(['email' => $request->email, 'password' => $request->password, 'is_active' => 1]);
-
         if($authSuccess) {
             $request->session()->regenerate();
             User::where('email',$request->email)->update(['is_login'=> 1]);
@@ -59,53 +61,44 @@ class UserController extends Controller
                 ]);
             return response(['success' => true,'message' => 'Email and Password verified.You are Redirecting...'], Response::HTTP_OK);
         }
-        return
-            response([
-                'success' => false,
-                'message' => 'Email or Password is incorrect.'
-            ], Response::HTTP_FORBIDDEN);
+        return redirect("login")->with('message', 'Oppes! You have entered invalid details')->withInput();
     }
     public function forget(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
         $user = User::where('email',$request->email)->first();
         if($user) {
             $reset = DB::table('password_resets')->where('email',$request->email)->first();
-            if($reset) 
+            if($reset)
             {
-                return response([
-                    'success' => false,
-                    'message' => 'You already send request to change password Please check your mail Box.'
-                ], Response::HTTP_FORBIDDEN);
+                return back()->with('warning', 'You already send request to change password Please check your mail Box.')->withInput();
             }
             else
             {
                 $hash = Crypt::encrypt($request->email);
                 DB::table('password_resets')->insert(array('email'=>$request->email,'token'=>$hash));
                 Mailsender::forget_password($request->email);
-                return response(['success' => true,'message' => '<strong>Sucess!</strong> We’ve sent you an email with activation link at the email address you provided. Please enjoy, and let us know if there’s anything else we can help you with. <br> <b> The Let Mobile Team <b>'], Response::HTTP_OK);
+                return back()->with('message', '<strong>Sucess!</strong> We’ve sent you an email with activation link at the email address you provided. Please enjoy, and let us know if there’s anything else we can help you with. <br> <b> The Let Mobile Team <b>')->withInput();
             }
         }
-        return response([
-                'success' => false,
-                'message' => 'There is no user registered with this email address.'
-            ], Response::HTTP_FORBIDDEN);
+            return back()->with('error', 'There is no user registered with this email address.')->withInput();
     }
     public function resetpassword(resetPassword $request, $hash)
     {
         $email = Crypt::decrypt($hash);
         $reset = DB::table('password_resets')->where('email','=',$email)->first();
-        if($reset) 
+        if($reset)
         {
             User::where('email',$reset->email)->update(['password'=> Hash::make($request->password)]);
             DB::table('password_resets')->where('email',$reset->email)->delete();
-            return response(['success' => true,'message' => 'Your Password has been changed You can Login now.'], Response::HTTP_OK);
+            return redirect("login")->with('warning', 'Your Password has been changed You can Login now with new password.');
         }
         else
         {
-            return response([
-                'success' => false,
-                'message' => 'Something Went Wrong.'
-            ], Response::HTTP_FORBIDDEN);
+            return back()->with('error', 'Something Went Wrong.');
+
         }
     }
     public function logout(Request $request)
@@ -131,7 +124,7 @@ class UserController extends Controller
         }
         return 1;
 
-    }  
+    }
     public function createSlug($title, $id = 0) {
         $slug = Str::slug($title, '-');
         $allSlugs = $this->getRelatedSlugs($slug, $id);
@@ -160,7 +153,7 @@ class UserController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
-      
+
     /**
      * Create a new controller instance.
      *
@@ -190,7 +183,7 @@ class UserController extends Controller
                     }
                     else
                     {
-                        $name_f = ''; $name_l = ''; 
+                        $name_f = ''; $name_l = '';
                         $name = explode(' ', $user->name);
                         if (isset($name[0])) {
                             $name_f = $name[0];
@@ -223,7 +216,7 @@ class UserController extends Controller
                         return redirect('/');
                     }
             } catch (Exception $e) {
-                Session::flash('hasEmail',"Something Went Wrong. Please signup menually."); 
+                Session::flash('hasEmail',"Something Went Wrong. Please signup menually.");
                 return redirect('user/signin');
             }
     }
@@ -233,8 +226,8 @@ class UserController extends Controller
         }
     public function callback(Request $request,$provider)
         {
-           $getInfo = Socialite::driver($provider)->user(); 
-           $user = $this->createUser($getInfo,$provider); 
+           $getInfo = Socialite::driver($provider)->user();
+           $user = $this->createUser($getInfo,$provider);
            $credentials = $request->only('email', 'password');
            $authSuccess = Auth::attempt(['email' => $user['email'],'password' => '123456dummy']);
            $request->session()->regenerate();
@@ -253,7 +246,7 @@ class UserController extends Controller
         {
             $user = User::where('facebook_id', $getInfo->id)->first();
             if (!$user) {
-                $name_f = 'Jhon'; $name_l = 'Doe'; 
+                $name_f = 'Jhon'; $name_l = 'Doe';
                 $name = explode(' ', $getInfo->name);
                 if (isset($name[0])) {
                     $name_f = $name[0];
@@ -273,5 +266,5 @@ class UserController extends Controller
             }
             return $user;
          }
-   
+
 }
