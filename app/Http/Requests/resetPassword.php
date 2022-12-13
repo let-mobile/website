@@ -26,13 +26,13 @@ class resetPassword extends FormRequest
         return [
             'password' => [
                 'required',
-                'string',
-                'min:6', 
-                'regex:/[a-z]/',
-                'regex:/[A-Z]/',
-                'regex:/[0-9]/',
+                //'string',
+                //'min:6',
+                //'regex:/[a-z]/',
+                //'regex:/[A-Z]/',
+                //'regex:/[0-9]/',
             ],
-            'confirm-password' => 'required|same:password'
+            'confirm_password' => 'required|same:password'
         ];
     }
 }

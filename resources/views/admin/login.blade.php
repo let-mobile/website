@@ -16,9 +16,9 @@
 				}
 			});
 		</script>
-		<link href="{{ asset('public/admin') }}/assets/app/custom/login/login-v3.default.css" rel="stylesheet" type="text/css" />
-		<link href="{{ asset('public/admin') }}/assets/vendors/general/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
-		<link href="{{ asset('public/admin') }}/assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('admin') }}/assets/app/custom/login/login-v3.default.css" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('admin') }}/assets/vendors/general/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('admin') }}/assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
 		<link rel="shortcut icon" href="{{ asset('admin') }}/assets/media/logos/favicon.ico" />
 		<style>
 		    .errors
@@ -76,9 +76,9 @@
 				</div>
 			</div>
 		</div>
-		<script src="{{ asset('public/admin') }}/assets/vendors/general/jquery/dist/jquery.js" type="text/javascript"></script>
-		<script src="{{ asset('public/admin') }}/assets/vendors/general/popper.js/dist/umd/popper.js" type="text/javascript"></script>
-		<script src="{{ asset('public/admin') }}/assets/vendors/general/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="{{ asset('admin') }}/assets/vendors/general/jquery/dist/jquery.js" type="text/javascript"></script>
+		<script src="{{ asset('admin') }}/assets/vendors/general/popper.js/dist/umd/popper.js" type="text/javascript"></script>
+		<script src="{{ asset('admin') }}/assets/vendors/general/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 	</body>
 </html>
 <script type="text/javascript">

@@ -1,373 +1,67 @@
 @extends('layouts.default')
 @section('title')
-<title>Sign Up | Let Mobile </title>
+    <title>Sign Up - Let Mobile </title>
     <meta name="description" content="Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.">
 @stop
-<style type="text/css">
-    .required {
-        border-color: red !important;
-    }
-    .errors
-    {
-        background: #f8f8f8;
-        padding: 20px;
-        color: darkred;
-        border-radius: 5px;
-        display: none
-    }
-    .success
-    {
-        background: #03a9f4;
-        padding: 20px;
-        color: white;
-        border-radius: 5px;
-        display: none
-    }
-    .notification-style
-    {
-        background: #03a9f4;
-        padding: 20px;
-        color: white;
-        border-radius: 5px;
-        margin: 10px 45px;
-    }
-    .disabled-div {
-        pointer-events: none;
-        opacity: 0.4;
-    }
-    .social-p
-    {
-        text-align: center;
-    }
-    .social
-    {
-        width: 60%;
-        margin-top: 20px;
-    }
-    .social-f
-    {
-        width: 62%;
-        margin-top: 10px;
-    }
-    .color
-    {
-        color: #03a9f4;
-    }
-    .margin-10
-    {
-       margin: 10px;
-    }
-    .log-btn
-    {
-        width: 50%
-    }
-    .padding-20
-    {
-        padding: 0px 20px;
-    }
-    .heading {
-        margin-bottom: 15px !important;
-    }
-    .services-item {
-        padding: 20px 5px 15px 40px !important;
-    }
-</style>
 @section('content')
-<div class="page-header" style="background: url({{ url('public/assets/img/banner1.webp') }}">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="breadcrumb-wrapper">
-                    <h1 class="product-title">Create your account, Its free</h1>
-                    <ol class="breadcrumb">
-                        <li><a href="<?=url('/')?>">Home /</a></li>
-                        <li class="current">Register</li>
-                    </ol>
+<div class="MainLogin">
+    <div class="container MainInnserDiv">
+        <form action="register" class="d--flex position-relative" method="POST">
+            @csrf
+            @method('POST')
+            <div class="row">
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 p-5 d-none d-sm-block d-xs-block">
+                    <img src="{{ asset('public/assets/images/logo/let-mobile-logo.svg') }}" alt="google +">
+                    <p class="text-black m-0">Already have account?</p>
+                    <a href="{{ url('login') }}" class="fw-bold">Login</a>
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 p-4">
+                    <h3 class="text-center mb-2">Create an account</h3>
+                    <p class="text-center mt-2">Using Social Networks</p>
+                    <ul class="text-center mt-1">
+                        <li><a href="{{ url('auth/google') }}"><img src="{{ asset('public/assets/images/google+-icon.png') }}" alt="google +"></a></li>
+                        <li><a href="{{ url('auth/redirect/facebook') }}"><img src="{{ asset('public/assets/images/facebook-icon.png') }}" alt=""></a></li>
+                    </ul>
+                    <p class="or text-center position-relative mt-4"><span>or</span></p>
+                    <div class="mb-2">
+                        <label for="name" class="mb-2">Name</label>
+                        <input type="text" name="name" placeholder="Enter your name.." value="{{old('name') ?? ''  }}">
+                        @if ($errors->has('name'))
+                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                        @endif
+                    </div>
+                    <div class="mb-2">
+                        <label for="Email" class="mb-2">Email</label>
+                        <input type="email" name="email" placeholder="test@gmail.com" value="{{old('email') ?? ''  }}">
+                        @if ($errors->has('email'))
+                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                        @endif
+                    </div>
+                    <div class="mb-2">
+                        <label for="Mobile Number" class="mb-2">Mobile Number</label>
+                        <input type="text" name="phone" placeholder="0xxxxxxxxx" value="{{old('phone') ?? ''  }}">
+                        @if ($errors->has('phone'))
+                            <span class="text-danger">{{ $errors->first('phone') }}</span>
+                        @endif
+                    </div>
+                    <div class="mb-2">
+                        <label for="Password" class="mb-2">Password</label>
+                        <input type="password" name="password" placeholder="Enter your password" value="{{old('password') ?? ''  }}">
+                        @if ($errors->has('password'))
+                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                        @endif
+                    </div>
+                    <span class="pswrd_Detail d-none d-sm-block d-xs-block">Password must be min. 6 characters. Combine numbers, upper and lowercase letters.</span>
+                    <button class="btn-Ads btn-rupees p-3 w-100 fs-5 mt-2 mb-5 align-item-center">Signup</button>
+                    <div class="mt-2 text-center ">
+                        <p class="text-black m-0">Already have account?</p>
+                        <a href="{{ url('login') }}" class="fw-bold">Login</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
-<section class="register section-padding">
-    <div class="container">
-        <div class="row justify-content-center">
-            @if(Session::has('message'))
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <div class="notification-style">
-                        Once you've signed up for Let Mobile you can start creating ads.To effectively reach potential customers, your text ads should be informative, relevant, and engaging. or <a href="{{ url('user/signin') }}" class="btn btn-info"> Login here </a>
-                    </div>
-                </div>
-            @endif
-            <div class="col-lg-6 col-md-7 col-xs-12">
-                <div class="register-form login-area" id="mydiv">
-                    <h3>Register</h3>
-                    <form id="registerForm" method="post" accept-charset="utf-8" class="login-form">
-                        {{ @csrf_field() }}
-                        <fieldset class="fieldset">
-                            <div class="form-group">
-                                <div class="input-icon">
-                                    <i class="lni-user"></i>
-                                    <input type="text" name="fname" id="fname" placeholder="Full Name" class="form-control">
-                                </div>
-                            </div>
-                            <!--<div class="form-group">-->
-                            <!--    <div class="input-icon">-->
-                            <!--        <i class="lni-user"></i>-->
-                            <!--        <input type="text" name="lname" id="lname" placeholder="Last Name" class="form-control"> </div>-->
-                            <!--</div>-->
-                            <div class="form-group">
-                                <div class="input-icon">
-                                    <i class="lni-envelope"></i>
-                                    <input type="text" name="email" id="email" placeholder="Email" class="form-control"> </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-icon">
-                                    <i class="lni-phone"></i>
-                                    <input type="text" name="phone" id="phone" placeholder="Phone (03001481947)" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-icon">
-                                    <i class="lni-lock"></i>
-                                    <input type="password" name="password" id="password" placeholder="Password" class="form-control"> 
-                                </div>
-                                <span class="color">Password must be min. 6 characters. Combine numbers, upper and lowercase letters.</span>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-icon">
-                                    <i class="lni-lock"></i>
-                                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Password(Confirm Password)" class="form-control"> </div>
-                            </div>
-                            <div class="form-group">
-                                <ul class="errors"></ul>
-                                <ul class="success"></ul>
-                            </div>
-                            <div class="form-group mb-3">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkedall">
-                                    <label>By clicking Register you agree to our <a href="{{url('support/terms-conditions')}}">Terms &amp; Conditions</a></label>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <input type="submit" value="Register" class="btn btn-common log-btn"> 
-                            </div>
-                            <div class="text-center margin-10">
-                                <span >Already have an account?</span>
-                                <a href="{{ url('user/signin') }}">Login Here</a>
-                            </div>
-                            <div class="form-group mb-3 social-p">
-                                <a href="{{ url('auth/google') }}">
-                                  <img src="{{ asset('public/social/googleconnect.png') }}" class="img-responsive social">
-                                </a> 
-                                <a href="{{ url('auth/redirect/facebook') }}">
-                                  <img src="{{ asset('public/social/facebookconnect.png') }}" class="img-responsive social-f">
-                                </a> 
-                            </div>
-                        </fieldset>
-                    </form>
-
-                </div>
-            </div>
-            <div class="col-lg-5 col-md-12 col-xs-12">
-                <section class="services bg-light section-padding">
-                    <div class="container">
-                        <div class="row justify-content-c--enter">
-                            <div class="col-12 text-center">
-                                <div class="heading">
-                                    <h2 class="section-title">Key Features</h2>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-12 col-xs-12">
-                                <div class="services-item wow fadeInRight" data-wow-delay="0.2s">
-                                    <div class="icon">
-                                        <i class="lni-pencil-alt"></i>
-                                    </div>
-                                    <div class="services-content">
-                                        <h3><a >SignUp, Its free</a></h3>
-                                        <p><b>You can just signup by providing following detail.</b></p>
-                                        <ul class="padding-20">
-                                            <li>1. First and last Name must be greater than 3 words and required.</li>
-                                            <li>2. Email required and must be unique.</li>
-                                            <li>3. Phone Number required and must be unique.</li> 
-                                            <li>4. Phone format like : 03004466882 or +923006688442.</li>
-                                            <li>5. Password must be min. 6 characters. Combine numbers, upper and lowercase letters.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 col-lg-12 col-xs-12">
-                                <div class="services-item wow fadeInRight" data-wow-delay="0.4s">
-                                    <div class="icon">
-                                        <i class="lni-emoji-smile"></i>
-                                    </div>
-                                    <div class="services-content">
-                                        <h3><a >Sign Up Facebook or Google</a></h3>
-                                        <p><b>You can also signup by click faceboof or google button.</b></p>
-                                        <ul class="padding-20">
-                                            <li>1. By faceboof or google sign up account will be activated automatically.</li>
-                                            <li>2. Just one click and you will be registered.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 col-lg-12 col-xs-12">
-                                <div class="services-item wow fadeInRight" data-wow-delay="0.6s">
-                                    <div class="icon">
-                                        <i class="lni-heart"></i>
-                                    </div>
-                                    <div class="services-content">
-                                        <h3><a>Create and Manage Items</a></h3>
-                                        <p><b>Manage your ads on the go.</b></p>
-                                        <ul class="padding-20">
-                                            <li>1. After Email verification you can also manage your own dashboard.</li>
-                                            <li>2. You change all profile settings.</li>
-                                            <li>3. Also Manage your ads.</li>
-                                            <li>4. Reply to Interested Peoples.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="counter-section section-padding">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-3 col-sm-6 work-counter-widget">
-                <div class="counter">
-                    <div class="icon"><i class="lni-layers"></i></div>
-                    <h2 class="counterUp">116</h2>
-                    <p> Brands</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 work-counter-widget">
-                <div class="counter">
-                    <div class="icon"><i class="lni-users"></i></div>
-                    <h2 class="counterUp">5487</h2>
-                    <p>TRUSTED SELLER</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 work-counter-widget">
-                <div class="counter">
-                    <div class="icon"><i class="lni-facebook"></i></div>
-                    <h2 class="counterUp">400</h2>
-                    <p>FACEBOOK FANS</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 work-counter-widget">
-                <div class="counter">
-                    <div class="icon"><i class="lni-map"></i></div>
-                    <h2 class="counterUp">649</h2>
-                    <p>Locations</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="services section-padding">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-6 col-lg-4 col-xs-12">
-                <div class="services-item wow fadeInRight" data-wow-delay="0.2s">
-                    <div class="icon">
-                        <i class="lni-book"></i>
-                    </div>
-                    <div class="services-content">
-                        <h3><a href="#">BACKGROUND</a></h3>
-                        <p>We are observing that no one provides the best portal for selling online in Pakistan. <br>So we started to provide a best and easy <br> to use portal for our clients across <br> Pakistan.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 col-xs-12">
-                <div class="services-item wow fadeInRight" data-wow-delay="0.4s">
-                    <div class="icon">
-                        <i class="lni-leaf"></i>
-                    </div>
-                    <div class="services-content">
-                        <h3><a href="#">SELLER SATISFACTION</a></h3>
-                        <p>We are here to deliver the best of us to everyone across Pakistan. In order to achieve this, we are providing 24 hour support to our clients. We are welcoming your feedbacks.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 col-xs-12">
-                <div class="services-item wow fadeInRight" data-wow-delay="0.6s">
-                    <div class="icon">
-                        <i class="lni-map"></i>
-                    </div>
-                    <div class="services-content">
-                        <h3><a href="#">METHODOLOGY</a></h3>
-                        <p>We are using the best methods and techniquies to get connected with our clients. We are using the latest techniques and technologies to provide the best to our clients without delay.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@stop 
+@stop
 @section('page-scripts')
-<script type="text/javascript">
-    $("#registerForm :input").on("keyup", function() {
-        if (!$(this).val()) {
-            $(this).addClass('required');
-        } else if ($(this).val()) {
-            $(this).removeClass('required');
-        }
-    });
-    $('#registerForm').submit(function(e) {
-        e.preventDefault();
-        $(".errors").text("");
-        $(".errors").hide();
-        $(".success").text("");
-        $(".success").hide();
-        var errors = 0;
-        $("#registerForm :input").map(function() {
-            if (!$(this).val()) {
-                $(this).addClass('required');
-                errors++;
-            } else if ($(this).val()) {
-                $(this).removeClass('required');
-            }
-        });
-        if (errors > 0) { return false; }
-        var formData = $(this).serialize();
-        $('.log-btn').attr('disabled', true);
-        $("#mydiv").addClass("disabled-div");
-        $.ajax({
-            type: 'POST',
-            url: '{{ url("/user/register") }}',
-            data: formData,
-            dataType: 'json',
-            error: function(data) {
-                $("#mydiv").removeClass("disabled-div");
-                $('.log-btn').attr('disabled', false);
-                var x = JSON.parse(data.responseText);
-                $(".errors").show();
-                for (var error in x.errors) {
-                    $(".errors").append("<li>"+x.errors[error]+"</li>");
-                    $('#'+error).addClass('required');
-                }
-            },
-            success: function(data) {
-                $("#mydiv").removeClass("disabled-div");
-                $('#registerForm')[0].reset();
-                $('.log-btn').prop('disabled', false);
-                $(".success").show();
-                $(".success").append("<li><strong>Sucess!</strong> Your account has been created successfully. We’ve sent you an email with activation link at the email address you provided. Please enjoy, and let us know if there’s anything else we can help you with. <br> <b> The Let Mobile Team <b></li>");
-            }
-        });
-    });
-</script>
 @stop

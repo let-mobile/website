@@ -12,7 +12,6 @@
 */
 
 Route::get('/', 'PostController@index');
-Route::get('/{slug}','PostController@show');
 Route::get('support/contact',function() { return view('frontend.contact'); });
 Route::get('support/about',function() { return view('frontend.about'); });
 Route::get('support/terms-conditions',function() { return view('frontend.terms'); });
@@ -20,24 +19,28 @@ Route::get('support/faqs',function() { return view('frontend.faqs'); });
 Route::post('contact/store','ContactController@store');
 Route::post('comments/store','CommentController@store');
 
+
+//Sign Up
+Route::get('register','UserController@signup');
+Route::post('register','UserController@register');
+
+// Sign In
+Route::get('login','UserController@signin');
+Route::post('authentication','UserController@authentication');
+
+// forgot password
+Route::get('forget-password','UserController@forgetpassword');
+Route::post('forget','UserController@forget');
+Route::get('change-passowrd/{hash}','UserController@changepassowrd');
+Route::post('reset-password/{hash}','UserController@resetpassword');
+
+//logout
+Route::get('logout','UserController@logout');
+
+
+Route::get('/{slug}','PostController@show');
+
 Route::prefix('user')->group(function () {
-	//Sign Up
-    Route::get('signup','UserController@signup');
-    Route::post('register','UserController@register');
-    
-    // Sign In
-    Route::get('signin','UserController@signin');
-    Route::post('authentication','UserController@authentication');
-
-    // forgot password
-    Route::get('forget-password','UserController@forgetpassword');
-    Route::post('forget','UserController@forget');
-    Route::get('change-passowrd/{hash}','UserController@changepassowrd');
-    Route::post('reset-password/{hash}','UserController@resetpassword');
-
-    //logout
-    Route::get('logout','UserController@logout');
-
     // User Dashboard Pages
     Route::group(['middleware' => ['homesession']], function () {
         Route::post('/update/{id}','Home@update');
@@ -98,13 +101,13 @@ Route::prefix('brand')->group(function () {
 });
 
 Route::prefix('blogs')->group(function () {
-     // Home 
+     // Home
     Route::get('/all', 'BlogController@list');
     Route::get('/{slug}','BlogController@show');
-});    
+});
 //blog routes
 Route::prefix('blog')->group(function () {
-    
+
     Route::group(['middleware' => ['adminsession']], function () {
         // Admin Panel
         Route::get('create','BlogController@create');
@@ -157,7 +160,7 @@ Route::prefix('admin')->group(function () {
         Route::get('mobiles/edit/{id}','admin\MobilesController@edit');
         Route::post('mobiles/update','admin\MobilesController@update');
         Route::get('mobiles/status','admin\MobilesController@changePublishStatus');
-    }); 
+    });
 });
 
 Route::prefix('new-mobiles')->group(function () {

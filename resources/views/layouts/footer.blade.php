@@ -1,84 +1,34 @@
 <footer>
-    <section class="footer-Content">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-xs-6 col-mb-12">
-                    <div class="widget">
-                        <div class="footer-logo"><img class="footer-img" src="{{ url('/') }}/public/let-mobile-f.webp" alt="Let Mobile"></div>
-                        <div class="textwidget">
-                            <p>Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.</p>
-                        </div>
-                        <br>
-                        <div class="post-btn">
-                            <a class="btn btn-common" href="<?php echo url('post/postad'); ?>"><i class="lni-pencil-alt"></i> Post an Ad</a>
-                        </div>
-                        <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
-                        <ul class="mt-3 footer-social">
-                            <li><a class="facebook" target="_blank" href="https://www.facebook.com/letmobilepkofficial"><i class="lni-facebook-filled"></i></a></li>
-                            <li><a class="twitter" target="_blank" href="https://twitter.com/LetMobile1"><i class="lni-twitter-filled"></i></a></li>
-                            <li><a class="instagram" target="_blank" href="https://www.instagram.com/letmobilepk/"><i class="lni-instagram-filled"></i></a></li>
-                            <li><a class="youtube" target="_blank" href="https://www.youtube.com/channel/UC1_1dW5fELOEciwsN6Cl7-A"><i class="fa fa-youtube"></i></a></li>
-                        </ul>
-                    </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 text-white">
+                    <img src="{{ asset('public/assets/images/footer-logo.png') }}" alt="Footer Logo" class="w-75">
+                    <p class="pt-2 lh-lg fs-6">Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.</p>
+                    <button class="btn-ad mt-3 btn-rupees p-3 w-75 fs-5">Post an ad</button>
                 </div>
-                <div class="col-lg-3 col-md-3 col-xs-6 col-mb-12">
-                    <div class="widget">
-                        <h3 class="block-title">Mobile Brands</h3>
-                        <ul class="menu">
-                            <li><a href="<?=url('brand/apple')?>"> - iPhone</a></li>
-                            <li><a href="<?=url('brand/samsung')?>">-  Samsung</a></li>
-                            <li><a href="<?=url('brand/oppo')?>">- OPPO</a></li>
-                            <li><a href="<?=url('brand/infinix')?>">- Infinix</a></li>
-                            <li><a href="<?=url('brand/huawei')?>">- Huawei</a></li>
-                            <li><a href="<?=url('brand/oneplus')?>">- Oneplus</a></li>
-                            <li><a href="<?=url('brand/vivo')?>">- Vivo</a></li>
-                            <li><a href="<?=url('brand/realme')?>">- Realme</a></li>
-                        </ul>
-                    </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 text-white">
+                    <h4 class="pb-2">Other Pages</h4>
+                    <ul class="p-0 list-group">
+                        <li class="list-group-item bg-transparent p-0 pb-2  border-0 "><a href="#" class="text-decoration-none text-white">- Home</a></li>
+                        <li class="list-group-item bg-transparent p-0 pb-2  border-0 "><a href="#" class="text-decoration-none text-white">- Blogs</a></li>
+                        <li class="list-group-item bg-transparent p-0 pb-2  border-0 "><a href="#" class="text-decoration-none text-white">- About us</a></li>
+                        <li class="list-group-item bg-transparent p-0 pb-2  border-0 "><a href="#" class="text-decoration-none text-white">- FAQ</a></li>
+                        <li class="list-group-item bg-transparent p-0 pb-2  border-0 "><a href="#" class="text-decoration-none text-white">- Contact us</a></li>
+                        <li class="list-group-item bg-transparent p-0 pb-2  border-0 "><a href="#" class="text-decoration-none text-white">- Policies</a></li>
+                        <li class="list-group-item bg-transparent p-0 pb-2  border-0 "><a href="#" class="text-decoration-none text-white">- Sign Up</a></li>
+                        <li class="list-group-item bg-transparent p-0 pb-2  border-0 "><a href="#" class="text-decoration-none text-white">- Sign In</a></li>
+                    </ul>
                 </div>
-                <div class="col-lg-3 col-md-3 col-xs-6 col-mb-12">
-                    <div class="widget">
-                        <h3 class="block-title">Locations (Cities)</h3>
-                        <ul class="menu">
-                            <li><a href="<?=url('city/lahore')?>">- Lahore</a></li>
-                            <li><a href="<?=url('city/karachi')?>">- Karachi</a></li>
-                            <li><a href="<?=url('city/islamabad')?>">- Islamabad</a></li>
-                            <li><a href="<?=url('city/faisalabad')?>">- Faisalabad</a></li>
-                            <li><a href="<?=url('city/multan')?>">- Multan</a></li>
-                            <li><a href="<?=url('city/rawalpindi')?>">- Rawalpindi</a></li>
-                            <li><a href="<?=url('city/peshawar')?>">- Peshawar</a></li>
-                            <li><a href="<?=url('city/quetta')?>">- Quetta</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-xs-6 col-mb-12">
-                    <div class="widget">
-                        <h3 class="block-title">Other Pages</h3>
-                        <ul class="menu">
-                            <li> <a href="<?php echo url('/'); ?>">- Home </a> </li>
-                            <li> <a href="{{ url('support/about') }}">- About us </a> </li>
-                            <li> <a href="{{ url('support/terms-conditions') }}">- Policies </a> </li>
-                            <li> <a href="{{ url('support/contact')}}">- Contact Us </a> </li>
-                            <li> <a href="{{ url('support/faqs')}}">- FAQ </a> </li>
-                            <li> <a href="{{ url('user/signup')}}">- Sign Up </a> </li>
-                            <li> <a href="{{ url('user/signin')}}">- Sign In </a> </li>
-                        </ul>
-                    </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 text-white">
+                    <h4 class="pb-2">Social Networks</h4>
+                    <ul class="p-0">
+                        <li class="d-inline"><a href="https://www.facebook.com/letmobilepkofficial" target="_blank"><img class="w--7" src="{{ asset('public/assets/images/facebook.png') }}" alt="Let Mobile Facebook Page"></a></li>
+                        <li class="d-inline"><a href="https://www.pinterest.com/letmobilepk/" target="_blank"><img class="w--7" src="{{ asset('public/assets/images/pintrest.png') }}" alt="Let Mobile Pintrest Profile"></a></li>
+                        <li class="d-inline"><a href="https://twitter.com/LetMobile1" target="_blank"><img class="w--7" src="{{ asset('public/assets/images/twitter.png') }}" alt="Let Mobile Twitter Profile"></a></li>
+                        <li class="d-inline"><a href="https://www.instagram.com/letmobilepk/" target="_blank"><img class="w--7" src="{{ asset('public/assets/images/insta.png') }}" alt="Let Mobile Instagram Account"></a></li>
+                    </ul>
+                    <a href="#"><img src="{{ asset('public/assets/images/google play.png') }}" class="mb-3 mt-3" alt="google play"></a>
                 </div>
             </div>
         </div>
-    </section>
-    <div id="copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="site-info text-center">
-                        <p>Designed and Developed by <a href="{{ url('/')}}" rel="nofollow">Let Mobile</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- <script type="text/javascript"> var infolinks_pid = 3235634; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script> -->
-    
-</footer>
+    </footer>

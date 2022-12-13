@@ -76,7 +76,7 @@
                                       <div class="form-group mb-3">
                                           <label for="ades" class="control-label font-weight-bold text-muted">Describe Ad</label>
                                           <div class="col-md-12">
-                                              <textarea name="ades" cols="40" rows="6" id="ades" name="ades" class="form-control input-md" placeholder="Describe what makes your ad unique">{{ $item['ad_description'] }}</textarea>
+                                              <textarea name="ades" cols="40" rows="6" id="ades" class="form-control input-md" placeholder="Describe what makes your ad unique">{{ $item['ad_description'] }}</textarea>
                                           </div>
                                       </div>
                                        <div class="form-group mb-3">
