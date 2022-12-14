@@ -7,7 +7,7 @@
 
 @stop
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="Main">
         <div class="MainInnserDiv">
             <div class="InnerCategoriesSec mt-4 mb-5">

@@ -58,6 +58,12 @@ input, label, p{
 }
 .TopNav{
     border-bottom: 3px solid #03a9fa;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    background-color: white;
+    z-index: 99999;
 }
 .topNavSocial{
     background-color: #03a9fa;
@@ -79,6 +85,7 @@ footer .col ul li,
     display: inline-block;
     margin-right: 10px;
 }
+
 .navbar form input, select{
     border: 1.5px solid #acabab !important;
 }
@@ -603,7 +610,6 @@ footer .col ul li a img{
     width: 7%;
   }
   @media only screen and (max-width: 600px) {
-
   .BrandDetail .ProfileDetail
   {
     padding: 10px !important;
@@ -621,8 +627,38 @@ footer .col ul li a img{
   {
     background-color: transparent !important;
   }
+  .topNavSocial
+  {
+    /* text-align: end; */
+  }
+  .logo-m
+  {
+    width: 70%;
+  }
+  .navbar
+  {
+      margin: 0px 0px;
+      padding: 0px !important;
+  }
+  .navbar .search-click
+  {
+    padding: 4px 10px;
+    height: inherit;
+    border-radius: 3px;
+    color: white;
+  }
+  .search--icon
+  {
+    position: absolute !important;
+    right: 85px;
+  }
 }
-
+@media only screen and (min-width: 600px) {
+    .d--mobile
+    {
+        display: none !important;
+    }
+}
 .topInput {
     background-color: #03a9fa;
     border: 0;
@@ -645,4 +681,16 @@ footer .col ul li a img{
     left: -100%;
     z-index: -10000;
     visibility: hidden;
+}
+.post--ad
+{
+    position: relative;
+    background: #03a9fa;
+    border: 1px solid #03a9fa !important;
+    padding: 10px 20px;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 50px;
 }

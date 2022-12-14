@@ -22,9 +22,8 @@
                     <li class="mr-3"><a href="https://www.instagram.com/letmobilepk/" target="_blank"><img src="{{ asset('assets/images/insta.png') }}" alt="Let Mobile Instagram Account"></a></li>
                 </ul>
                 <!-- hide float-end on mobile -->
-                <ul class="float-end d-inline">
-                    <!-- <li><a href="./login.php" class="text-white fs-6 text-decoration-none">Favourites</a></li> -->
-                    <li><a href="{{ url('login') }}" class="text-white fs-6 text-decoration-none">Post Ad</a></li>
+                <ul class=" d-inline">
+                    <li class="d-none d-sm-inline d-xs-inline"><a href="{{ url('login') }}" class="text-white fs-6 text-decoration-none">Post Ad</a></li>
                     <li><a href="{{ url('login') }}" class="text-white fs-6 text-decoration-none">Login</a></li>
                     <li><a href="{{ url('register') }}" class="text-white fs-6 text-decoration-none">Register</a></li>
                 </ul>
