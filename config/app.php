@@ -182,6 +182,9 @@ return [
 
         // Social Logins
         Laravel\Socialite\SocialiteServiceProvider::class,
+
+        //Mobile or Desktop
+        Jenssegers\Agent\AgentServiceProvider::class,
     ],
 
     /*

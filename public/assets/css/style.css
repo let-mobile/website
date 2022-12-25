@@ -38,8 +38,13 @@ input, label, p{
 }
 
 .lSSlideOuter {
-    position: relative;
-    overflow: visible !important;
+    position: relative;    
+    height: 400px;
+    overflow: hidden !important;
+}
+.detail-img
+{
+    width: -webkit-fill-available;
 }
 .lSSlideWrapper {
     position: static !important;
@@ -652,11 +657,28 @@ footer .col ul li a img{
     position: absolute !important;
     right: 85px;
   }
+  .lSSlideOuter {
+    position: relative;    
+        height: 260px;
+        overflow: hidden !important;
+    }
+    
 }
 @media only screen and (min-width: 600px) {
     .d--mobile
     {
         display: none !important;
+    }
+    .sticky-footer
+    {
+        width: 700px;
+        justify-content: center;
+        align-items: center;
+        border-left: 3px solid #03a9fa;
+        border-right: 3px solid #03a9fa;
+        bottom: -25px !important;
+        left: 50% !important; 
+        transform: translate(-50%,-50%);
     }
 }
 .topInput {
@@ -693,4 +715,28 @@ footer .col ul li a img{
     border-radius: 5px;
     overflow: hidden;
     height: 50px;
+}
+.sticky-footer
+{
+    position: fixed;
+    padding: 10px;
+    border-top: 3px solid #03a9fa;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    background-color: white;
+    z-index: 99999;
+    text-align: center;
+    
+}
+.call-button
+{
+    background: #03a9fa;
+    border: 1px solid #03a9fa !important;
+    padding: 5px 10px;
+    outline: none;
+    color: white;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
 }

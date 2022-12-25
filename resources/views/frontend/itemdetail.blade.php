@@ -25,15 +25,16 @@
         }
 		if(count($ar) > 0){
 			for($i = 0; $i < count($ar); $i++){
-				$imgs .= '<li><a href="'.asset('images/'.$ar[$i]).'" target="_blank"><img src="'.asset('images/'.$ar[$i]).'" alt="'.$item["brand"]["brand"].' phones price in '. ucwords($item["city"]["city"]) .'" class="w-100"></a></li>';
+				$imgs .= '<li><a href="'.asset('images/'.$ar[$i]).'" target="_blank"><img src="'.asset('images/'.$ar[$i]).'" alt="'.$item["brand"]["brand"].' phones price in '. ucwords($item["city"]["city"]) .'" class="detail-img"></a></li>';
 			}
 		} else {
 			$imgs = '<div class="item"><div class="product-img"><img src="'.asset('images/noimage.png').'" alt=""'.$item["brand"]["brand"].' phones price in '. ucwords($item["city"]["city"]) .$per.'""/></div><span class="price">Rs. '.number_format(str_replace(',','',@$item["adprice"])).'</span></div>';
 		}
 	}
-	?>
-<div class="Main">
-    <div class="MainInnserDiv">
+?>
+<div class="Main pt-3">
+    <div class="MainInnserDiv pt-3">
+        @if((new \Jenssegers\Agent\Agent())->isDesktop())
         <div class="DetailSec">
             <div class="container">
                 <div class="BreadcrumbSec position-relative mb-1">
@@ -46,6 +47,7 @@
                 </div>
             </div>
         </div>
+        @endif
         <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -54,6 +56,38 @@
                         {!! $imgs ?? '' !!}
                     </ul>
                 </div>
+                @if((new \Jenssegers\Agent\Agent())->isMobile())
+                    <div class="BrandDetail pt-3">
+                        <div class="position-relative">
+                            <h5 class="fs-4">{{ ucwords($item['adtitle']) }}</h5>
+                            <div class="d-inline">
+                                <img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end">
+                            </div>
+                            @php
+                            $per = ''; if($item['cond'] == '2') { $per = '/per Installment'; }
+                            @endphp
+                            <button class="btn-rupees uppercase mb-2">Rs. {{number_format(str_replace(',','',@$item["adprice"])).$per}}</button>
+                            <p class="locationInfo border-top pt-2 m-0">
+                                <img src="{{ asset('assets/images/location-icon.png') }}" alt="location">
+                                <b style="color: #000;">
+                                    <a href="{{ url('/') }}?loc[]={{ $item['loc_id'] ?? '' }}" class="text-dark text-decoration-none"> {{ ucwords($item['adadress']) }}, {{ ucwords($item["city"]["city"]) }}</a>
+                                </b>
+                                <span class="float-end">{{ date('d M h:i a', $item['adtime']) }}</span>
+                            </p>
+                        </div>
+                        <div class="ProfileDetail position-relative mt-3">
+                            <img src="{{ asset('profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('assets/images/profile-icon.png') }}'" alt="" class="profile-icon d-none d-sm-inline d-xs-inline">
+                            <h5 class="fs-4">{{ ucwords($item['selname']) }}</h5>
+                            <ul>
+                                <li class="pb-2"><img src="{{ asset('assets/images/phone-icon.png') }}" alt=""><b>{{ $item['adphone'] ?? '' }}</b></li>
+                            </ul>
+                            <div class="mt-2">
+                                <a class="call-button">Make Call</a>
+                                <a class="call-button">Call Me</a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <div class="DetailText mt-3">
                     <h4 class="text-decoration-underline">Details:</h4>
                     <ul class="pt-2">
@@ -75,33 +109,38 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="BrandDetail pt-3">
-                    <div class="position-relative">
-                        <h5 class="fs-4">{{ ucwords($item['adtitle']) }}</h5>
-                        <div class="d-inline">
-                            <img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end">
+                @if((new \Jenssegers\Agent\Agent())->isDesktop())
+                    <div class="BrandDetail pt-3">
+                        <div class="position-relative">
+                            <h5 class="fs-4">{{ ucwords($item['adtitle']) }}</h5>
+                            <div class="d-inline">
+                                <img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end">
+                            </div>
+                            @php
+                            $per = ''; if($item['cond'] == '2') { $per = '/per Installment'; }
+                            @endphp
+                            <button class="btn-rupees uppercase mb-2">Rs. {{number_format(str_replace(',','',@$item["adprice"])).$per}}</button>
+                            <p class="locationInfo border-top pt-2 m-0">
+                                <img src="{{ asset('assets/images/location-icon.png') }}" alt="location">
+                                <b style="color: #000;">
+                                    <a href="{{ url('/') }}?loc[]={{ $item['loc_id'] ?? '' }}" class="text-dark text-decoration-none"> {{ ucwords($item['adadress']) }}, {{ ucwords($item["city"]["city"]) }}</a>
+                                </b>
+                                <span class="float-end">{{ date('d M h:i a', $item['adtime']) }}</span>
+                            </p>
                         </div>
-                        @php
-                        $per = ''; if($item['cond'] == '2') { $per = '/per Installment'; }
-                        @endphp
-                        <button class="btn-rupees uppercase mb-2">Rs. {{number_format(str_replace(',','',@$item["adprice"])).$per}}</button>
-                        <p class="locationInfo border-top pt-2 m-0">
-                            <img src="{{ asset('assets/images/location-icon.png') }}" alt="location">
-                            <b style="color: #000;">
-                                <a href="{{ url('/') }}?loc[]={{ $item['loc_id'] ?? '' }}" class="text-dark text-decoration-none"> {{ ucwords($item['adadress']) }}, {{ ucwords($item["city"]["city"]) }}</a>
-                            </b>
-                            <span class="float-end">{{ date('d M h:i a', $item['adtime']) }}</span>
-                        </p>
+                        <div class="ProfileDetail position-relative mt-3">
+                            <img src="{{ asset('profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('assets/images/profile-icon.png') }}'" alt="" class="profile-icon d-none d-sm-inline d-xs-inline">
+                            <h5 class="fs-4">{{ ucwords($item['selname']) }}</h5>
+                            <ul>
+                                <li class="pb-2"><img src="{{ asset('assets/images/phone-icon.png') }}" alt=""><b>{{ $item['adphone'] ?? '' }}</b></li>
+                            </ul>
+                            <div class="mt-2">
+                                <a class="call-button">Make Call</a>
+                                <a class="call-button">Call Me</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ProfileDetail position-relative mt-3">
-                        <img src="{{ asset('profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('assets/images/profile-icon.png') }}'" alt="" class="profile-icon d-none d-sm-inline d-xs-inline">
-                        <h5 class="fs-4">{{ ucwords($item['selname']) }}</h5>
-                        <ul>
-                            <li class="pb-2"><img src="{{ asset('assets/images/phone-icon.png') }}" alt=""><b>{{ $item['adphone'] ?? '' }}</b></li>
-                        </ul>
-                        <!-- <p class="locationInfo pt-4 m-0"><img src="./images/location-icon.png" alt=""> Location: <b style="color: #000;">Karachi</b></p> -->
-                    </div>
-                </div>
+                @endif
                 <div class="MapSec mt-3">
                     <object style="border:0; height: 300px; width: 100%;" data="https://www.google.com/maps/embed/v1/place?q={{ urlencode($item['adadress']) }},{{ $item['city']['city'] }}&key=AIzaSyAy_OvtbZn9ktU5njKItgbAHBozJ8vRbNg"></object>
                     <a target="_blank" href="https://www.google.com/maps?q={{ urlencode($item['adadress']) }},{{ $item['city']['city'] }}" class="GetDirectionbtn float-end mt-2 bg-white text-decoration-none"><img src="{{ asset('assets/images/dircetion.png') }}" alt=""> Get Direction</a>
@@ -163,6 +202,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="sticky-footer">
+        <a class="call-button">Make Call</a>
+        <a class="call-button">Call Me</a>
+        <a class="call-button">Save</a>
     </div>
 </div>
 @stop
