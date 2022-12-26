@@ -27,10 +27,15 @@
                     float-end
                 @endif
                 ">
-                    <li class="d-none d-sm-inline d-xs-inline"><a href="{{ url('login') }}" class="text-white fs-6 text-decoration-none">Post Ad</a></li>
+                    <li class="d-none d-sm-inline d-xs-inline"><a href="{{ url('post/postad') }}" class="text-white fs-6 text-decoration-none">Post Ad</a></li>
                     <li><a href="{{ url('favourite') }}" class="text-white fs-6 text-decoration-none">Favourite</a></li>
-                    <li><a href="{{ url('login') }}" class="text-white fs-6 text-decoration-none">Login</a></li>
-                    <li><a href="{{ url('register') }}" class="text-white fs-6 text-decoration-none">Register</a></li>
+                    @if ( Auth::guest() )
+                        <li><a href="{{ url('login') }}" class="text-white fs-6 text-decoration-none">Login</a></li>
+                        <li><a href="{{ url('register') }}" class="text-white fs-6 text-decoration-none">Register</a></li>
+                    @else
+                        <li><a class="text-white fs-6 text-decoration-none" href="{{url('user')}}/{{ Session::get('slug') }}">My Ads</a></li>
+                    @endif
+                    
                 </ul>
                 </ul>
             </div>

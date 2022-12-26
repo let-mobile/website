@@ -59,12 +59,12 @@
                     @if((new \Jenssegers\Agent\Agent())->isMobile())
                         <div class="BrandDetail pt-3">
                             <div class="position-relative">
-                                <h5 class="fs-4">{{ ucwords($item['adtitle']) }}</h5>
+                                <h1 class="fs-4">{{ ucwords($item['adtitle']) }}</h1>
                                 <div class="d-inline">
                                     <img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end">
                                 </div>
                                 @php
-                                $per = ''; if($item['cond'] == '2') { $per = '/per Installment'; }
+                                    $per = ''; if($item['cond'] == '2') { $per = '/per Installment'; }
                                 @endphp
                                 <button class="btn-rupees uppercase mb-2">Rs. {{number_format(str_replace(',','',@$item["adprice"])).$per}}</button>
                                 <p class="locationInfo border-top pt-2 m-0">
@@ -112,7 +112,7 @@
                     @if((new \Jenssegers\Agent\Agent())->isDesktop())
                         <div class="BrandDetail pt-3">
                             <div class="position-relative">
-                                <h5 class="fs-4">{{ ucwords($item['adtitle']) }}</h5>
+                                <h1 class="fs-4">{{ ucwords($item['adtitle']) }}</h1>
                                 <div class="d-inline">
                                     <img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end">
                                 </div>
@@ -135,7 +135,7 @@
                                     <li class="pb-2"><img src="{{ asset('assets/images/phone-icon.png') }}" alt=""><b>{{ $item['adphone'] ?? '' }}</b></li>
                                 </ul>
                                 <div class="mt-2">
-                                    <a class="call-button">Make Call</a>
+                                    <a href="tel:{{ $item['adphone'] ?? '' }}" class="call-button">Make Call</a>
                                     <a class="call-button">Call Me</a>
                                 </div>
                             </div>

@@ -15,9 +15,14 @@
                     <button type="submit" class="search-click" ><img src="{{ asset('assets/images/search-icon.png') }}" alt=""></button>
                 </form>
             </div>
-
-
-            <a href="" class="d-none d-sm-inline d-xs-inline post--ad text-decoration-none">Post Free ad</a>
+            <div class="d-none d-sm-inline d-xs-inline">
+                @if (! Auth::guest() )
+                    <a class="header-top-button text-decoration-none" href="{{url('user')}}/{{ Session::get('slug') }}">My Ads</a> |
+                    <a class="header-top-button text-decoration-none" href="{{url('logout')}}">Logout </a>
+                @endif
+                <a href="{{ url('post/postad') }}" class=" post--ad text-decoration-none">Post Free ad</a>
+            </div>
+                
         </nav>
     </div>
 
