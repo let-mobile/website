@@ -42,10 +42,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        
         if (Auth::guest()) {
             Session::flash('message',"Nothing"); 
-            return redirect('user/signup');
+            return redirect('register');
         }
         else {
             $data['brands'] = Brand::get();

@@ -49,104 +49,104 @@
         </div>
         @endif
         <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="DetailpageSlider mt-3">
-                    <ul id="Detail-slider" class="DetailSliderCS">
-                        {!! $imgs ?? '' !!}
-                    </ul>
-                </div>
-                @if((new \Jenssegers\Agent\Agent())->isMobile())
-                    <div class="BrandDetail pt-3">
-                        <div class="position-relative">
-                            <h5 class="fs-4">{{ ucwords($item['adtitle']) }}</h5>
-                            <div class="d-inline">
-                                <img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end">
-                            </div>
-                            @php
-                            $per = ''; if($item['cond'] == '2') { $per = '/per Installment'; }
-                            @endphp
-                            <button class="btn-rupees uppercase mb-2">Rs. {{number_format(str_replace(',','',@$item["adprice"])).$per}}</button>
-                            <p class="locationInfo border-top pt-2 m-0">
-                                <img src="{{ asset('assets/images/location-icon.png') }}" alt="location">
-                                <b style="color: #000;">
-                                    <a href="{{ url('/') }}?loc[]={{ $item['loc_id'] ?? '' }}" class="text-dark text-decoration-none"> {{ ucwords($item['adadress']) }}, {{ ucwords($item["city"]["city"]) }}</a>
-                                </b>
-                                <span class="float-end">{{ date('d M h:i a', $item['adtime']) }}</span>
-                            </p>
-                        </div>
-                        <div class="ProfileDetail position-relative mt-3">
-                            <img src="{{ asset('profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('assets/images/profile-icon.png') }}'" alt="" class="profile-icon d-none d-sm-inline d-xs-inline">
-                            <h5 class="fs-4">{{ ucwords($item['selname']) }}</h5>
-                            <ul>
-                                <li class="pb-2"><img src="{{ asset('assets/images/phone-icon.png') }}" alt=""><b>{{ $item['adphone'] ?? '' }}</b></li>
-                            </ul>
-                            <div class="mt-2">
-                                <a class="call-button">Make Call</a>
-                                <a class="call-button">Call Me</a>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="DetailpageSlider mt-3">
+                        <ul id="Detail-slider" class="DetailSliderCS">
+                            {!! $imgs ?? '' !!}
+                        </ul>
                     </div>
-                @endif
-                <div class="DetailText mt-3">
-                    <h4 class="text-decoration-underline">Details:</h4>
-                    <ul class="pt-2">
-                        <li>Brand: <b><a href="{{ url('/') }}?brand[]={{ $item['br_id'] ?? '' }}" class="text-dark text-decoration-none">{{ ucwords(($item["brand"]["brand"])).' Phones' }} </a></b></li>
-                        <li>Condition: <b>
-                            @if($item['cond'] == '0')
-                                <a href="{{ url('/') }}?cond[]=0" class="text-dark text-decoration-none">Used</a>
-                            @elseif($item['cond'] == '1')
-                                <a href="{{ url('/') }}?cond[]=1" class="text-dark text-decoration-none">New</a>
-                            @elseif($item['cond'] == '2')
-                                <a href="{{ url('/') }}?cond[]=2" class="text-dark text-decoration-none">On Installments</a>
-                            @endif
-                            </b>
-                        </li>
-                        <li>Views: <b>{{$item['postview_count'] ?? 0}}</b></li>
-                    </ul>
-                    <h4 class="text-decoration-underline mt-3">Description:</h4>
-                    <div class="pt-2"> {!! htmlspecialchars_decode($item['ad_description']) !!} </div>
+                    @if((new \Jenssegers\Agent\Agent())->isMobile())
+                        <div class="BrandDetail pt-3">
+                            <div class="position-relative">
+                                <h5 class="fs-4">{{ ucwords($item['adtitle']) }}</h5>
+                                <div class="d-inline">
+                                    <img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end">
+                                </div>
+                                @php
+                                $per = ''; if($item['cond'] == '2') { $per = '/per Installment'; }
+                                @endphp
+                                <button class="btn-rupees uppercase mb-2">Rs. {{number_format(str_replace(',','',@$item["adprice"])).$per}}</button>
+                                <p class="locationInfo border-top pt-2 m-0">
+                                    <img src="{{ asset('assets/images/location-icon.png') }}" alt="location">
+                                    <b style="color: #000;">
+                                        <a href="{{ url('/') }}?loc[]={{ $item['loc_id'] ?? '' }}" class="text-dark text-decoration-none"> {{ ucwords($item['adadress']) }}, {{ ucwords($item["city"]["city"]) }}</a>
+                                    </b>
+                                    <span class="float-end">{{ date('d M h:i a', $item['adtime']) }}</span>
+                                </p>
+                            </div>
+                            <div class="ProfileDetail position-relative mt-3">
+                                <img src="{{ asset('profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('assets/images/profile-icon.png') }}'" alt="" class="profile-icon d-none d-sm-inline d-xs-inline">
+                                <h5 class="fs-4">{{ ucwords($item['selname']) }}</h5>
+                                <ul>
+                                    <li class="pb-2"><img src="{{ asset('assets/images/phone-icon.png') }}" alt=""><b>{{ $item['adphone'] ?? '' }}</b></li>
+                                </ul>
+                                <div class="mt-2">
+                                    <a href="tel:{{ $item['adphone'] ?? '' }}" class="call-button">Make Call</a>
+                                    <a class="call-button">Call Me</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="DetailText mt-3">
+                        <h4 class="text-decoration-underline">Details:</h4>
+                        <ul class="pt-2">
+                            <li>Brand: <b><a href="{{ url('/') }}?brand[]={{ $item['br_id'] ?? '' }}" class="text-dark text-decoration-none">{{ ucwords(($item["brand"]["brand"])).' Phones' }} </a></b></li>
+                            <li>Condition: <b>
+                                @if($item['cond'] == '0')
+                                    <a href="{{ url('/') }}?cond[]=0" class="text-dark text-decoration-none">Used</a>
+                                @elseif($item['cond'] == '1')
+                                    <a href="{{ url('/') }}?cond[]=1" class="text-dark text-decoration-none">New</a>
+                                @elseif($item['cond'] == '2')
+                                    <a href="{{ url('/') }}?cond[]=2" class="text-dark text-decoration-none">On Installments</a>
+                                @endif
+                                </b>
+                            </li>
+                            <li>Views: <b>{{$item['postview_count'] ?? 0}}</b></li>
+                        </ul>
+                        <h4 class="text-decoration-underline mt-3">Description:</h4>
+                        <div class="pt-2"> {!! htmlspecialchars_decode($item['ad_description']) !!} </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @if((new \Jenssegers\Agent\Agent())->isDesktop())
+                        <div class="BrandDetail pt-3">
+                            <div class="position-relative">
+                                <h5 class="fs-4">{{ ucwords($item['adtitle']) }}</h5>
+                                <div class="d-inline">
+                                    <img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end">
+                                </div>
+                                @php
+                                $per = ''; if($item['cond'] == '2') { $per = '/per Installment'; }
+                                @endphp
+                                <button class="btn-rupees uppercase mb-2">Rs. {{number_format(str_replace(',','',@$item["adprice"])).$per}}</button>
+                                <p class="locationInfo border-top pt-2 m-0">
+                                    <img src="{{ asset('assets/images/location-icon.png') }}" alt="location">
+                                    <b style="color: #000;">
+                                        <a href="{{ url('/') }}?loc[]={{ $item['loc_id'] ?? '' }}" class="text-dark text-decoration-none"> {{ ucwords($item['adadress']) }}, {{ ucwords($item["city"]["city"]) }}</a>
+                                    </b>
+                                    <span class="float-end">{{ date('d M h:i a', $item['adtime']) }}</span>
+                                </p>
+                            </div>
+                            <div class="ProfileDetail position-relative mt-3">
+                                <img src="{{ asset('profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('assets/images/profile-icon.png') }}'" alt="" class="profile-icon d-none d-sm-inline d-xs-inline">
+                                <h5 class="fs-4">{{ ucwords($item['selname']) }}</h5>
+                                <ul>
+                                    <li class="pb-2"><img src="{{ asset('assets/images/phone-icon.png') }}" alt=""><b>{{ $item['adphone'] ?? '' }}</b></li>
+                                </ul>
+                                <div class="mt-2">
+                                    <a class="call-button">Make Call</a>
+                                    <a class="call-button">Call Me</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="MapSec mt-3">
+                        <object style="border:0; height: 300px; width: 100%;" data="https://www.google.com/maps/embed/v1/place?q={{ urlencode($item['adadress']) }},{{ $item['city']['city'] }}&key=AIzaSyAy_OvtbZn9ktU5njKItgbAHBozJ8vRbNg"></object>
+                        <a target="_blank" href="https://www.google.com/maps?q={{ urlencode($item['adadress']) }},{{ $item['city']['city'] }}" class="GetDirectionbtn float-end mt-2 bg-white text-decoration-none"><img src="{{ asset('assets/images/dircetion.png') }}" alt=""> Get Direction</a>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                @if((new \Jenssegers\Agent\Agent())->isDesktop())
-                    <div class="BrandDetail pt-3">
-                        <div class="position-relative">
-                            <h5 class="fs-4">{{ ucwords($item['adtitle']) }}</h5>
-                            <div class="d-inline">
-                                <img src="{{ asset('assets/images/like.png') }}" alt="Like" class="float-end">
-                            </div>
-                            @php
-                            $per = ''; if($item['cond'] == '2') { $per = '/per Installment'; }
-                            @endphp
-                            <button class="btn-rupees uppercase mb-2">Rs. {{number_format(str_replace(',','',@$item["adprice"])).$per}}</button>
-                            <p class="locationInfo border-top pt-2 m-0">
-                                <img src="{{ asset('assets/images/location-icon.png') }}" alt="location">
-                                <b style="color: #000;">
-                                    <a href="{{ url('/') }}?loc[]={{ $item['loc_id'] ?? '' }}" class="text-dark text-decoration-none"> {{ ucwords($item['adadress']) }}, {{ ucwords($item["city"]["city"]) }}</a>
-                                </b>
-                                <span class="float-end">{{ date('d M h:i a', $item['adtime']) }}</span>
-                            </p>
-                        </div>
-                        <div class="ProfileDetail position-relative mt-3">
-                            <img src="{{ asset('profiles') }}/{{ $item['user']['image'] }}" onerror="this.src='{{ asset('assets/images/profile-icon.png') }}'" alt="" class="profile-icon d-none d-sm-inline d-xs-inline">
-                            <h5 class="fs-4">{{ ucwords($item['selname']) }}</h5>
-                            <ul>
-                                <li class="pb-2"><img src="{{ asset('assets/images/phone-icon.png') }}" alt=""><b>{{ $item['adphone'] ?? '' }}</b></li>
-                            </ul>
-                            <div class="mt-2">
-                                <a class="call-button">Make Call</a>
-                                <a class="call-button">Call Me</a>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                <div class="MapSec mt-3">
-                    <object style="border:0; height: 300px; width: 100%;" data="https://www.google.com/maps/embed/v1/place?q={{ urlencode($item['adadress']) }},{{ $item['city']['city'] }}&key=AIzaSyAy_OvtbZn9ktU5njKItgbAHBozJ8vRbNg"></object>
-                    <a target="_blank" href="https://www.google.com/maps?q={{ urlencode($item['adadress']) }},{{ $item['city']['city'] }}" class="GetDirectionbtn float-end mt-2 bg-white text-decoration-none"><img src="{{ asset('assets/images/dircetion.png') }}" alt=""> Get Direction</a>
-                </div>
-            </div>
-        </div>
         </div>
         <div class="InnerCategoriesSec DetailPageSec mt-4">
             <div class="container">
@@ -204,7 +204,7 @@
         </div>
     </div>
     <div class="sticky-footer">
-        <a class="call-button">Make Call</a>
+        <a href="tel:{{ $item['adphone'] ?? '' }}" class="call-button">Make Call</a>
         <a class="call-button">Call Me</a>
         <a class="call-button">Save</a>
     </div>
