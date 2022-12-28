@@ -49,11 +49,34 @@
     <div class="BtmFooter">
         <p class="text-center dev  m-0 text-white">Designed and Developed by Let Mobile</p>
     </div>
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Filter</h5>
+                    <button type="button" class="close filter-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    @include('frontend.partials.mobile-filter')
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/lightslider.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".search--icon").click(function(){
+                $("#myModal").modal('show');
+            });
+            $(".filter-close").click(function(){
+                $("#myModal").modal('hide');
+            });
+        });
+    </script>
     @yield('page-scripts')
   </body>
 </html>

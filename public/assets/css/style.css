@@ -740,3 +740,13 @@ footer .col ul li a img{
     text-decoration: none;
     cursor: pointer;
 }
+.modal
+{
+        z-index: 99999 !important;
+}
+.filter-close
+{
+    background: none;
+    border: none;
+    outline: none;
+}
