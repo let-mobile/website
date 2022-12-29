@@ -32,8 +32,8 @@
 		}
 	}
 ?>
-<div class="Main pt-3">
-    <div class="MainInnserDiv pt-3">
+<div class="Main pt-2">
+    <div class="MainInnserDiv">
         @if((new \Jenssegers\Agent\Agent())->isDesktop())
         <div class="DetailSec">
             <div class="container">

@@ -85,31 +85,6 @@
                 </div>
             </div>
         </div>
-        <div class="loginBtmSec mt-5">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="boxe-style">
-                        <p class="Innertop_img"><img src="{{ asset('assets/images/bkgrndBtm-icon.png') }}" alt=""/></p>
-                        <h4>BACKGROUND</h4>
-                        <p>We are observing that no one provides the best portal for selling online in Pakistan.So we started to provide a best and easyto use portal for our clients across Pakistan.</p>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="boxe-style">
-                        <p class="Innertop_img"><img src="{{ asset('assets/images/bkgrndBtm-icon.png') }}" alt=""/></p>
-                        <h4>Seller Satisfation</h4>
-                        <p>We are observing that no one provides the best portal for selling online in Pakistan.So we started to provide a best and easyto use portal for our clients across Pakistan.</p>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="boxe-style">
-                        <p class="Innertop_img"><img src="{{ asset('assets/images/bkgrndBtm-icon.png') }}" alt=""/></p>
-                        <h4>METHODOLOGY</h4>
-                        <p>We are observing that no one provides the best portal for selling online in Pakistan.So we started to provide a best and easyto use portal for our clients across Pakistan.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 @stop

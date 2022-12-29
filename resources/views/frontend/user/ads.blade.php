@@ -8,72 +8,8 @@
 | Let Mobile  | Administrator </title>
 <meta name="description" content="Let mobile is largest Used Mobile and New Mobiles Sale and buy Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.">
 @stop
-@section('page-css')
-    <style type="text/css">
-    .required {
-        border-color: red !important;
-    }
-    .errors
-    {
-        background: #f8f8f8;
-        padding: 20px;
-        color: darkred;
-        border-radius: 5px;
-        display: none
-    }
-    .success
-    {
-        background: #03a9f4;
-        padding: 20px;
-        color: white;
-        border-radius: 5px;
-        display: none
-    }
-    .notification-style
-    {
-        background: #03a9f4;
-        padding: 20px;
-        color: white;
-        border-radius: 5px;
-        margin: 10px 45px;
-    }
-    .disabled-div {
-          pointer-events: none;
-          opacity: 0.4;
-      }
-    #user-icon
-    {
-        width: 50%;
-    }
-    .image {
-        overflow: hidden;
-        position: relative;
-    }
 
-    .label {
-        background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
-        bottom: -25px;
-        color: #fff;
-        left: 0;
-        margin: 0;
-        position: absolute;
-        right: 0;
-        text-align: center;
-        transition:0.1s all;
-        cursor:pointer;
-    }
-    .input
-    {
-        visibility:hidden;
-        height: 0px !important;
-    }
-    .image:hover .label {
-      bottom: 0px;
-    }
-</style>
-@stop
-    @section('content')
-    <div></div>
+@section('content')
     <div class="page-header" style="background: url({{ url('/') }}/public/assets/img/banner1.webp);">
         <div class="container">
             <div class="row">

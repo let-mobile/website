@@ -7,10 +7,10 @@
 
 @stop
 @section('content')
-<div class="container mt-5">
-    <div class="Main">
+<div class="container">
+    <div class="Main mt-3">
         <div class="MainInnserDiv">
-            <div class="InnerCategoriesSec mt-4 mb-5">
+            <div class="InnerCategoriesSec mb-5">
                 <div class="container">
                     <div class="row">
                         @include('frontend.partials.filters')

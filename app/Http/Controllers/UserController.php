@@ -59,7 +59,8 @@ class UserController extends Controller
                     'slug'=>$user['usrslug'],
                     'image'=>$user['image'],
                 ]);
-            return response(['success' => true,'message' => 'Email and Password verified.You are Redirecting...'], Response::HTTP_OK);
+            return redirect("/");
+            // return response(['success' => true,'message' => 'Email and Password verified.You are Redirecting...'], Response::HTTP_OK);
         }
         return redirect("login")->with('message', 'Oppes! You have entered invalid details')->withInput();
     }

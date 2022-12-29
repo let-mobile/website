@@ -4,22 +4,8 @@
 <meta name="description" content="Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in Lahore, Karachi, Islamabad, Faisalabad and Multan all over the Pakistan. ">
 @stop
 @section('content')
-<div class="page-header" style="background: url({{ url('/') }}/public/assets/img/banner1.webp);">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="breadcrumb-wrapper">
-                    <h1 class="product-title">FAQ</h1>
-                    <ol class="breadcrumb">
-                        <li><a href="{{url('/')}}">Home /</a></li>
-                        <li class="current">FAQ</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="faq section-padding">
+
+<div class="faq section-padding mt-3">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -35,7 +21,7 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse show">
                             <div class="panel-body">
-                                <p>Posting an ad is very simple. use upto 4 pictures with your ad and post all relevant details. Remember, phone number and email are neccessory for verification.</p>
+                                <p class="justify">Posting an ad is very simple. use upto 4 pictures with your ad and post all relevant details. Remember, phone number and email are neccessory for verification.</p>
                             </div>
                         </div>
                     </div>
@@ -57,7 +43,7 @@
                         </div>
                         <div id="collapseOne1" class="panel-collapse collapse show">
                             <div class="panel-body">
-                                <p>No. Our system does not generate spam emails, we use to authenticate out clients with phone and if by some problem we are getting trouble sending you message by phone, we will email you.</p>
+                                <p class="justify">No. Our system does not generate spam emails, we use to authenticate out clients with phone and if by some problem we are getting trouble sending you message by phone, we will email you.</p>
                             </div>
                         </div>
                     </div>
@@ -79,7 +65,7 @@
                         </div>
                         <div id="collapseOne2" class="panel-collapse collapse show">
                             <div class="panel-body">
-                                <p>By Our automated system you ad will be visible to public for 365 days by default, but you can request the admin to extend the date according to your desired time.</p>
+                                <p class="justify">By Our automated system you ad will be visible to public for 365 days by default, but you can request the admin to extend the date according to your desired time.</p>
                             </div>
                         </div>
                     </div>
@@ -101,7 +87,7 @@
                         </div>
                         <div id="collapseOne3" class="panel-collapse collapse show">
                             <div class="panel-body">
-                                <p>If you are registered user, you can delete your ad manually from the user panel. But if you have posted the ad without registeration, you are required to contact the admin for marking the ad as sold.</p>
+                                <p class="justify">If you are registered user, you can delete your ad manually from the user panel. But if you have posted the ad without registeration, you are required to contact the admin for marking the ad as sold.</p>
                             </div>
                         </div>
                     </div>

@@ -42,7 +42,7 @@
         </div>
         @include('layouts.search')
     </div>
-    <div class="mt-3"></div>
+    <div class="h--100"></div>
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')

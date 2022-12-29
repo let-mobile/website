@@ -4,7 +4,19 @@
     <meta name="description" content="Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.">
 @stop
 @section('content')
+
 <div class="MainLogin">
+@if(Session::has('message'))
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="notification-style">
+                    Once you've signed up for Let Mobile you can start creating ads.To effectively reach potential customers, your text ads should be informative, relevant, and engaging. or <a href="{{ url('login') }}" class="btn btn-info"> Login </a>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
     <div class="container MainInnserDiv">
         <form action="register" class="d--flex position-relative" method="POST">
             @csrf

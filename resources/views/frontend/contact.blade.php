@@ -1,106 +1,54 @@
 @extends('layouts.default')
 @section('title')
 <title>Contact Us | Let Mobile </title>
-<meta name="description" content="Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in Lahore, Karachi, Islamabad, Faisalabad and Multan all over the Pakistan. ">
+<meta name="description" content="LetMobile.pk is a website where you can buy or sell Used Mobile Phone and New Mobile Phone on Instalments. Now you can Sell, Buy or get at one place.">
 @stop
-<style type="text/css">
-    .required {
-        border-color: red !important;
-    }
-    .errors
-    {
-        background: #f8f8f8;
-        padding: 20px;
-        color: darkred;
-        border-radius: 5px;
-        display: none
-    }
-    .success
-    {
-        background: #03a9f4;
-        padding: 20px;
-        color: white;
-        border-radius: 5px;
-        display: none
-    }
-    .notification-style
-    {
-        background: #03a9f4;
-        padding: 20px;
-        color: white;
-        border-radius: 5px;
-        margin: 10px 45px;
-    }
-    .disabled-div {
-        pointer-events: none;
-        opacity: 0.4;
-    }
-</style>
 @section('content')
-<div class="page-header" style="background: url({{ url('/') }}/assets/img/banner1.webp);">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="breadcrumb-wrapper">
-                    <h1 class="product-title">Contact Us</h1>
-                    <ol class="breadcrumb">
-                        <li><a href="{{ url('/') }}">Home /</a></li>
-                        <li class="current"> Contact Us</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div id="content" class="section-padding">
 	<div class="container">
-		<div class="row clearfix">
+		<div class="row clearfix mt-3 mb-2">
 			<div class="col-md-4">
 				<div class="contact_info">
 					<h5 class="list-title gray"><strong>Contact Us</strong></h5>
 					<div class="contact-info">
 						<div class="address">
-							<p class="p1"> <i class="lni-map-marker"> </i> 85B , Block K Judicial Colony,Lahore(54782), Punjab, Pakistan </p>
-							<p> <i class="lni-envelope"></i>  info@letmobile.pk</p>
-							<p><i class="lni-phone"></i> (042) 35957618</p>
+							<p class="p1 mb-0"> <i class="lni-map-marker"> </i> Bareez Strt, 74-B Canal, Raiwind Rd, Lahore, 54000 </p>
+							<p class="mb-0"> <i class="lni-envelope"></i>  info@letmobile.pk</p>
+							<p class="mb-0"><i class="lni-phone"></i> (042) 35957618</p>
 							<div>
-								<p><strong><a href="">Get a Quote</a></strong></p>
-								<p><strong> <a href="{{ url('user/login') }}">Client Area Login</a></strong></p>
+								<p class="mb-0"><strong><a href="" class="text-decoration-none">Get a Quote</a></strong></p>
+								<p class="mb-0"><strong> <a href="{{ url('login') }}" class="text-decoration-none">Client Area Login</a></strong></p>
 								<!-- <p><strong> <a href="#skypeid" class="skype">Live Chat</a></strong></p> -->
-								<p><strong> <a href="{{ url('support/terms-conditions') }}">Knowledge Base</a></strong></p>
+								<p class="mb-0"><strong> <a href="{{ url('support/terms-conditions') }}" class="text-decoration-none">Knowledge Base</a></strong></p>
 							</div>
 						</div>
 					</div>
-					<ul class="mt-3 footer-social">
-                        <li><a class="facebook" target="_blank" href="https://www.facebook.com/letmobilepkofficial"><i class="lni-facebook-filled"></i></a></li>
-                        <li><a class="twitter" target="_blank" href="https://twitter.com/LetMobile1"><i class="lni-twitter-filled"></i></a></li>
-                        <li><a class="instagram" target="_blank" href="https://www.instagram.com/letmobilepk/"><i class="lni-instagram-filled"></i></a></li>
-                    </ul>
+                    <a href="https://play.google.com/store/apps/details?id=com.letmobile.app"><img src="{{ asset('assets/images/google play.png') }}" class="mb-3 mt-3" alt="google play"></a>
 				</div>
 			</div>
 			<div class="col-md-8">
 				<div class="contact-form" id="mydiv">
-					<h5 class="list-title gray"><strong>Contact us</strong></h5>
+					<h5 class="list-title gray mb-2"><strong>Contact us</strong></h5>
 					<form id="contactForm"  accept-charset="utf-8" class="form-horizontal">
 					{{ @csrf_field() }}
 				    <fieldset>
 				        <div class="row">
 				            <div class="col-sm-12">
-				                <div class="form-group">
+				                <div class="form-group mb-2">
 				                    <div class="col-md-12">
 				                        <input type="text" name="name" placeholder="Enter Name" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
 				            <div class="col-sm-12">
-				                <div class="form-group">
+				                <div class="form-group mb-2">
 				                    <div class="col-md-12">
 				                        <input type="email" name="email" placeholder="Enter Email" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
 				            <div class="col-lg-12">
-				                <div class="form-group">
+				                <div class="form-group mb-2">
 				                    <div class="col-md-12">
 				                        <textarea name="message" cols="40" rows="7" placeholder="Enter Message" class="form-control"></textarea>
 				                    </div>
@@ -125,7 +73,7 @@
 <div class="intro-inner">
 	<div class="contact-intro">
 		<div class="w100 map">
-			<iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJNcZXAaoDGTkRa0tdIWIdzqk&key=AIzaSyAy_OvtbZn9ktU5njKItgbAHBozJ8vRbNg" allowfullscreen></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13613.232676248952!2d74.2493217!3d31.4607079!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xadd1b852462f8744!2sLetMobile.pk%20is%20a%20website%20where%20you%20can%20buy%20or%20sell%20Used%20Mobile%20Phone%20and%20New%20Mobile%20Phone%20on%20Instalments.!5e0!3m2!1sen!2s!4v1672230777460!5m2!1sen!2s"  width="100%" frameborder="0" style="border:0" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 		</div>
 	</div>
 </div>
