@@ -4,153 +4,272 @@
 <meta name="description" content="Let mobile is largest Used Mobile and New Mobiles Sale Website in Pakistan. Now You can Sell and Buy Latest Mobiles in all over the Pakistan.">
 @stop
 @section('page-css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{{ asset('assets/richtexteditor/rte_theme_default.css') }}" />
 <style>
   .imageThumb {
-  max-height: 75px;
-  min-width: 75px;
-  border: 2px solid #03a9fa;
-  padding: 1px;
-  cursor: pointer;
-}
-.pip {
-  display: inline-block;
-  margin: 10px 10px 0 0;
-}
-.remove {
-  display: block;
-  background: #03a9fa;
-  border: 1px solid #03a9fa;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-}
-.remove:hover {
-  background: white;
-  color: black;
-}
+    max-height: 75px;
+    min-width: 75px;
+    border: 2px solid #03a9fa;
+    padding: 1px;
+    cursor: pointer;
+  }
+  .pip {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+  }
+  .remove {
+    display: block;
+    background: #03a9fa;
+    border: 1px solid #03a9fa;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+  }
+  .remove:hover {
+    background: white;
+    color: black;
+  }
+  .select2
+  {
+    width: 100% !important;
+    margin-bottom: 10px !important;
+    outline: none;
+    border-radius: 2px;
+  }
+  .select2-selection
+  {
+    padding: 2px !important;
+    border-radius: 0px !important;
+    height: 36px !important;
+    border-radius: 2px;
+  }
+  .select2-search__field
+  {
+    outline: none !important;
+  }
 </style>
 @stop
 @section('content')
 <div class="MainPostAd">
-        <div class="container MainInnserDiv">
-            <div  class="form position-relative" style="display: none;">
-                <h3 class="text-center mb-4">Post your ad</h3>
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label for="name" class="mb-1">Ad Title</label>
-                            <input type="text" name="name" placeholder="Enter your name.." required>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label for="Price" class="mb-1">Price</label>
-                            <input type="phone" name="phone" placeholder="0xxxxxxxxx" required>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label for="brand" class="mb-2" class="form-control">Select Brand</label>
-                            <select name="brand" id="">
-                                <option value="1">Brand Name</option>
-                                <option value="2">Oppo</option>
-                                <option value="2">Samsung</option>
-                                <option value="2">Hweuei</option>
-                                <option value="2">Apple</option>
-                                <option value="2">Infinix</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label for="brand" class="mb-2" class="form-control">Condition</label>
-                            <select name="brand" id="">
-                                <option value="1">Brand Name</option>
-                                <option value="2">Oppo</option>
-                                <option value="2">Samsung</option>
-                                <option value="2">Hweuei</option>
-                                <option value="2">Apple</option>
-                                <option value="2">Infinix</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label for="location" class="mb-2">Select your location</label>
-                            <input type="text" name="location" placeholder="Enter your location.." required>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label for="Description" class="mb-2">Add street no</label>
-                            <input type="text" name="street" placeholder="Street no.." required>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label for="Add mobile number" class="mb-2">Add mobile number</label>
-                            <input type="tel" name="phone" placeholder="0xxxxxxxx" required>
-                        </div>
-                    </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label for="Description" class="mb-2">Description</label>
-                            <textarea name="description" id="Description" cols="30" rows="6">Description</textarea>
-                        </div>
-                    </div>
+    <div class="container MainInnserDiv">
+    @php
+                        print_r(request()->cookie());
+                      @endphp
+      <div class="UploadImg " id="one-step">
+          <h3 class="text-center">Upload Images</h3>
+          <p class="text-center">Add up to 4 photos. Use a real image of your product, not catalogs</p>
+          <div class="row mt-1 text-center">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" id="File-Body">
+                  <label id="File-Lable" for="File-For">
+                      <div id="Filebutton">
+                          <img src="{{ asset('assets/images/upload-icon.png') }}"  alt="" /> Upload Images</div>
+                  </label>
+                  <input id="File-For" type="file" multiple name="files" accept="image/*">
+                  <div class="field" ></div>
+              </div>
+          </div>
+      </div>
+      <div  class="form position-relative step-hide" id="two-step">
+          <h3 class="text-center mb-4">Device Details</h3>
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="brand" class="mb-2" class="form-control">Select Brand</label>
+                    <select name="brand" id="brands">
+                        <option value="0" selected disabled>Select Brand</option>
+                        @if($brands)
+                          @foreach($brands as $row)
+                            <option value="{{ $row['bid'] ?? '' }}">{{ ucwords($row['brand']) }}</option>
+                          @endforeach
+                        @endif
+                    </select>
                 </div>
             </div>
-            <div class="UploadImg">
-                <h3 class="text-center">Upload Images</h3>
-                <p class="text-center">Add up to 4 photos. Use a real image of your product, not catalogs</p>
-                <div class="row mt-1 text-center">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" id="File-Body">
-                        <label id="File-Lable" for="File-For">
-                            <div id="Filebutton">
-                                <img src="{{ asset('assets/images/upload-icon.png') }}"  alt="" /> Upload Images</div>
-                        </label>
-                        <input id="File-For" type="file" multiple name="files" accept="image/*">
-                        <div class="field" ></div>
-                    </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="brand" class="mb-2" class="form-control">Condition</label>
+                    <select name="cond" id="condition">
+                      <option value="0">Used</option>
+                      <option value="1">New</option>
+                      <option value="2">Intallments</option>
+                    </select>
                 </div>
             </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  <div class="form-group">
+                      <label for="name" class="mb-1">Ad Title</label>
+                      
+                      <input type="text" name="title" id="let__title" placeholder="Enter your title.." required value="{{ request()->cookie('let__title') }}">
+                  </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  <div class="form-group">
+                      <label for="Price" class="mb-1">Price</label>
+                      <input type="phone" name="phone" placeholder="40,000" required>
+                  </div>
+              </div>
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="form-group">
+                      <label for="Description" class="mb-2">Description</label>
+                      <textarea name="description" id="div_editor1" cols="30" rows="6"></textarea>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div  class="form position-relative step-hide" id="three-step">
+        <h3 class="text-center mb-4">Location and Mobile No Details</h3>
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group">
+                  <label for="location" class="mb-2">Select City</label>
+                  <select name="brand" id="city">
+                      <option value="0" selected disabled>Select City</option>
+                      @if($cities)
+                        @foreach($cities as $row)
+                          <option value="{{ $row['ctid'] ?? '' }}">{{ ucwords($row['city']) }}</option>
+                        @endforeach
+                      @endif
+                  </select>
+              </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group">
+                  <label for="Description" class="mb-2">Street Address</label>
+                  <input type="text" name="street" placeholder="Street Address" required>
+              </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group">
+                  <label for="Add mobile number" class="mb-2">Add mobile number</label>
+                  <input type="tel" name="phone" placeholder="0xxxxxxxx" required>
+              </div>
+          </div>
+          </div>
         </div>
-    </div>
+      </div>
+  </div>
+<div class="sticky-footer">
+  <a href="javascript:;"  class="call-button step-disabled" id="back" data-back-setp="one-step"> << Back</a>
+  <a href="javascript:;" class="call-button step-disabled" id="next" data-next-setp="two-step">Next Step</a>
+</div>
 @stop
 @section('page-scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript" src="{{ asset('assets/richtexteditor/rte.js') }}"></script>
+<script>RTE_DefaultConfig.url_base="{{ asset('assets/richtexteditor') }}"</script>
+<script type="text/javascript" src="{{ asset('assets/richtexteditor/plugins/all_plugins.js') }}"></script>
+<script>
+  var editor1cfg = {}
+  editor1cfg.toolbar = "basic";
+  var editor1 = new RichTextEditor("#div_editor1", editor1cfg);
+</script>
 <script type="text/javascript">
   $(document).ready(function() {
-  if (window.File && window.FileList && window.FileReader) {
-    $("#File-For").on("change", function(e) {
-      var files = e.target.files,
-        filesLength = files.length;
-      for (var i = 0; i < filesLength; i++) {
-        var f = files[i]
-        var fileReader = new FileReader();
-        fileReader.onload = (function(e) {
-          var file = e.target;
-          $(".field").append("<span class=\"pip\">" +
-            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-            "<span class=\"remove\">Delete</span>" +
-            "</span>");
-          $(".remove").click(function(){
-            $(this).parent(".pip").remove();
-          });
-          
-          // Old code here
-          /*$("<img></img>", {
-            class: "imageThumb",
-            src: e.target.result,
-            title: file.name + " | Click to remove"
-          }).insertAfter("#files").click(function(){$(this).remove();});*/
-          
-        });
-        fileReader.readAsDataURL(f);
+    $('#brands').select2();
+    $('#condition').select2();
+    $('#city').select2();
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {   
+        document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+    $('input#let__title').bind("change keyup input",function() { 
+        console.log($(this).val());
+        setCookie('let__title',$(this).val(),1);
+    });
+  });
+  $(document).ready(function() {
+    
+    $('#next').click('',function(){
+      var next = $('#next').attr('data-next-setp');
+      var back = $('#back').attr('data-back-setp');
+      
+      if(next == 'two-step')
+        {
+          $('#'+next).removeClass('step-hide');
+          $('#'+back).addClass('step-hide');
+          $('#back').removeClass('step-disabled');
+          $('#back').attr('data-back-setp','two-step');
+          $('#next').attr('data-next-setp','three-step');
+        }
+      if(next == 'three-step')
+        {
+          $('#'+next).removeClass('step-hide');
+          $('#'+back).addClass('step-hide');
+          $('#back').attr('data-back-setp','three-step');
+          $('#next').attr('data-next-setp','fouth-step');
+        }
+    });
+    $('#back').click('',function(){
+      var back = $('#back').attr('data-back-setp');
+      if(back == 'two-step')
+      {
+        $('#one-step').removeClass('step-hide');
+        $('#'+back).addClass('step-hide');
+        $('#back').attr('data-back-setp','one-step');
+        $('#next').attr('data-next-setp','two-step');
+      }
+      if(back == 'three-step')
+      {
+        $('#two-step').removeClass('step-hide');
+        $('#'+back).addClass('step-hide');
+        $('#back').attr('data-back-setp','two-step');
+        $('#next').attr('data-next-setp','three-step');
       }
     });
-  } else {
-    alert("Your browser doesn't support to File API")
-  }
-});
+    if (window.File && window.FileList && window.FileReader) {
+      $("#File-For").on("change", function(e) {
+        var files = e.target.files,
+          filesLength = files.length;
+          for (var i = 0; i < filesLength; i++) {
+            var f = files[i]
+            var fileReader = new FileReader();
+            fileReader.onload = (function(e) {
+              var file = e.target;
+              $(".field").append("<span class=\"pip\">" +
+                "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                "<span class=\"remove\">Delete</span>" +
+                "</span>");
+              $(".remove").click(function(){
+                $(this).parent(".pip").remove();
+              });
+              
+              // Old code here
+              /*$("<img></img>", {
+                class: "imageThumb",
+                src: e.target.result,
+                title: file.name + " | Click to remove"
+              }).insertAfter("#files").click(function(){$(this).remove();});*/
+              
+            });
+            fileReader.readAsDataURL(f);
+          }
+          if(filesLength > 0)
+          {
+            $('#next').removeClass('step-disabled');
+          }
+      });
+    } else {
+      alert("Your browser doesn't support to File API")
+    }
+  });
 </script>
 @stop

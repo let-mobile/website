@@ -510,6 +510,7 @@ footer .col ul li a img{
     margin-bottom: 10px !important;
     border: 1px solid #acabab !important;
     outline: none;
+    height: 36px;
 }
 .MainPostAd .form label{
     font-size: 18px;
@@ -771,4 +772,20 @@ footer .col ul li a img{
 .justify
 {
     text-align: justify !important;
+}
+.step-hide
+{
+    display: none !important;
+    visibility: hidden !important;
+}
+#File-Lable
+{
+    cursor: pointer;
+}
+.step-disabled
+{
+    cursor: not-allowed;
+    pointer-events: none;
+    color: #c0c0c0;
+    background-color: #ffffff;
 }
