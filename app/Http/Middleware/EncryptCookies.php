@@ -13,6 +13,15 @@ class EncryptCookies extends Middleware
      */
     protected $except = [
         //
+        'let__title',
+        'let__brand',
+        'let__condition',
+        'let__price',
+        'let__title',
+        'let__title',
+        'let__title',
+        'let__title',
+        'let__title',
         'let__title'
     ];
 }

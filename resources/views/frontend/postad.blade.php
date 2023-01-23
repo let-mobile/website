@@ -76,11 +76,11 @@
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label for="brand" class="mb-2" class="form-control">Select Brand</label>
-                    <select name="brand" id="brands">
+                    <select name="brand" id="brands" required>
                         <option value="0" selected disabled>Select Brand</option>
                         @if($brands)
                           @foreach($brands as $row)
-                            <option value="{{ $row['bid'] ?? '' }}">{{ ucwords($row['brand']) }}</option>
+                            <option value="{{ $row['bid'] ?? '' }}"  {{ (request()->cookie('let__brand') == $row['bid'])?'selected':''  }}>{{ ucwords($row['brand']) }}</option>
                           @endforeach
                         @endif
                     </select>
@@ -89,30 +89,29 @@
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label for="brand" class="mb-2" class="form-control">Condition</label>
-                    <select name="cond" id="condition">
-                      <option value="0">Used</option>
-                      <option value="1">New</option>
-                      <option value="2">Intallments</option>
+                    <select name="cond" id="condition" required>
+                      <option value="0" {{ (request()->cookie('let__condition') == 0)?'selected':''  }}>Used</option>
+                      <option value="1" {{ (request()->cookie('let__condition') == 1)?'selected':''  }}>New</option>
+                      <option value="2" {{ (request()->cookie('let__condition') == 2)?'selected':''  }}>Intallments</option>
                     </select>
                 </div>
             </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                       <label for="name" class="mb-1">Ad Title</label>
-                      
                       <input type="text" name="title" id="let__title" placeholder="Enter your title.." required value="{{ request()->cookie('let__title') }}">
                   </div>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                       <label for="Price" class="mb-1">Price</label>
-                      <input type="phone" name="phone" placeholder="40,000" required>
+                      <input type="phone" name="price" id="let__price" placeholder="40,000" required value="{{ request()->cookie('let__price') ?? '' }}">
                   </div>
               </div>
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="form-group">
                       <label for="Description" class="mb-2">Description</label>
-                      <textarea name="description" id="div_editor1" cols="30" rows="6"></textarea>
+                      <textarea name="description" id="div_editor1" cols="30" rows="6">{{ request()->cookie('let__description') ?? '' }}</textarea>
                   </div>
               </div>
           </div>
@@ -123,7 +122,7 @@
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <div class="form-group">
                   <label for="location" class="mb-2">Select City</label>
-                  <select name="brand" id="city">
+                  <select name="city" id="city" required>
                       <option value="0" selected disabled>Select City</option>
                       @if($cities)
                         @foreach($cities as $row)
@@ -192,8 +191,16 @@
         document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     }
     $('input#let__title').bind("change keyup input",function() { 
-        console.log($(this).val());
-        setCookie('let__title',$(this).val(),1);
+      console.log($(this).val());
+      setCookie('let__title',$(this).val(),1);
+    });
+    $('select#brands').bind("change",function() { 
+      console.log($(this).val());
+      setCookie('let__brand',$(this).val(),1);
+    });
+    $('select#condition').bind("change",function() { 
+      console.log($(this).val());
+      setCookie('let__condition',$(this).val(),1);
     });
   });
   $(document).ready(function() {
