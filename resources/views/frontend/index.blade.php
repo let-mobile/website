@@ -13,7 +13,9 @@
             <div class="InnerCategoriesSec mb-5">
                 <div class="container">
                     <div class="row">
-                        @include('frontend.partials.filters')
+                        @if((new \Jenssegers\Agent\Agent())->isDesktop())
+                            @include('frontend.partials.filters')
+                        @endif
                         <div class="col-md-9 DetailBox">
                             <div class="AdsText d-none d-sm-block d-xs-block">
                                 <h4 class="">Find Used or Old, New and Installment Mobiles in Pakistan</h4>

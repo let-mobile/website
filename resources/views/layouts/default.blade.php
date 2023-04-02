@@ -58,7 +58,9 @@
                     <button type="button" class="close filter-close">&times;</button>
                 </div>
                 <div class="modal-body">
-                    @include('frontend.partials.mobile-filter')
+                    @if(!(new \Jenssegers\Agent\Agent())->isDesktop())
+                        @include('frontend.partials.mobile-filter')
+                    @endif
                 </div>
             </div>
         </div>
@@ -76,6 +78,175 @@
             $(".filter-close").click(function(){
                 $("#myModal").modal('hide');
             });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            getLocations();
+            $('#q_loc').on('paste keyup change', function() {
+                getLocations();
+            });
+            function getLocations()
+            {
+                if($('#q_loc').val() == '' || $('#q_loc').val().length < 1)
+                {
+                    $('#search-loc').hide();
+                    $('#default-loc').show();
+                    return false;
+                }
+                var formData = {
+                    q_loc: $('#q_loc').val(),
+                };
+                var type = "POST";
+                var ajaxurl = '{{ url("get-locations") }}';
+                $.ajax({
+                    type: type,
+                    url: ajaxurl,
+                    data: formData,
+                    dataType: 'json',
+                    success: function (data) {
+                        if(data.length > 0)
+                        {
+                            //console.clear();
+                            // console.table(data);
+                            $('#default-loc').hide();
+                            $('#search-loc').show();
+                            makeFilterLoc(data);
+                        }
+                        else
+                        {
+                            $('#search-loc').hide();
+                            $('#default-loc').show();
+                        }
+                    },
+                    error: function (data) {
+                        $('#search-loc').hide();
+                        $('#default-loc').show();
+                    }
+                });
+            }
+            function makeFilterLoc(data)
+            {
+                var searchLocDiv = $('#search-loc');
+                searchLocDiv.html('');
+                var params = parseQueryString('loc');
+                $.each(data, function(key,item) {
+                    if($.inArray(item.ctid,params) === -1)
+                    {
+                        searchLocDiv.append('\
+                        <div class="form-check">\
+                            <input class="form-check-input" type="checkbox" value="'+item.ctid+'" name="loc[]" id="loc-'+item.ctid+'">\
+                            <label class="form-check-label" for="loc-'+item.ctid+'">'+capitalizeFirstLetter(item.city)+'</label>\
+                        </div>');
+                    }
+                    else
+                    {
+                        searchLocDiv.append('\
+                        <div class="form-check">\
+                            <input class="form-check-input" checked type="checkbox" value="'+item.ctid+'" name="loc[]" id="loc-'+item.ctid+'">\
+                            <label class="form-check-label" for="loc-'+item.ctid+'">'+capitalizeFirstLetter(item.city)+'</label>\
+                        </div>');
+                    }
+                    
+                });
+                searchLocDiv.show();
+            }
+            function parseQueryString(query) 
+            {
+                var loc = window.location.href;
+                var index = loc.indexOf("?");
+                var splitted = loc.substr(index+1).split('&');
+                var paramObj = [];
+                for (var i=0; i<splitted.length; i++)
+                {
+                    var params = splitted[i].split('=');
+                    var key = params[0];
+                    var value = params[1];
+                    if(key == 'loc%5B%5D' && query == 'loc')
+                    {
+                        paramObj.push(parseInt(value));
+                    }
+                    if(key == 'brand%5B%5D' && query == 'brand')
+                    {
+                        paramObj.push(parseInt(value));
+                    }
+                }
+                return paramObj;
+            }
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+
+            getBrands();
+            $('#q_br').on('paste keyup change', function() {
+                getBrands();
+            });
+            function getBrands()
+            {
+                if($('#q_br').val() == '' || $('#q_br').val().length < 1)
+                {
+                    $('#search-brand').hide();
+                    $('#default-brand').show();
+                    return false;
+                }
+                var formData = {
+                    q_br: $('#q_br').val(),
+                };
+                var type = "POST";
+                var ajaxurl = '{{ url("get-brands") }}';
+                $.ajax({
+                    type: type,
+                    url: ajaxurl,
+                    data: formData,
+                    dataType: 'json',
+                    success: function (data) {
+                        if(data.length > 0)
+                        {
+                            // console.clear();
+                            // console.table(data);
+                            $('#default-brand').hide();
+                            $('#search-brand').show();
+                            makeFilterBrand(data);
+                        }
+                        else
+                        {
+                            $('#search-brand').hide();
+                            $('#default-brand').show();
+                        }
+                    },
+                    error: function (data) {
+                        $('#search-brand').hide();
+                        $('#default-brand').show();
+                    }
+                });
+            }
+            function makeFilterBrand(data)
+            {
+                var searchBrandDiv = $('#search-brand');
+                searchBrandDiv.html('');
+                var params = parseQueryString('brand');
+                $.each(data, function(key,item) {
+                    if($.inArray(item.bid,params) === -1)
+                    {
+                        searchBrandDiv.append('\
+                        <div class="form-check">\
+                            <input class="form-check-input" type="checkbox" value="'+item.bid+'" name="brand[]" id="brand-'+item.bid+'">\
+                            <label class="form-check-label" for="brand-'+item.bid+'">'+capitalizeFirstLetter(item.brand)+'</label>\
+                        </div>');
+                    }
+                    else
+                    {
+                        searchBrandDiv.append('\
+                        <div class="form-check">\
+                            <input class="form-check-input" checked type="checkbox" value="'+item.bid+'" name="brand[]" id="brand-'+item.bid+'">\
+                            <label class="form-check-label" for="brand-'+item.bid+'">'+capitalizeFirstLetter(item.brand)+'</label>\
+                        </div>');
+                    }
+                });
+                searchBrandDiv.show();
+            }
         });
     </script>
     @yield('page-scripts')
