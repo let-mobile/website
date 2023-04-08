@@ -53,9 +53,8 @@
 @section('content')
 <div class="MainPostAd">
     <div class="container MainInnserDiv">
-    @php
-                        print_r(request()->cookie());
-                      @endphp
+
+    <form action="{{ url('post/store') }}" method="POST">
       <div class="UploadImg " id="one-step">
           <h3 class="text-center">Upload Images</h3>
           <p class="text-center">Add up to 4 photos. Use a real image of your product, not catalogs</p>
@@ -63,7 +62,8 @@
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" id="File-Body">
                   <label id="File-Lable" for="File-For">
                       <div id="Filebutton">
-                          <img src="{{ asset('assets/images/upload-icon.png') }}"  alt="" /> Upload Images</div>
+                        <img src="{{ asset('assets/images/upload-icon.png') }}"  alt="" /> Upload Images
+                      </div>
                   </label>
                   <input id="File-For" type="file" multiple name="files" accept="image/*">
                   <div class="field" ></div>
@@ -105,7 +105,7 @@
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                       <label for="Price" class="mb-1">Price</label>
-                      <input type="phone" name="price" id="let__price" placeholder="40,000" required value="{{ request()->cookie('let__price') ?? '' }}">
+                      <input type="phone" name="price" id="let__price" placeholder="40000" required value="{{ request()->cookie('let__price') ?? '' }}">
                   </div>
               </div>
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -147,6 +147,7 @@
           </div>
         </div>
       </div>
+    </form>
   </div>
 <div class="sticky-footer">
   <a href="javascript:;"  class="call-button step-disabled" id="back" data-back-setp="one-step"> << Back</a>
@@ -187,28 +188,32 @@
         }
         return null;
     }
-    function eraseCookie(name) {   
+    function eraseCookie(name) {
         document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     }
-    $('input#let__title').bind("change keyup input",function() { 
+    $('input#let__title').bind("change keyup input",function() {
       console.log($(this).val());
       setCookie('let__title',$(this).val(),1);
     });
-    $('select#brands').bind("change",function() { 
+    $('input#let__price').bind("change keyup input",function() {
+      console.log($(this).val());
+      setCookie('let__price',$(this).val(),1);
+    });
+    $('select#brands').bind("change",function() {
       console.log($(this).val());
       setCookie('let__brand',$(this).val(),1);
     });
-    $('select#condition').bind("change",function() { 
+    $('select#condition').bind("change",function() {
       console.log($(this).val());
       setCookie('let__condition',$(this).val(),1);
     });
   });
   $(document).ready(function() {
-    
+
     $('#next').click('',function(){
       var next = $('#next').attr('data-next-setp');
       var back = $('#back').attr('data-back-setp');
-      
+
       if(next == 'two-step')
         {
           $('#'+next).removeClass('step-hide');
@@ -222,7 +227,8 @@
           $('#'+next).removeClass('step-hide');
           $('#'+back).addClass('step-hide');
           $('#back').attr('data-back-setp','three-step');
-          $('#next').attr('data-next-setp','fouth-step');
+          $('#next').slideUp();
+
         }
     });
     $('#back').click('',function(){
@@ -239,6 +245,7 @@
         $('#two-step').removeClass('step-hide');
         $('#'+back).addClass('step-hide');
         $('#back').attr('data-back-setp','two-step');
+        $('#next').slideDown();
         $('#next').attr('data-next-setp','three-step');
       }
     });
@@ -258,14 +265,14 @@
               $(".remove").click(function(){
                 $(this).parent(".pip").remove();
               });
-              
+
               // Old code here
               /*$("<img></img>", {
                 class: "imageThumb",
                 src: e.target.result,
                 title: file.name + " | Click to remove"
               }).insertAfter("#files").click(function(){$(this).remove();});*/
-              
+
             });
             fileReader.readAsDataURL(f);
           }

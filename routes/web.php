@@ -39,7 +39,6 @@ Route::post('reset-password/{hash}','UserController@resetpassword');
 //logout
 Route::get('logout','UserController@logout');
 
-
 Route::get('/{slug}','PostController@show');
 
 Route::prefix('user')->group(function () {
