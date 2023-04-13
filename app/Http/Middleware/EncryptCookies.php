@@ -17,11 +17,9 @@ class EncryptCookies extends Middleware
         'let__brand',
         'let__condition',
         'let__price',
-        'let__title',
-        'let__title',
-        'let__title',
-        'let__title',
-        'let__title',
-        'let__title'
+        'let__description',
+        'let__city',
+        'let__address',
+        'let__phone'
     ];
 }

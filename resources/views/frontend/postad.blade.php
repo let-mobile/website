@@ -53,9 +53,9 @@
 @section('content')
 <div class="MainPostAd">
     <div class="container MainInnserDiv">
-    @php
-                        print_r(request()->cookie());
-                      @endphp
+    <!-- @php
+      print_r(request()->cookie());
+    @endphp -->
       <div class="UploadImg " id="one-step">
           <h3 class="text-center">Upload Images</h3>
           <p class="text-center">Add up to 4 photos. Use a real image of your product, not catalogs</p>
@@ -111,7 +111,7 @@
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="form-group">
                       <label for="Description" class="mb-2">Description</label>
-                      <textarea name="description" id="div_editor1" cols="30" rows="6">{{ request()->cookie('let__description') ?? '' }}</textarea>
+                      <textarea name="description" id="div_editor1" cols="30" rows="6">{{ request()->cookie("let__description") ?? "" }}</textarea>
                   </div>
               </div>
           </div>
@@ -126,7 +126,7 @@
                       <option value="0" selected disabled>Select City</option>
                       @if($cities)
                         @foreach($cities as $row)
-                          <option value="{{ $row['ctid'] ?? '' }}">{{ ucwords($row['city']) }}</option>
+                          <option value="{{ $row['ctid'] ?? '' }}" {{ (request()->cookie('let__city') == $row['ctid'])?'selected':'' }}>{{ ucwords($row['city']) }}</option>
                         @endforeach
                       @endif
                   </select>
@@ -135,13 +135,13 @@
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <div class="form-group">
                   <label for="Description" class="mb-2">Street Address</label>
-                  <input type="text" name="street" placeholder="Street Address" required>
+                  <input type="text" name="address" id="address" placeholder="Street Address" value="{{ request()->cookie('let__address') ?? '' }}" required>
               </div>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <div class="form-group">
                   <label for="Add mobile number" class="mb-2">Add mobile number</label>
-                  <input type="tel" name="phone" placeholder="0xxxxxxxx" required>
+                  <input type="tel" name="phone" id="phone" placeholder="0xxxxxxxx" value="{{ request()->cookie('let__phone') ?? Session::get('phone') }}" required>
               </div>
           </div>
           </div>
@@ -162,6 +162,8 @@
   var editor1cfg = {}
   editor1cfg.toolbar = "basic";
   var editor1 = new RichTextEditor("#div_editor1", editor1cfg);
+  // editor1.setHTMLCode('');
+  // alert(editor1.getPlainText())
 </script>
 <script type="text/javascript">
   $(document).ready(function() {
@@ -194,6 +196,22 @@
       console.log($(this).val());
       setCookie('let__title',$(this).val(),1);
     });
+    $('input#let__price').bind("change keyup input",function() { 
+      console.log($(this).val());
+      setCookie('let__price',$(this).val(),1);
+    });
+    $('input#address').bind("change keyup input",function() { 
+      console.log($(this).val());
+      setCookie('let__address',$(this).val(),1);
+    });
+    $('input#phone').bind("change keyup input",function() { 
+      console.log($(this).val());
+      setCookie('let__phone',$(this).val(),1);
+    });
+    editor1.attachEvent("change", function () {      
+      console.log(editor1.getPlainText());
+      setCookie('let__description',editor1.getPlainText(),1);
+    });
     $('select#brands').bind("change",function() { 
       console.log($(this).val());
       setCookie('let__brand',$(this).val(),1);
@@ -201,6 +219,10 @@
     $('select#condition').bind("change",function() { 
       console.log($(this).val());
       setCookie('let__condition',$(this).val(),1);
+    });
+    $('select#city').bind("change",function() { 
+      console.log($(this).val());
+      setCookie('let__city',$(this).val(),1);
     });
   });
   $(document).ready(function() {
