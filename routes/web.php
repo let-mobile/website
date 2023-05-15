@@ -19,6 +19,8 @@ Route::get('support/faqs',function() { return view('frontend.faqs'); });
 Route::post('contact/store','ContactController@store');
 Route::post('comments/store','CommentController@store');
 
+Route::post('get-locations','FilterController@store');
+Route::post('get-brands','FilterController@brands');
 
 //Sign Up
 Route::get('register','UserController@signup');
@@ -36,7 +38,6 @@ Route::post('reset-password/{hash}','UserController@resetpassword');
 
 //logout
 Route::get('logout','UserController@logout');
-
 
 Route::get('/{slug}','PostController@show');
 

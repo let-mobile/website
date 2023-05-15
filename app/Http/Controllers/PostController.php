@@ -43,7 +43,7 @@ class PostController extends Controller
     public function create()
     {
         if (Auth::guest()) {
-            Session::flash('message',"Nothing"); 
+            Session::flash('message',"Nothing");
             return redirect('register');
         }
         else {
@@ -63,20 +63,20 @@ class PostController extends Controller
     {
         $images = $request->file('image');
         if ($request->hasFile('image')) :
-                foreach ($images as $item):
-                    $ImageUpload = Image::make($item);
+            foreach ($images as $item):
+                $ImageUpload = Image::make($item);
 
-                    $originalPath = 'public/images/';
-                    //$ImageUpload->resize(700,500);
-                    $explodeName = explode(".", $item->getClientOriginalName());
-                    $ImageName = time().'-'.$explodeName[0].'.webp';
-                    $ImageUpload->save($originalPath.$ImageName);
+                $originalPath = 'public/images/';
+                //$ImageUpload->resize(700,500);
+                $explodeName = explode(".", $item->getClientOriginalName());
+                $ImageName = time().'-'.$explodeName[0].'.webp';
+                $ImageUpload->save($originalPath.$ImageName);
 
-                    $arr[] = $ImageName;
-                endforeach;
-                $images = implode(",", $arr);
+                $arr[] = $ImageName;
+            endforeach;
+            $images = implode(",", $arr);
         else:
-                $images = '';
+            $images = '';
         endif;
         $post= new Post;
         $post->adtitle = $request->title;
@@ -109,23 +109,23 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    
+
     public function show(Request $request, $slug)
     {
         $data['item'] = Post::with('brand','city','user','comments')->withCount('postview')->where('is_sold','=',0)->where('adslug','=',$slug)->first();
-        if (isset($data['item']->aid)) { 
+        if (isset($data['item']->aid)) {
             $data['ads'] = Post::with('brand','city')->where('vcode','=',0)->where('cond','=',$data['item']->cond)->select('adprice','br_id','loc_id','postedby','adimgs','adtitle','cond','adslug','selname','created_at')->orWhere('loc_id','=',$data['item']->loc_id)->where('br_id','=',$data['item']->br_id)->take(17)->orderBy('aid', 'DESC')->get();
             // $data['ads'] = Post::with('brand','city')->where('vcode','=',0)->where(['postedby'=>$data['item']->postedby])->select('aid','adprice','br_id','loc_id','postedby','adimgs','adtitle','adslug','selname','created_at')->where('adslug','!=',$slug)->take(12)->orderBy('aid', 'DESC')->get();
             // dd($data['ads']);
             $view = Postview::where(['post_id'=>$data['item']->aid,'user_ip'=>$request->ip()])->get();
-            if ($view->count() < 1) {          
+            if ($view->count() < 1) {
                 $view = new Postview();
                 $view->user_id = Session::get('user_id');
                 $view->post_id = $data['item']->aid;
                 $view->user_ip = $request->ip();
                 $view->save();
                 // $count = DB::table('postviews')->where('post_id',$data['item']->aid)->count();
-                // if($count % 5 == 0){  
+                // if($count % 5 == 0){
                 //     //Mailsender::PostView($data['item'],$count);
                 // }
             }
@@ -135,7 +135,7 @@ class PostController extends Controller
             return abort(404);
         }
     }
-   
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -186,7 +186,7 @@ class PostController extends Controller
             endif;
         }
         $images = implode(",", $images);
-        
+
         $post->adtitle = $request->title;
         $post->adslug  = $this->createSlug($request->title, $id);
         $post->adimgs  = $images;

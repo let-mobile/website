@@ -6,7 +6,7 @@
 @section('content')
 <div class="MainLogin">
     <div class="container MainInnserDiv">
-        <form action="authentication" class="d--flex position-relative" method="POST">
+        <form action="{{ url('authentication') }}" class="d--flex position-relative" method="POST">
             @csrf
             @method('POST')
             <div class="row">
